@@ -9,11 +9,15 @@
 #ifndef GameLayer_h
 #define GameLayer_h
 
+#include "cocos2d.h"
+#include "Terrain.hpp"
+#include "Player.hpp"
+
 USING_NS_CC;
 
 typedef enum{
-    kGameIntro,
-    kGamePlay,
+    kGameIntro,//游戏介绍
+    kGamePlay,//开始游戏
     kGameOver,
     kGameTutorial,//
     kGameTutorialJump,//
@@ -21,11 +25,11 @@ typedef enum{
     kGameTutorialDrop//
 } GameState;
 
-class GameLayer : public cocos2d::CCLayer
+class GameLayer : public cocos2d::Layer
 {
-    Terrain * _terrain;
+    GameTerrain * _terrain;
     Player * _player;
-    CCLabelBMFont * _scoreDisplay;
+    LabelBMFont * _scoreDisplay;
     
     CCSprite * _intro;
     CCSprite * _tryAgain;
@@ -56,15 +60,15 @@ public:
     virtual bool init();
     
     // there's no 'id' in cpp, so we recommand to return the exactly class pointer
-    static cocos2d::CCScene* scene();
+    static cocos2d::Scene* scene();
     
     // implement the "static node()" method manually
     CREATE_FUNC(GameLayer);
     
     void update (float dt);
     
-    virtual void ccTouchesBegan(CCSet* pTouches, CCEvent* event);
-    virtual void ccTouchesEnded(CCSet* pTouches, CCEvent* event);
+    virtual void onTouchesBegan(CCSet* pTouches, CCEvent* event);
+    virtual void onTouchesEnded(CCSet* pTouches, CCEvent* event);
     void showTutorial (CCObject* pSender);
     void startGame (CCObject* pSender);
 };

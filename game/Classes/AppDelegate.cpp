@@ -1,5 +1,9 @@
+
 #include "AppDelegate.h"
 #include "HelloWorldScene.h"
+#include "cocos2d.h"
+#include "GameLayer.h"
+//#include "EGLView.h"
 
 USING_NS_CC;
 
@@ -76,11 +80,12 @@ bool AppDelegate::applicationDidFinishLaunching() {
 
     // create a scene. it's an autorelease object
     //auto scene = HelloWorld::createScene();
-    CCScene * pScene = GameLayer::scene();
+    auto scene = GameLayer::scene();
     
     // run
-    director->runWithScene(pScene);
-
+    //director->runWithScene(pScene);
+    director->runWithScene(scene);
+    
     return true;
 }
 
