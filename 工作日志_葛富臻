@@ -23,3 +23,8 @@ office for mac
 
 2015/12/15
 学习git的使用方式
+学习绘图坐标和SpriteFrameCache和SpriteBatchNode的使用
+
+2015/12/16
+学习了屏幕适配，测试并理解ResolutionPolicy5种机制的原理和实现效果
+学习和理解了屏幕尺寸的屏幕分辨率的关系
