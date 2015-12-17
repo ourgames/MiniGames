@@ -75,8 +75,8 @@ bool HelloWorld::init()
     SpriteFrameCache * frameCache = SpriteFrameCache::getInstance();
     frameCache->addSpriteFramesWithFile("sprite_sheet.plist", "sprite_sheet.png");
     auto player = Sprite::createWithSpriteFrameName("player_1.png");
-    player->setPosition(visibleSize.width/2, visibleSize.height/2);
-    this->addChild(player);
+    player->setPosition(origin.x + player->getContentSize().width * 0.5, visibleSize.height * 0.3);
+    this->addChild(player,1);
     
     Animation * animation = Animation::create();
     SpriteFrame * frame;
@@ -94,6 +94,51 @@ bool HelloWorld::init()
     
     auto action = Animate::create(animation);
     player->runAction(Sequence::create(action,action->reverse(),NULL));
+    
+    CCArray * clouds = CCArray::createWithCapacity(4);
+    Sprite * cloud;
+    float cloud_y;
+    for (int i = 0; i < 4; i++) {
+        cloud_y = i % 2 == 0 ? visibleSize.height * 0.7f : visibleSize.height * 0.8f;
+        cloud = Sprite::createWithSpriteFrameName("cloud.png");
+        cloud->cocos2d::Node::setPosition(ccp(visibleSize.width * 0.15f + i * visibleSize.width * 0.25f,cloud_y));
+        this->addChild(cloud,1);
+        clouds->addObject(cloud);
+    }
+    /*
+    int count = clouds->count();
+    for (int i = 0; i < count; i++) {
+        cloud = (Sprite *) clouds->objectAtIndex(i);
+        cloud->setPositionX(cloud->getPositionX()- player->getPositionX() * 0.15f);
+        if (cloud->getPositionX() + cloud->boundingBox().size.width * 0.5f < 0) {
+            cloud->setPositionX(visibleSize.width + cloud->boundingBox().size.width * 0.5f);
+        }
+    }
+    */
+    Sprite * terrain1 = Sprite::createWithSpriteFrameName("background.png");
+    //terrain->setAnchorPoint(ccp(0,0));
+    //terrain->setPosition(origin.x + terrain->getContentSize().height,origin.y + terrain->getContentSize().width);
+    //terrain->setScale(0.75, 0.75);
+    terrain1->setPosition(terrain1->getContentSize().width * 0.5f, terrain1->getContentSize().height * 0.5f);
+    //terrain->setScale(0.75, 0.75);
+    this->addChild(terrain1,0);
+    
+    
+    Sprite * terrain2 = Sprite::createWithSpriteFrameName("background.png");
+    terrain2->setPosition(visibleSize.width - terrain2->getContentSize().width * 0.5f, terrain2->getContentSize().height * 0.5f);
+    this->addChild(terrain2,0);
+    
+    //auto flipxAction = FlipX::create(true);
+    //auto bk_moveTo = MoveTo::create(1.4f, Point(visibleSize.width - terrain->getContentSize().width * 0.5f,terrain->getContentSize().height * 0.5f));
+    auto bk_moveTo1 = MoveTo::create(1.4f, Point(visibleSize.width - terrain1->getContentSize().width * 0.5f,terrain1->getContentSize().height * 0.5f));
+    auto bk_moveTo2 = MoveTo::create(1.4f, Point(terrain2->getContentSize().width * 0.5f,terrain2->getContentSize().height * 0.5f));
+    //auto bk_action = Sequence::create(moveTo,flipxAction,moveTo->reverse(), NULL);
+    
+    //terrain1->runAction(bk_moveTo1);
+    //terrain2->runAction(bk_moveTo2);
+    
+    auto pl_moveTo = MoveTo::create(1.5f, Point(visibleSize.width * 0.5,visibleSize.height * 0.3));
+    player->runAction(pl_moveTo);
     
     return true;
 }
