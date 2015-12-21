@@ -27,7 +27,8 @@ bool HelloWorld::init()
         return false;
     }
     
-    Size visibleSize = Director::getInstance()->getVisibleSize();
+    //Size visibleSize = Director::getInstance()->getVisibleSize();
+    visibleSize = Director::getInstance()->getVisibleSize();
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
 
     /////////////////////////////
@@ -74,7 +75,8 @@ bool HelloWorld::init()
     
     SpriteFrameCache * frameCache = SpriteFrameCache::getInstance();
     frameCache->addSpriteFramesWithFile("sprite_sheet.plist", "sprite_sheet.png");
-    auto player = Sprite::createWithSpriteFrameName("player_1.png");
+    //auto player = Sprite::createWithSpriteFrameName("player_1.png");
+    player = Sprite::createWithSpriteFrameName("player_1.png");
     player->setPosition(origin.x + player->getContentSize().width * 0.5, visibleSize.height * 0.3);
     this->addChild(player,1);
     
@@ -95,8 +97,10 @@ bool HelloWorld::init()
     auto action = Animate::create(animation);
     player->runAction(Sequence::create(action,action->reverse(),NULL));
     
-    CCArray * clouds = CCArray::createWithCapacity(4);
+    //CCArray * clouds = CCArray::createWithCapacity(4);
+    clouds = CCArray::createWithCapacity(4);
     Sprite * cloud;
+    clouds->retain();
     float cloud_y;
     for (int i = 0; i < 4; i++) {
         cloud_y = i % 2 == 0 ? visibleSize.height * 0.7f : visibleSize.height * 0.8f;
@@ -105,6 +109,8 @@ bool HelloWorld::init()
         this->addChild(cloud,1);
         clouds->addObject(cloud);
     }
+    
+    
     /*
     int count = clouds->count();
     for (int i = 0; i < count; i++) {
@@ -115,18 +121,32 @@ bool HelloWorld::init()
         }
     }
     */
-    Sprite * terrain1 = Sprite::createWithSpriteFrameName("background.png");
+    //Sprite * terrain1 = Sprite::createWithSpriteFrameName("background.png");
+    terrain1 = Sprite::createWithSpriteFrameName("background.png");
+
     //terrain->setAnchorPoint(ccp(0,0));
     //terrain->setPosition(origin.x + terrain->getContentSize().height,origin.y + terrain->getContentSize().width);
     //terrain->setScale(0.75, 0.75);
-    terrain1->setPosition(terrain1->getContentSize().width * 0.5f, terrain1->getContentSize().height * 0.5f);
+    terrain1->setAnchorPoint(ccp(0,0));
+    //terrain1->setPosition(terrain1->getContentSize().width * 0.5f, terrain1->getContentSize().height * 0.5f);
     //terrain->setScale(0.75, 0.75);
     this->addChild(terrain1,0);
     
     
-    Sprite * terrain2 = Sprite::createWithSpriteFrameName("background.png");
-    terrain2->setPosition(visibleSize.width - terrain2->getContentSize().width * 0.5f, terrain2->getContentSize().height * 0.5f);
+    //Sprite * terrain2 = Sprite::createWithSpriteFrameName("background.png");
+    terrain2 = Sprite::createWithSpriteFrameName("background.png");
+    terrain2->setAnchorPoint(ccp(0,0));
+    terrain2->setPosition(terrain2->getContentSize().width - 1, 0);
+    //terrain2->setPosition(visibleSize.width - terrain2->getContentSize().width * 0.5f, terrain2->getContentSize().height * 0.5f);
     this->addChild(terrain2,0);
+    
+    terrain3 = Sprite::createWithSpriteFrameName("background.png");
+    terrain3->setAnchorPoint(ccp(0,0));
+    terrain3->setPosition(2 * terrain2->getContentSize().width - 1, 0);
+    //terrain3->setPosition(2 * (terrain2->getContentSize().width - 1), 0);
+    //terrain2->setPosition(visibleSize.width - terrain2->getContentSize().width * 0.5f, terrain2->getContentSize().height * 0.5f);
+    this->addChild(terrain3,0);
+    
     
     //auto flipxAction = FlipX::create(true);
     //auto bk_moveTo = MoveTo::create(1.4f, Point(visibleSize.width - terrain->getContentSize().width * 0.5f,terrain->getContentSize().height * 0.5f));
@@ -140,9 +160,54 @@ bool HelloWorld::init()
     auto pl_moveTo = MoveTo::create(1.5f, Point(visibleSize.width * 0.5,visibleSize.height * 0.3));
     player->runAction(pl_moveTo);
     
+    //this->schedule(schedule_selector(HelloWorld::update));
+    this->schedule(schedule_selector(HelloWorld::update),0.25);
+
+    
     return true;
 }
 
+void HelloWorld::update(float dt)
+{
+    if (player->getPositionX() > 0) {
+        //int count = clouds->count();
+        int count = 4;
+        Sprite * _cloud;
+        for (int i = 0; i < 4; i++) {
+            _cloud = (Sprite *)clouds->objectAtIndex(i);
+            _cloud->setPositionX(_cloud->getPositionX() - player->getPositionX() * 0.15f);
+            if (_cloud->getPositionX() + _cloud->boundingBox().size.width * 0.5f < 0) {
+                _cloud->setPositionX(visibleSize.width + _cloud->boundingBox().size.width * 0.5f);
+            }
+        }
+        
+        terrain1->setPositionX(terrain1->getPositionX() - player->getPositionX() * 0.15f);
+        
+        if (terrain1->getPositionX() + terrain1->getContentSize().width < 0) {
+            //terrain1->setPositionX(visibleSize.width);
+            //terrain1->setPositionX(2 * terrain1->getContentSize().width - 1);
+            terrain1->setPositionX(terrain3->getPositionX()+terrain3->getContentSize().width-40);
+        }
+        /**/
+        terrain2->setPositionX(terrain2->getPositionX() - player->getPositionX() * 0.15f);
+        if (terrain2->getPositionX() + terrain2->getContentSize().width < 0) {
+            //terrain2->setPositionX(2 * terrain2->getContentSize().width - 1);
+            terrain2->setPositionX(terrain1->getPositionX()+terrain1->getContentSize().width-40);
+        }
+        /**/
+        
+        terrain3->setPositionX(terrain3->getPositionX() - player->getPositionX() * 0.15f);
+        if (terrain3->getPositionX() + terrain3->getContentSize().width < 0) {
+            //terrain3->setPositionX(2 * terrain3->getContentSize().width - 1);
+            terrain3->setPositionX(terrain2->getPositionX()+terrain2->getContentSize().width-40);
+        }
+    }
+}
+
+void HelloWorld::onExit()
+{
+    clouds->release();
+}
 
 void HelloWorld::menuCloseCallback(Ref* pSender)
 {
