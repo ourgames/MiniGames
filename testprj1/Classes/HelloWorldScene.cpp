@@ -2,6 +2,10 @@
 
 USING_NS_CC;
 
+enum
+{
+    kTagSprite = 1,
+};
 Scene* HelloWorld::createScene()
 {
     // 'scene' is an autorelease object
@@ -75,10 +79,11 @@ bool HelloWorld::init()
     
     SpriteFrameCache * frameCache = SpriteFrameCache::getInstance();
     frameCache->addSpriteFramesWithFile("sprite_sheet.plist", "sprite_sheet.png");
+    
     //auto player = Sprite::createWithSpriteFrameName("player_1.png");
     player = Sprite::createWithSpriteFrameName("player_1.png");
     player->setPosition(origin.x + player->getContentSize().width * 0.5, visibleSize.height * 0.3);
-    this->addChild(player,1);
+    this->addChild(player,1,kTagSprite);
     
     Animation * animation = Animation::create();
     SpriteFrame * frame;
@@ -163,6 +168,13 @@ bool HelloWorld::init()
     //this->schedule(schedule_selector(HelloWorld::update));
     this->schedule(schedule_selector(HelloWorld::update),0.25);
 
+    this->setTouchEnabled(true);
+    
+    auto listener = EventListenerTouchOneByOne::create();
+    listener->onTouchBegan = CC_CALLBACK_2(HelloWorld::onTouchBegan, this);
+    listener->onTouchEnded = CC_CALLBACK_2(HelloWorld::onTouchEnded, this);
+    _eventDispatcher->addEventListenerWithSceneGraphPriority(listener, this);
+    
     
     return true;
 }
@@ -186,22 +198,48 @@ void HelloWorld::update(float dt)
         if (terrain1->getPositionX() + terrain1->getContentSize().width < 0) {
             //terrain1->setPositionX(visibleSize.width);
             //terrain1->setPositionX(2 * terrain1->getContentSize().width - 1);
-            terrain1->setPositionX(terrain3->getPositionX()+terrain3->getContentSize().width-40);
+            terrain1->setPositionX(terrain3->getPositionX()+terrain3->getContentSize().width-80);
         }
         /**/
         terrain2->setPositionX(terrain2->getPositionX() - player->getPositionX() * 0.15f);
         if (terrain2->getPositionX() + terrain2->getContentSize().width < 0) {
             //terrain2->setPositionX(2 * terrain2->getContentSize().width - 1);
-            terrain2->setPositionX(terrain1->getPositionX()+terrain1->getContentSize().width-40);
+            terrain2->setPositionX(terrain1->getPositionX()+terrain1->getContentSize().width-80);
         }
         /**/
         
         terrain3->setPositionX(terrain3->getPositionX() - player->getPositionX() * 0.15f);
         if (terrain3->getPositionX() + terrain3->getContentSize().width < 0) {
             //terrain3->setPositionX(2 * terrain3->getContentSize().width - 1);
-            terrain3->setPositionX(terrain2->getPositionX()+terrain2->getContentSize().width-40);
+            terrain3->setPositionX(terrain2->getPositionX()+terrain2->getContentSize().width-80);
         }
     }
+}
+
+bool HelloWorld::onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *event)
+{
+    return true;
+}
+
+void HelloWorld::onTouchEnded(cocos2d::Touch *touch, cocos2d::Event *event)
+{
+    auto location = touch->getLocation();
+    
+    auto s = getChildByTag(kTagSprite);
+    //s->stopAllActions();
+    s->runAction(MoveTo::create(1, Vec2(location.x,location.y)));
+    float o = location.x - s->getPosition().x;
+    float a = location.y - s->getPosition().y;
+    float at = (float) CC_RADIANS_TO_DEGREES(atanf(o/a));
+    
+    if (a < 0) {
+        if (o < 0) {
+            at = 180 + fabs(at);
+        }
+        else
+            at = 180 - fabs(at);
+    }
+    s->runAction(RotateTo::create(1, at));
 }
 
 void HelloWorld::onExit()

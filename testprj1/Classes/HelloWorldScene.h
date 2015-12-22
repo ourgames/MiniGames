@@ -27,6 +27,9 @@ public:
     //void onEnter();
     void onExit();
     
+     //bool ccTouchBegan(cocos2d::CCTouch * pTouch,cocos2d::CCEvent * pEvent);
+    bool onTouchBegan(cocos2d::Touch * touch,cocos2d::Event * event);
+    void onTouchEnded(cocos2d::Touch * touch,cocos2d::Event * event);
 };
 
 #endif // __HELLOWORLD_SCENE_H__
