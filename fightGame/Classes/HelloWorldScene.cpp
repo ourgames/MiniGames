@@ -5,6 +5,7 @@ USING_NS_CC;
 enum
 {
     kTagSprite = 1,
+    kActionLayer = 2,
 };
 
 Scene* HelloWorld::createScene()
@@ -82,7 +83,9 @@ bool HelloWorld::init()
     
     createGameScreen();
    
-    this->schedule(schedule_selector(HelloWorld::update),0.1);
+    //this->schedule(schedule_selector(HelloWorld::update),0.1);
+    //this->schedule(schedule_selector(HelloWorld::update));
+    this->scheduleUpdate();
     
     this->setTouchEnabled(true);
     
@@ -90,35 +93,76 @@ bool HelloWorld::init()
     listener->onTouchBegan = CC_CALLBACK_2(HelloWorld::onTouchBegan, this);
     listener->onTouchEnded = CC_CALLBACK_2(HelloWorld::onTouchEnded, this);
     _eventDispatcher->addEventListenerWithSceneGraphPriority(listener, this);
+
+    
     
     return true;
 }
 
 void HelloWorld::createGameScreen()
 {
-    bg = CCArray::createWithCapacity(3);
+    SpriteFrameCache * frameCache = SpriteFrameCache::getInstance();
+    frameCache->addSpriteFramesWithFile("sprite_sheet.plist", "sprite_sheet.png");
+
+    bg = CCArray::createWithCapacity(4);
     Sprite * _bg;
     bg->retain();
-    for (int i = 0; i < 3; i++) {
+    for (int i = 0; i < 4; i++) {
         _bg = Sprite::create("yejing.jpg");
         _bg->setAnchorPoint(ccp(0,0));
         _bg->setPosition(0, i * _bg->getContentSize().height - 1);
-        this->addChild(_bg,0);
+        this->addChild(_bg,-100);
         bg->addObject(_bg);
     }
+    
+    auto layer = cocos2d::Layer::create();
+    this->addChild(layer,100,kActionLayer);
     
     player = Sprite::create("daxia.png");
     player->setScale(0.25, 0.25);
     player->setPosition(visibleSize.width * 0.5, player->getContentSize().height * 0.25 * 0.5);
     //player->setPosition(visibleSize.width * 0.5, 0);
-    this->addChild(player,1,kTagSprite);
+    layer->addChild(player,10,kTagSprite);
     //this->schedule(schedule_selector(HelloWorld::update),0.1);
+    createObstacle(10,layer);
+}
+
+void HelloWorld::createObstacle(int fre,cocos2d::Node * render_node)
+{
+    w = CCArray::createWithCapacity(5);
+    h = CCArray::createWithCapacity(7);
+    clouds = CCArray::createWithCapacity(35);
+    w->retain();
+    h->retain();
+    clouds->retain();
     
+    for (int i = 0; i < fre; i++) {
+        int rand_w = rand() % 5;
+        int rand_h = rand() % 7;
+        
+        Sprite * _cloud = Sprite::createWithSpriteFrameName("cloud.png");
+        _cloud->setAnchorPoint(ccp(0,0));
+        _cloud->setPosition(rand_w * 128, rand_h * 128 + 64);
+        render_node->addChild(_cloud,10);
+        
+        //w->addObject(rand_w);
+        
+    }
+    
+}
+void HelloWorld::onEnter()
+{
+    CCLayer::onEnter();
 }
 
 void HelloWorld::onExit()
 {
     bg->release();
+    //w->release();
+    //h->release();
+    clouds->release();
+    
+    CCLayer::onExit();
 }
 
 void HelloWorld::update(float dt)
@@ -133,6 +177,20 @@ void HelloWorld::update(float dt)
                 Sprite * next_bg = (Sprite * )bg->objectAtIndex((i + 2) % 3);
                 _bg->setPositionY(next_bg->getPositionY() + next_bg->getContentSize().height - 80);
             }
+        }
+        auto s = getChildByTag(kActionLayer);
+        s->setPositionY(s->getPositionY() - 3);
+        if (s->getPositionY() + s->boundingBox().size.height < 0) {
+            ;
+        }
+    }
+    else
+    {
+        Sprite * _bg;
+        int _count = bg->count();
+        for (int i = 0; i < _count; i++) {
+            _bg = (Sprite * )bg->objectAtIndex(i);
+            _bg->stopAllActions();
         }
     }
     
