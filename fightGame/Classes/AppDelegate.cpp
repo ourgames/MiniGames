@@ -1,6 +1,7 @@
 #include "AppDelegate.h"
 #include "HelloWorldScene.h"
-
+#include "mainLayer.hpp"
+#include "GameLayer.hpp"
 USING_NS_CC;
 
 static cocos2d::Size designResolutionSize = cocos2d::Size(640, 960);
@@ -76,8 +77,9 @@ bool AppDelegate::applicationDidFinishLaunching() {
     register_all_packages();
 
     // create a scene. it's an autorelease object
-    auto scene = HelloWorld::createScene();
-
+    //auto scene = HelloWorld::createScene();
+    auto scene = MainLayer::createScene();
+    //auto scene = GameLayer::createScene();
     // run
     director->runWithScene(scene);
 
