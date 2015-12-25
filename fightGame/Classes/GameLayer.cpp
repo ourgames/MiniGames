@@ -45,7 +45,7 @@ bool GameLayer::init()
     visibleSize = Director::getInstance()->getVisibleSize();
     origin = Director::getInstance()->getVisibleOrigin();
     
-    delay = 0.5;
+    delay = 1.5;
     totletime = 0;
     
     auto closeItem = MenuItemImage::create(
@@ -144,7 +144,9 @@ void GameLayer::createObstacle(int num,cocos2d::Node * render_node)
         _cloud->setAnchorPoint(ccp(0,0));
         _cloud->setPosition(origin.x + rand_w * 128,origin.y + rand_h * 128 + 64 + visibleSize.height);
         
-        auto obstacle_moveTo = MoveTo::create(4.0f, Point(origin.x + rand_w * 128,origin.y - _cloud->getContentSize().height));
+        float distance = origin.y + rand_h * 128 + 64 + visibleSize.height + _cloud->getContentSize().height;
+        float time = distance / 30;
+        auto obstacle_moveTo = MoveTo::create(time, Point(origin.x + rand_w * 128,origin.y - _cloud->getContentSize().height));
         _cloud->runAction(obstacle_moveTo);
         
         render_node->addChild(_cloud,10);
@@ -160,7 +162,9 @@ bool GameLayer::isCollasion()
 {
     auto s1 = getChildByTag(kTagSprite);
     auto s2 = getChildByTag(kTagSprite2);
-    
+    CCRect rect = s1->getBoundingBox();
+    CCPoint point = s2->getPosition();
+    return rect.containsPoint(point);
 }
 
 void GameLayer::onEnter()
@@ -181,7 +185,7 @@ void GameLayer::update(float dt)
 {
     totletime += dt;
     if (totletime >= delay) {
-        int number = rand() % 10;
+        int number = rand() % 5;
         createObstacle(number, this);
         totletime = 0;
     }
@@ -217,6 +221,11 @@ void GameLayer::update(float dt)
 //            }
 //        }
         //clouds->release();
+        if (isCollasion()) {
+            auto s1 = getChildByTag(kTagSprite);
+            auto s2 = getChildByTag(kTagSprite2);
+            s2->setVisible(false);
+        }
     }
     else
     {
