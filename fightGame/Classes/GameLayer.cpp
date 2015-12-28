@@ -119,13 +119,20 @@ void GameLayer::createGameScreen()
 //    
     player = Sprite::create("daxia.png");
     player->setScale(0.25, 0.25);
-    player->setPosition(origin.x + visibleSize.width * 0.5,origin.y + player->getContentSize().height * 0.25 * 0.5);
+    //player->setPosition(origin.x + visibleSize.width * 0.5,origin.y + player->getContentSize().height * 0.25 * 0.5);
+    player->setPosition(origin.x + visibleSize.width * 0.5,origin.y + visibleSize.height * 0.85);
     this->addChild(player,1,kTagSprite);
+    
+    auto moveTo1 = MoveTo::create(1.0, Point(origin.x + visibleSize.width * 0.5,origin.y + visibleSize.height * 0.85));
+    //player->runAction(moveTo1);
+    
+    
+    
     
     auto player2 = Sprite::create("xiaobai.jpg");
     player2->setScale(0.5, 0.5);
-    player2->setPosition(origin.x + visibleSize.width * 0.5,origin.y + visibleSize.height * 0.5);
-    this->addChild(player2,1,kTagSprite2);
+    player2->setPosition(origin.x + visibleSize.width * 0.5,origin.y + visibleSize.height * 0.75);
+    //this->addChild(player2,1,kTagSprite2);
     
 //    layer->addChild(player,10,kTagSprite);
 //    createObstacle(10,layer);
@@ -202,6 +209,8 @@ void GameLayer::update(float dt)
                 _bg->setPositionY(next_bg->getPositionY() + next_bg->getContentSize().height - 80);
             }
         }
+        
+        
         //bg->release();
         /*
         auto s = getChildByTag(kActionLayer);
@@ -221,21 +230,26 @@ void GameLayer::update(float dt)
 //            }
 //        }
         //clouds->release();
-        if (isCollasion()) {
-            auto s1 = getChildByTag(kTagSprite);
-            auto s2 = getChildByTag(kTagSprite2);
-            s2->setVisible(false);
-        }
+        
+        
+        //player->setPositionX(player->getPositionX() - 2);
+        player->setPositionY(player->getPositionY() - 25);
+    
+//        if (isCollasion()) {
+//            auto s1 = getChildByTag(kTagSprite);
+//            auto s2 = getChildByTag(kTagSprite2);
+//            s2->setVisible(false);
+//        }
     }
-    else
-    {
-        Sprite * _bg;
-        int _count = bg->count();
-        for (int i = 0; i < _count; i++) {
-            _bg = (Sprite * )bg->objectAtIndex(i);
-            _bg->stopAllActions();
-        }
-    }
+//    else
+//    {
+//        Sprite * _bg;
+//        int _count = bg->count();
+//        for (int i = 0; i < _count; i++) {
+//            _bg = (Sprite * )bg->objectAtIndex(i);
+//            _bg->stopAllActions();
+//        }
+//    }
     
     
 }

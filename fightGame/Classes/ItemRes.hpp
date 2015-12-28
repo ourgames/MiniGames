@@ -46,8 +46,8 @@ public:
     virtual bool init();
     bool isCollasion();
     bool isNear();
-    virtual void isCollasionCallback(cocos2d::Ref* pSender);
-    virtual void isNearCallback(cocos2d::Ref* pSender);
+//    virtual void isCollasionCallback(cocos2d::Ref* pSender);
+//    virtual void isNearCallback(cocos2d::Ref* pSender);
     void show();
     void hide();
     bool isAlive();

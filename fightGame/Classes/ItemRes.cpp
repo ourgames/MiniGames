@@ -27,8 +27,8 @@ ItemRes::~ItemRes(void)
 }
  bool ItemRes::init()
 {
-    visibleSize = Director::getInstance()->getVisibleSize();
-    origin = Director::getInstance()->getVisibleOrigin();
+//    visibleSize = Director::getInstance()->getVisibleSize();
+//    origin = Director::getInstance()->getVisibleOrigin();
     
 }
 bool ItemRes::isCollasion()
