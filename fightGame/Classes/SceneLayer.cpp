@@ -37,7 +37,7 @@ bool SceneLayer::init()
     
     visibleSize = Director::getInstance()->getVisibleSize();
     origin = Director::getInstance()->getVisibleOrigin();
-    
+    track = Track::Track();
     
     auto closeItem = MenuItemImage::create(
                                            "CloseNormal.png",
@@ -103,7 +103,6 @@ void SceneLayer::onExit()
 
 void SceneLayer::update(float dt)
 {
-    
     
 }
 

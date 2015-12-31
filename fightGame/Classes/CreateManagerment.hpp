@@ -14,11 +14,12 @@
 class CreateManagement
 {
     int num;
-    int * chance;
+    int (&chance)[];
+    //int * chance;
     float distance;
 public:
     //int randIndex(int num,int * chance,float distance);
-    CreateManagement(int num,int * chance,float distance);
+    CreateManagement(int num,int (&number)[],float distance);
     int randIndex(void);
     ~CreateManagement();
 };

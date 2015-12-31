@@ -23,7 +23,7 @@ class SceneLayer : public cocos2d::Layer
     float distance;
     float time;
     
-    Track * track;
+    Track track;
     Player * player;
     Vector<Entity *> entityManager;//障碍道具管理器
     

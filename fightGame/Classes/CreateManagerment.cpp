@@ -8,11 +8,11 @@
 
 #include "CreateManagerment.hpp"
 
-CreateManagement::CreateManagement(int num,int * chance,float distance)
+CreateManagement::CreateManagement(int num,int (&number)[],float distance):chance(number),num(num),distance(distance)
 {
-    this->num = num;
-    this->distance = distance;
-    this->chance = chance;
+    //this->num = num;
+    //this->distance = distance;
+    //this->chance = chance;
 }
 
 int CreateManagement::randIndex()

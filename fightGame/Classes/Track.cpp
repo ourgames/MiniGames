@@ -29,7 +29,14 @@ void Track::setChangeChance(int *num)
         change_course_chance[i] = num[i];
     }
 }
-
+//int * Track::getChangeChance()
+//{
+//    return change_course_chance;
+//}
+int Track::getChangeChance()
+{
+    return 1;
+}
 bool Track::isNeedChangeChannel()
 {
     float td = getTempDistance();
@@ -44,7 +51,9 @@ bool Track::isNeedChangeChannel()
 
 void Track::changeChannel()
 {
-    if (isNeedChangeChannel()) {
-        ;
-    }
+//    if (isNeedChangeChannel()) {
+//        CreateManagement createChanel(3,getChangeChance(),getChangeCourseDistance());
+//        int id = createChanel.randIndex();
+//        setTrackState((TrackState)id);
+//    }
 }
