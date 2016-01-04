@@ -10,7 +10,6 @@
 #define __DragonEmpire__CCXMLParser__
 
 #include    "cocos2d.h"
-#include    "ExtensionMacros.h"
 #include    "cocosextV3.h"
 USING_NS_CC;
 

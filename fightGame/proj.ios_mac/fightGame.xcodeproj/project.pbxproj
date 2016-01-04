@@ -114,6 +114,8 @@
 		6E70778E1C3502BD0043D7A5 /* CCXMLParser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6E70754F1C3502BC0043D7A5 /* CCXMLParser.cpp */; };
 		6E70778F1C3502BD0043D7A5 /* CCXMLParser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6E70754F1C3502BC0043D7A5 /* CCXMLParser.cpp */; };
 		6E7079E71C3507EE0043D7A5 /* xml in Resources */ = {isa = PBXBuildFile; fileRef = 6E7079E61C3507EE0043D7A5 /* xml */; };
+		6EBD80E61C3A4C77008A665C /* GenerateManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6EBD80E41C3A4C77008A665C /* GenerateManager.cpp */; };
+		6EBD80E71C3A4C77008A665C /* GenerateManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6EBD80E41C3A4C77008A665C /* GenerateManager.cpp */; };
 		8262943E1AAF051F00CB7CF7 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8262943D1AAF051F00CB7CF7 /* Security.framework */; };
 		BF171245129291EC00B8313A /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB012928DE900B8313A /* OpenGLES.framework */; };
 		BF1712471292920000B8313A /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB412928DE900B8313A /* libz.dylib */; };
@@ -258,6 +260,8 @@
 		6E7079E21C3505270043D7A5 /* rapidxml_utils.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = rapidxml_utils.hpp; sourceTree = "<group>"; };
 		6E7079E31C3505270043D7A5 /* rapidxml.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = rapidxml.hpp; sourceTree = "<group>"; };
 		6E7079E61C3507EE0043D7A5 /* xml */ = {isa = PBXFileReference; lastKnownFileType = folder; path = xml; sourceTree = "<group>"; };
+		6EBD80E41C3A4C77008A665C /* GenerateManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GenerateManager.cpp; sourceTree = "<group>"; };
+		6EBD80E51C3A4C77008A665C /* GenerateManager.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GenerateManager.hpp; sourceTree = "<group>"; };
 		8262943D1AAF051F00CB7CF7 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		BF170DB012928DE900B8313A /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		BF170DB412928DE900B8313A /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
@@ -450,6 +454,8 @@
 				6E7079E21C3505270043D7A5 /* rapidxml_utils.hpp */,
 				6E7079E31C3505270043D7A5 /* rapidxml.hpp */,
 				6E70752D1C3502BC0043D7A5 /* Ext */,
+				6EBD80E41C3A4C77008A665C /* GenerateManager.cpp */,
+				6EBD80E51C3A4C77008A665C /* GenerateManager.hpp */,
 			);
 			name = Classes;
 			path = ../Classes;
@@ -701,6 +707,7 @@
 				6E7075181C33BAEA0043D7A5 /* SceneLayer.cpp in Sources */,
 				6E00E5661C2AA7EF008992DC /* GameLayer.cpp in Sources */,
 				6E7075001C3151320043D7A5 /* Track.cpp in Sources */,
+				6EBD80E61C3A4C77008A665C /* GenerateManager.cpp in Sources */,
 				6E7075081C337F680043D7A5 /* ObstacleItem.cpp in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
 				6E00E5871C2D3645008992DC /* ItemRes.cpp in Sources */,
@@ -731,6 +738,7 @@
 				6E7075051C336DD00043D7A5 /* Entity.cpp in Sources */,
 				6E7075011C3151320043D7A5 /* Track.cpp in Sources */,
 				6E70751D1C33CB190043D7A5 /* Player.cpp in Sources */,
+				6EBD80E71C3A4C77008A665C /* GenerateManager.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

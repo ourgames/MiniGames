@@ -35,16 +35,16 @@ typedef enum {
     high_speed_block
 } SpeedValue;
 
-class Block: public Entity,public Effect
+class Block: public Entity   //,public Effect
 {
-    int block_create_chance[7];
+    //int block_create_chance[7];
 public:
     CC_SYNTHESIZE(BlockType, type, Type);
     
-    CC_SYNTHESIZE(float, block_distance, BlockDistance);
-    CC_SYNTHESIZE(float, block_create_distance, BlockCreateDistance);
-    CC_SYNTHESIZE(float, block_time, BlockTime);
-    CC_SYNTHESIZE(float, block_reduce, blockReduce);
+//    CC_SYNTHESIZE(float, block_distance, BlockDistance);
+//    CC_SYNTHESIZE(float, block_create_distance, BlockCreateDistance);
+//    CC_SYNTHESIZE(float, block_time, BlockTime);
+//    CC_SYNTHESIZE(float, block_reduce, blockReduce);
     
     
 //    Block();
@@ -53,6 +53,6 @@ public:
     CREATE_FUNC(Block);
     
     virtual bool init();
-    
+    bool addEffect(Effect ef);
 };
 #endif /* Block_hpp */

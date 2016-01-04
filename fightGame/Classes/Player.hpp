@@ -16,8 +16,12 @@ class Player : public Entity
 {
 public:
     CC_SYNTHESIZE(float, total_stamina, TotalStamina);
-    CC_SYNTHESIZE(float, stamina_reduce, StaminaReduce);
+    //CC_SYNTHESIZE(float, stamina_reduce, StaminaReduce);
     CC_SYNTHESIZE(float, score, Score);
+    CC_SYNTHESIZE(float, PickUpDistance, PickUpDistance);
+    
+//    bool isCollision();
+//    bool isEffect(Item type);
 };
 
 #endif /* Player_hpp */

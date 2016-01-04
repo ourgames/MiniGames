@@ -23,7 +23,8 @@ enum {
 };
 
 typedef struct {
-    int type;//上下，左右
+    int type;//上下，左右，//不可移动
+    bool enable;
     int direction;
     float speed;
 } Movement;
@@ -53,7 +54,7 @@ public:
     
     CC_SYNTHESIZE(Movement, moveUpDown, MoveUpDown); //上下移动
     CC_SYNTHESIZE(Movement, moveLeftRight, MoveLeftRight);
-    CC_SYNTHESIZE(float, PickUpDistance, PickUpDistance);
+//    CC_SYNTHESIZE(float, PickUpDistance, PickUpDistance);
     
 //    Entity(void);
 //    ~Entity(void);
