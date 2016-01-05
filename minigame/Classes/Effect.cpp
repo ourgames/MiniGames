@@ -7,3 +7,17 @@
 //
 
 #include "Effect.hpp"
+
+Effect::Effect()
+{
+    id = 0;
+    eobj = player;
+    epro = hp;
+    value = 0;
+    effcttime = 0;
+}
+
+Effect::~Effect()
+{
+    
+}

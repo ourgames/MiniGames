@@ -19,5 +19,9 @@ class Effect
     EffectProperty epro;
     float value;
     float effcttime;
+public:
+    Effect();
+    ~Effect();
+    
 };
 #endif /* Effect_hpp */

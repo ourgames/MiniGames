@@ -71,6 +71,16 @@
 		6EBD80FC1C3A782F008A665C /* Item.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6EBD80F91C3A782F008A665C /* Item.cpp */; };
 		6EBD80FF1C3A8086008A665C /* Track.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6EBD80FD1C3A8086008A665C /* Track.cpp */; };
 		6EBD81001C3A8086008A665C /* Track.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6EBD80FD1C3A8086008A665C /* Track.cpp */; };
+		6EBD81071C3B5863008A665C /* yejing.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6EBD81061C3B5863008A665C /* yejing.jpg */; };
+		6EBD81081C3B5863008A665C /* yejing.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6EBD81061C3B5863008A665C /* yejing.jpg */; };
+		6EBD810B1C3B5A23008A665C /* sprite_sheet.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6EBD81091C3B5A23008A665C /* sprite_sheet.plist */; };
+		6EBD810C1C3B5A23008A665C /* sprite_sheet.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6EBD81091C3B5A23008A665C /* sprite_sheet.plist */; };
+		6EBD810D1C3B5A23008A665C /* sprite_sheet.png in Resources */ = {isa = PBXBuildFile; fileRef = 6EBD810A1C3B5A23008A665C /* sprite_sheet.png */; };
+		6EBD810E1C3B5A23008A665C /* sprite_sheet.png in Resources */ = {isa = PBXBuildFile; fileRef = 6EBD810A1C3B5A23008A665C /* sprite_sheet.png */; };
+		6EBD81201C3B8E9F008A665C /* GameLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6EBD811E1C3B8E9F008A665C /* GameLayer.cpp */; };
+		6EBD81211C3B8E9F008A665C /* GameLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6EBD811E1C3B8E9F008A665C /* GameLayer.cpp */; };
+		6EBD81231C3BAE61008A665C /* daxia.png in Resources */ = {isa = PBXBuildFile; fileRef = 6EBD81221C3BAE61008A665C /* daxia.png */; };
+		6EBD81241C3BAE61008A665C /* daxia.png in Resources */ = {isa = PBXBuildFile; fileRef = 6EBD81221C3BAE61008A665C /* daxia.png */; };
 		8262943E1AAF051F00CB7CF7 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8262943D1AAF051F00CB7CF7 /* Security.framework */; };
 		BF171245129291EC00B8313A /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB012928DE900B8313A /* OpenGLES.framework */; };
 		BF1712471292920000B8313A /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB412928DE900B8313A /* libz.dylib */; };
@@ -178,6 +188,12 @@
 		6EBD80FA1C3A782F008A665C /* Item.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Item.hpp; sourceTree = "<group>"; };
 		6EBD80FD1C3A8086008A665C /* Track.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Track.cpp; sourceTree = "<group>"; };
 		6EBD80FE1C3A8086008A665C /* Track.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Track.hpp; sourceTree = "<group>"; };
+		6EBD81061C3B5863008A665C /* yejing.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = yejing.jpg; sourceTree = "<group>"; };
+		6EBD81091C3B5A23008A665C /* sprite_sheet.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = sprite_sheet.plist; sourceTree = "<group>"; };
+		6EBD810A1C3B5A23008A665C /* sprite_sheet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sprite_sheet.png; sourceTree = "<group>"; };
+		6EBD811E1C3B8E9F008A665C /* GameLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameLayer.cpp; sourceTree = "<group>"; };
+		6EBD811F1C3B8E9F008A665C /* GameLayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GameLayer.hpp; sourceTree = "<group>"; };
+		6EBD81221C3BAE61008A665C /* daxia.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = daxia.png; sourceTree = "<group>"; };
 		8262943D1AAF051F00CB7CF7 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		BF170DB012928DE900B8313A /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		BF170DB412928DE900B8313A /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
@@ -312,6 +328,10 @@
 				521A8EA819F11F5000D177D7 /* fonts */,
 				3EACC98E19EE6D4300EB3C5E /* res */,
 				46880B7619C43A67006E1F66 /* CloseNormal.png */,
+				6EBD81061C3B5863008A665C /* yejing.jpg */,
+				6EBD81091C3B5A23008A665C /* sprite_sheet.plist */,
+				6EBD81221C3BAE61008A665C /* daxia.png */,
+				6EBD810A1C3B5A23008A665C /* sprite_sheet.png */,
 				46880B7719C43A67006E1F66 /* CloseSelected.png */,
 				46880B7A19C43A67006E1F66 /* HelloWorld.png */,
 			);
@@ -339,6 +359,8 @@
 				6EBD80FA1C3A782F008A665C /* Item.hpp */,
 				6EBD80FD1C3A8086008A665C /* Track.cpp */,
 				6EBD80FE1C3A8086008A665C /* Track.hpp */,
+				6EBD811E1C3B8E9F008A665C /* GameLayer.cpp */,
+				6EBD811F1C3B8E9F008A665C /* GameLayer.hpp */,
 			);
 			name = Classes;
 			path = ../Classes;
@@ -488,6 +510,8 @@
 			files = (
 				5087E78117EB970100C73F5D /* Icon-120.png in Resources */,
 				5087E78617EB970100C73F5D /* Icon-76.png in Resources */,
+				6EBD810D1C3B5A23008A665C /* sprite_sheet.png in Resources */,
+				6EBD810B1C3B5A23008A665C /* sprite_sheet.plist in Resources */,
 				5087E77F17EB970100C73F5D /* Default@2x.png in Resources */,
 				50EF629917ECD46A001EB2F8 /* Icon-100.png in Resources */,
 				5087E78317EB970100C73F5D /* Icon-152.png in Resources */,
@@ -500,7 +524,9 @@
 				50EF62A317ECD613001EB2F8 /* Icon-50.png in Resources */,
 				5087E78017EB970100C73F5D /* Icon-114.png in Resources */,
 				50EF62A217ECD613001EB2F8 /* Icon-29.png in Resources */,
+				6EBD81231C3BAE61008A665C /* daxia.png in Resources */,
 				50EF629617ECD46A001EB2F8 /* Icon-40.png in Resources */,
+				6EBD81071C3B5863008A665C /* yejing.jpg in Resources */,
 				5087E78217EB970100C73F5D /* Icon-144.png in Resources */,
 				3EACC98F19EE6D4300EB3C5E /* res in Resources */,
 				50EF629817ECD46A001EB2F8 /* Icon-80.png in Resources */,
@@ -518,7 +544,11 @@
 			files = (
 				46880B8219C43A67006E1F66 /* HelloWorld.png in Resources */,
 				503AE0F817EB97AB00D1A890 /* Icon.icns in Resources */,
+				6EBD810E1C3B5A23008A665C /* sprite_sheet.png in Resources */,
+				6EBD81241C3BAE61008A665C /* daxia.png in Resources */,
 				3EACC99019EE6D4300EB3C5E /* res in Resources */,
+				6EBD810C1C3B5A23008A665C /* sprite_sheet.plist in Resources */,
+				6EBD81081C3B5863008A665C /* yejing.jpg in Resources */,
 				521A8EAA19F11F5000D177D7 /* fonts in Resources */,
 				46880B7C19C43A67006E1F66 /* CloseNormal.png in Resources */,
 				46880B7E19C43A67006E1F66 /* CloseSelected.png in Resources */,
@@ -537,6 +567,7 @@
 				46880B8A19C43A87006E1F66 /* HelloWorldScene.cpp in Sources */,
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
 				6EBD80FB1C3A782F008A665C /* Item.cpp in Sources */,
+				6EBD81201C3B8E9F008A665C /* GameLayer.cpp in Sources */,
 				6EBD80F61C3A7106008A665C /* Effect.cpp in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
 				6EBD80F21C3A70F5008A665C /* Block.cpp in Sources */,
@@ -555,6 +586,7 @@
 				46880B8919C43A87006E1F66 /* AppDelegate.cpp in Sources */,
 				6EBD80F71C3A7106008A665C /* Effect.cpp in Sources */,
 				503AE10517EB98FF00D1A890 /* main.cpp in Sources */,
+				6EBD81211C3B8E9F008A665C /* GameLayer.cpp in Sources */,
 				6EBD80F31C3A70F5008A665C /* Block.cpp in Sources */,
 				6EBD81001C3A8086008A665C /* Track.cpp in Sources */,
 				46880B8B19C43A87006E1F66 /* HelloWorldScene.cpp in Sources */,
@@ -602,7 +634,7 @@
 					"$(SRCROOT)/../cocos2d/cocos/platform/ios/Simulation",
 				);
 				INFOPLIST_FILE = ios/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LIBRARY_SEARCH_PATHS = "";
 				OTHER_LDFLAGS = (
 					"$(_COCOS_LIB_IOS_BEGIN)",
@@ -638,7 +670,7 @@
 					"$(SRCROOT)/../cocos2d/cocos/platform/ios/Simulation",
 				);
 				INFOPLIST_FILE = ios/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LIBRARY_SEARCH_PATHS = "";
 				OTHER_LDFLAGS = (
 					"$(_COCOS_LIB_IOS_BEGIN)",

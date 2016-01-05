@@ -52,6 +52,4 @@ typedef  enum {
     Right = 2
 } TrackState;
 
-int change_course_chance[3];
-
 #endif /* game_h */

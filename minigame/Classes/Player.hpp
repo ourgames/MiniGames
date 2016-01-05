@@ -19,6 +19,9 @@ public:
     CC_SYNTHESIZE(float, stamina_reduce, StaminaReduce);
     CC_SYNTHESIZE(float, score, Score);
     CC_SYNTHESIZE(float, pickUpDistance, PickUpDistance);
+    
+    Player(void);
+    virtual ~Player();
 };
 
 #endif /* Player_hpp */

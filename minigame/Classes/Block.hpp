@@ -16,16 +16,20 @@
 class Block : public Entity
 {
     int createnumber;
-    int blockcreatechance[7];
+    //int blockcreatechance[7];
+    int * blockcreatechance;
 public:
     CC_SYNTHESIZE(BlockType, type, Type);
     CC_SYNTHESIZE(bool, isActive, IsActive);
+    
     CC_SYNTHESIZE(float, blockDistance, BlockDistance);
     CC_SYNTHESIZE(float, blockCreateDistance, BlockCreateDistance);
     CC_SYNTHESIZE(float, blockTime, BlockTime);
     CC_SYNTHESIZE(float, blockReduce, BlockReduce);
     
-    Vector<Entity> entitylist;
+    //Vector<Entity> entitylist;
     
+    Block(void);
+    virtual ~Block();
 };
 #endif /* Block_hpp */

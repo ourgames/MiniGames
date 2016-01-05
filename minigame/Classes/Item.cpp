@@ -7,3 +7,20 @@
 //
 
 #include "Item.hpp"
+
+Item::Item()
+{
+    itemcreatechance = new int[4];
+    
+    type = Coin;
+    isActive = true;
+    
+    itemDistance = 0;
+    itemBlockDistance = 0;
+    
+}
+
+Item::~Item()
+{
+    
+}

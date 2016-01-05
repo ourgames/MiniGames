@@ -36,39 +36,43 @@ public:
     
     CREATE_FUNC(Entity);
     
-    virtual void update(float dt);
-    virtual bool init();
-    bool isCollasion();
-    bool isNear();
-    //    virtual void isCollasionCallback(cocos2d::Ref* pSender);
-    //    virtual void isNearCallback(cocos2d::Ref* pSender);
-    void show();
-    void hide();
-    bool isAlive();
+    Entity(void);
+    virtual ~Entity(void);
     
-    inline virtual void place()//放置位置
-    {
-        //this->setPosition(origin.x + w_index * 128,origin.y + h_index * 128 + 64 + visibleSize.height);
-    }
-    inline int left() {
-        return this->getPositionX() - _width * 0.5f;
-    }
-    
-    //
-    inline int right() {
-        return this->getPositionX() + _width * 0.5f;
-    }
-    
-    //
-    inline int top() {
-        return this->getPositionY() ;
-    }
-    
-    //
-    inline int bottom() {
-        return this->getPositionY() - _height ;
-    }
-    
+    //virtual
+//    virtual void update(float dt);
+//    virtual bool init();
+//    bool isCollasion();
+//    bool isNear();
+//    //    virtual void isCollasionCallback(cocos2d::Ref* pSender);
+//    //    virtual void isNearCallback(cocos2d::Ref* pSender);
+//    void show();
+//    void hide();
+//    bool isAlive();
+//    
+//    inline virtual void place()//放置位置
+//    {
+//        //this->setPosition(origin.x + w_index * 128,origin.y + h_index * 128 + 64 + visibleSize.height);
+//    }
+//    inline int left() {
+//        return this->getPositionX() - _width * 0.5f;
+//    }
+//    
+//    //
+//    inline int right() {
+//        return this->getPositionX() + _width * 0.5f;
+//    }
+//    
+//    //
+//    inline int top() {
+//        return this->getPositionY() ;
+//    }
+//    
+//    //
+//    inline int bottom() {
+//        return this->getPositionY() - _height ;
+//    }
+//    
     
 };
 

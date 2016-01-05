@@ -7,3 +7,16 @@
 //
 
 #include "Player.hpp"
+
+Player::Player()
+{
+    total_stamina = 0;
+    stamina_reduce = 0;
+    score = 0;
+    pickUpDistance = 0;
+}
+
+Player::~Player()
+{
+    
+}

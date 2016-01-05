@@ -15,14 +15,19 @@
 
 class Item : public Entity
 {
-    int itemcreatechance[4];
+    //int itemcreatechance[4];
+    int * itemcreatechance;
 public:
     CC_SYNTHESIZE(ItemType, type, Type);
     CC_SYNTHESIZE(bool, isActive, IsActive);
+    
     CC_SYNTHESIZE(float, itemDistance, ItemDistance);
     CC_SYNTHESIZE(float, itemBlockDistance, ItemBlockDistance);
     
-    Vector<Entity> entitylist;
+    //Vector<Entity> entitylist;
+    
+    Item();
+    virtual ~Item();
     
 };
 #endif /* Item_hpp */

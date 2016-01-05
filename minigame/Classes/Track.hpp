@@ -11,11 +11,17 @@
 
 #include <stdio.h>
 #include "game.h"
+#include <string.h>
 
 class Track
 {
-    int change_course_chance[3];
+    //int change_course_chance[3];
+    int * change_course_chance;
+    
 public:
+    //cocos2d::Sprite * bg;
+    //CC_SYNTHESIZE(std::string, bgfilename, BgFileName);
+    
     CC_SYNTHESIZE(TrackState, trackState, TrackState);
     CC_SYNTHESIZE(float, courseSpeed, CourseSpeed);
     CC_SYNTHESIZE(int, colNum, ColNum);
@@ -26,13 +32,13 @@ public:
 //    friend class CreateManagement;
     
 public:
-//    void setChangeChance(int * num);
+    void setChangeChance(int * num);
 //    int getChangeChance();
     
-    bool isNeedChangeChannel();
-    void changeChannel();
+    //bool isNeedChangeChannel();
+    TrackState changeChannel();
     Track(void);
-    ~Track(void){};
+    virtual ~Track(void);
     
 };
 
