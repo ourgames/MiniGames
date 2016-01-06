@@ -11,12 +11,14 @@
 
 #include <stdio.h>
 #include "Track.hpp"
+#include "BlockManager.hpp"
 
 class GameLayer : public cocos2d::Layer
 {
     cocos2d::Size visibleSize;
     cocos2d::Vec2 origin;
     Track track;
+    BlockManager bmr;
     
     cocos2d::CCArray * bg;//背景层
     cocos2d::Sprite * player;
@@ -26,6 +28,8 @@ class GameLayer : public cocos2d::Layer
 //    float totletime;
     float distance;
     float trackvar;
+    float blockvar;
+    
     cocos2d::Label * distancelabel;
     cocos2d::Label * distancevarlabel;
     cocos2d::Label * mark;

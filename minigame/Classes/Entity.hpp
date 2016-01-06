@@ -13,14 +13,17 @@
 #include <stdio.h>
 #include "cocos2d.h"
 #include "game.h"
+//#include "Movement.h"
 
 USING_NS_CC;
 using namespace std;
 
 
 class Entity : public cocos2d::Node{
-    Ref * actor;//节点类型
-public:
+    Node * actor;//节点类型
+//    Movement * moveUpDown;
+//    Movement * moveLeftRight;
+
     CC_SYNTHESIZE(string, filename, Filename);//图片文件名字
     //大小
     CC_SYNTHESIZE(float, _width, Width);
@@ -31,14 +34,16 @@ public:
     
     CC_SYNTHESIZE(Movement, moveUpDown, MoveUpDown); //上下移动
     CC_SYNTHESIZE(Movement, moveLeftRight, MoveLeftRight);
-
-    bool setActor(Ref * actor);
+public:
+    bool setActor(Node * actor);
+    Node * getActor();
+    bool addActor();
     
     CREATE_FUNC(Entity);
     
-    Entity(void);
+    //Entity(void);
     virtual ~Entity(void);
-    
+    virtual bool init();
     //virtual
 //    virtual void update(float dt);
 //    virtual bool init();

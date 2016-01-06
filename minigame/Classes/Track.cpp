@@ -50,5 +50,5 @@ TrackState Track::changeChannel()
 
 Track::~Track()
 {
-    delete change_course_chance;
+    delete [] change_course_chance;
 }

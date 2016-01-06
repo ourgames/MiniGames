@@ -15,21 +15,28 @@
 
 class Block : public Entity
 {
-    int createnumber;
+    //int createnumber;
     //int blockcreatechance[7];
-    int * blockcreatechance;
-public:
+    //int * blockcreatechance;
+    CC_SYNTHESIZE(int, createnumber, CreateNumber);
     CC_SYNTHESIZE(BlockType, type, Type);
     CC_SYNTHESIZE(bool, isActive, IsActive);
     
-    CC_SYNTHESIZE(float, blockDistance, BlockDistance);
-    CC_SYNTHESIZE(float, blockCreateDistance, BlockCreateDistance);
-    CC_SYNTHESIZE(float, blockTime, BlockTime);
-    CC_SYNTHESIZE(float, blockReduce, BlockReduce);
-    
+//    CC_SYNTHESIZE(float, blockDistance, BlockDistance);
+//    CC_SYNTHESIZE(float, blockCreateDistance, BlockCreateDistance);
+//    CC_SYNTHESIZE(float, blockTime, BlockTime);
+//    CC_SYNTHESIZE(float, blockReduce, BlockReduce);
+public:
     //Vector<Entity> entitylist;
+    int * effectlist;
     
-    Block(void);
+    //Block(void);
     virtual ~Block();
+    
+    CREATE_FUNC(Block);
+    
+    //void setBlockCreateChance(int * num);
+    virtual bool init();
+    void setEffectlist(CCArray * array);
 };
 #endif /* Block_hpp */

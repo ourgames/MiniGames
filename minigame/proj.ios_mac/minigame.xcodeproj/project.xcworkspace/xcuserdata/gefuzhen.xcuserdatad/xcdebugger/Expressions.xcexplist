@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "cocos2d::__Dictionary::objectForKey(std::__1::basic_string&lt;char, std::__1::char_traits&lt;char&gt;, std::__1::allocator&lt;char&gt; &gt; const&amp;):CCDictionary.cpp">
+      </ContextState>
+      <ContextState
+         contextName = "cocos2d::__Dictionary::objectForKey(long):CCDictionary.cpp">
+      </ContextState>
+      <ContextState
+         contextName = "BlockManager::initDict():BlockManager.cpp">
+      </ContextState>
+      <ContextState
+         contextName = "BlockManager::createBlock():BlockManager.cpp">
+         <PersistentStrings>
+            <PersistentString
+               value = "dict1">
+            </PersistentString>
+            <PersistentString
+               value = "dict">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "Block::setEffectlist(cocos2d::__Array*):Block.cpp">
+         <PersistentStrings>
+            <PersistentString
+               value = "bl">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>

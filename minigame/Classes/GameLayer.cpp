@@ -8,7 +8,7 @@
 
 #include "GameLayer.hpp"
 #include <sstream>
-
+#include "Block.hpp"
 USING_NS_CC;
 
 
@@ -212,6 +212,8 @@ void GameLayer::update(float dt)
 {
     distance += dt * 80;
     trackvar += dt * 80;
+    blockvar += dt * 80;
+    
 //    totletime += dt;
 //    if (totletime >= delay) {
 //        int number = rand() % 5;
@@ -240,7 +242,7 @@ void GameLayer::update(float dt)
             track.changeChannel();
             //trackvar -= track.getChangeCourseDistance();
             player->retain();
-            player->setPosition(origin.x + 40 + track.getCircuitWidth() * (2 + (int)track.getTrackState()), player->getContentSize().height * 0.05 /2);
+            player->setPosition(origin.x + 40 + track.getCircuitWidth() * (2 + (int)track.getTrackState()), origin.y + player->getContentSize().height * 0.05 /2);
             player->release();
         }
         
@@ -248,6 +250,18 @@ void GameLayer::update(float dt)
         labelSetString(distancelabel,distance);
         labelSetString(distancevarlabel,trackvar);
         labelSetString(mark,(float)track.getTrackState());
+        
+        if (blockvar >= bmr.getBlockDistance()) {
+            blockvar -= bmr.getBlockDistance();
+            Block * block = bmr.createBlock();
+            Sprite * blockactor =dynamic_cast<Sprite*>(block->getActor());
+            blockactor->setAnchorPoint(ccp(0,0));
+            blockactor->setScale(0.75, 1.0);
+            //blockactor->setPosition(origin.x + 40 + (block->getW_index() + (int)track.getTrackState()) * track.getCircuitWidth(), origin.y + block->getH_index() * track.getCircuitWidth() + visibleSize.height);
+            blockactor->setPosition(origin.x + 40 + (block->getW_index() + (int)track.getTrackState()) * track.getCircuitWidth(), origin.y + block->getH_index() * track.getCircuitWidth() );
+            this->addChild(block,1);
+        }
+        
 //        /*
 //         auto s = getChildByTag(kActionLayer);
 //         s->setPositionY(s->getPositionY() - 3);
