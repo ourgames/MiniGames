@@ -13,12 +13,19 @@
 #include "cocos2d.h"
 #include "game.h"
 #include "Block.hpp"
+#include "Track.hpp"
+
+#define MAX_COUNT 100
+
 USING_NS_CC;
+
 
 class BlockManager
 {
     int * blockcreatechance;
     CCDictionary * dict;
+    CCDictionary * effectdict;
+    
 //    static CCDictionary * dict;
     
     CC_SYNTHESIZE(float, blockDistance, BlockDistance);
@@ -27,12 +34,23 @@ class BlockManager
     CC_SYNTHESIZE(float, blockReduce, BlockReduce);
 public:
     
+    CCArray * blocklist;
+    
     BlockManager();
     ~BlockManager();
     
+    int getCreateBlockType();
     Block * createBlock();
+    Block * createClone(Block * obj);
+    void displayBlock(Track *track,cocos2d::Node * render_node);
+    void createManager(Track *track,cocos2d::Node * render_node);
+    void createManager();
+    void blockMove(Track *track,cocos2d::Node * render_node);
+    
     //CCDictionary * initDict();
     void initDict();
+    void initEffectDict();
+    
     void setBlockCreateChance(int * num);
 };
 #endif /* BlockManager_hpp */

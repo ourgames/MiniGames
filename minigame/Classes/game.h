@@ -10,16 +10,16 @@
 #define game_h
 
 typedef enum {
-    player,
-    other
+    player = 0,
+    other = 1
 } EffectObject;
 
 typedef enum {
-    hp,
-    score,
-    speed,
-    distance,
-    movement
+    hp = 0,
+    score = 1,
+    speed = 2,
+    distance = 3,
+    movement = 4
 } EffectProperty;
 
 typedef struct {
@@ -73,4 +73,5 @@ typedef  enum {
 static int BlockNum = 7;
 static int ItemNum = 4;
 static int EffectNumber = 10;
+static int BlockCreateNumber[7] = {4,1,1,1,1,1,1};
 #endif /* game_h */

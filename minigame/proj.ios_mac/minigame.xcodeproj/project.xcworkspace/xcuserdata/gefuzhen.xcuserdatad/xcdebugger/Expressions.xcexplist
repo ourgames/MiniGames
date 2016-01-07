@@ -3,13 +3,49 @@
    version = "1.0">
    <ContextStates>
       <ContextState
+         contextName = "Block::init():Block.cpp">
+      </ContextState>
+      <ContextState
+         contextName = "BlockManager::blockMove(Track*, cocos2d::Node*):BlockManager.cpp">
+         <PersistentStrings>
+            <PersistentString
+               value = "blocklist">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "BlockManager::initDict():BlockManager.cpp">
+      </ContextState>
+      <ContextState
          contextName = "cocos2d::__Dictionary::objectForKey(std::__1::basic_string&lt;char, std::__1::char_traits&lt;char&gt;, std::__1::allocator&lt;char&gt; &gt; const&amp;):CCDictionary.cpp">
+      </ContextState>
+      <ContextState
+         contextName = "Entity::addActor():Entity.cpp">
       </ContextState>
       <ContextState
          contextName = "cocos2d::__Dictionary::objectForKey(long):CCDictionary.cpp">
       </ContextState>
       <ContextState
-         contextName = "BlockManager::initDict():BlockManager.cpp">
+         contextName = "BlockManager::createManager():BlockManager.cpp">
+         <PersistentStrings>
+            <PersistentString
+               value = "blocklist">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "GameLayer::update(float):GameLayer.cpp">
+      </ContextState>
+      <ContextState
+         contextName = "Block::setEffectlist(cocos2d::__Array*):Block.cpp">
+         <PersistentStrings>
+            <PersistentString
+               value = "bl">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "Entity::init():Entity.cpp">
       </ContextState>
       <ContextState
          contextName = "BlockManager::createBlock():BlockManager.cpp">
@@ -23,10 +59,28 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "Block::setEffectlist(cocos2d::__Array*):Block.cpp">
+         contextName = "BlockManager::createManager(Track*, cocos2d::Node*):BlockManager.cpp">
          <PersistentStrings>
             <PersistentString
-               value = "bl">
+               value = "block4">
+            </PersistentString>
+            <PersistentString
+               value = "block1">
+            </PersistentString>
+            <PersistentString
+               value = "block2">
+            </PersistentString>
+            <PersistentString
+               value = "blockactor">
+            </PersistentString>
+            <PersistentString
+               value = "block3">
+            </PersistentString>
+            <PersistentString
+               value = "bkarr">
+            </PersistentString>
+            <PersistentString
+               value = "ix">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

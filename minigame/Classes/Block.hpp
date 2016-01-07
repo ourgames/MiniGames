@@ -18,7 +18,7 @@ class Block : public Entity
     //int createnumber;
     //int blockcreatechance[7];
     //int * blockcreatechance;
-    CC_SYNTHESIZE(int, createnumber, CreateNumber);
+    //CC_SYNTHESIZE(int, createnumber, CreateNumber);
     CC_SYNTHESIZE(BlockType, type, Type);
     CC_SYNTHESIZE(bool, isActive, IsActive);
     
@@ -37,6 +37,7 @@ public:
     
     //void setBlockCreateChance(int * num);
     virtual bool init();
-    void setEffectlist(CCArray * array);
+    bool isAlive();
+    void setEffectlist(cocos2d::CCArray * array);
 };
 #endif /* Block_hpp */

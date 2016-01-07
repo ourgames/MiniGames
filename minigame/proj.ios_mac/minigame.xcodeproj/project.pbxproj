@@ -199,6 +199,7 @@
 		6EBD81251C3BD077008A665C /* BlockManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BlockManager.cpp; sourceTree = "<group>"; };
 		6EBD81261C3BD077008A665C /* BlockManager.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = BlockManager.hpp; sourceTree = "<group>"; };
 		6EBD81291C3CB6C0008A665C /* Movement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Movement.h; sourceTree = "<group>"; };
+		6EBD812A1C3E0417008A665C /* GameLayerVar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameLayerVar.h; sourceTree = "<group>"; };
 		8262943D1AAF051F00CB7CF7 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		BF170DB012928DE900B8313A /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		BF170DB412928DE900B8313A /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
@@ -369,6 +370,7 @@
 				6EBD81251C3BD077008A665C /* BlockManager.cpp */,
 				6EBD81261C3BD077008A665C /* BlockManager.hpp */,
 				6EBD81291C3CB6C0008A665C /* Movement.h */,
+				6EBD812A1C3E0417008A665C /* GameLayerVar.h */,
 			);
 			name = Classes;
 			path = ../Classes;

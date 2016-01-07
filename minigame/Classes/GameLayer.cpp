@@ -9,6 +9,7 @@
 #include "GameLayer.hpp"
 #include <sstream>
 #include "Block.hpp"
+//#include "GameLayerVar.h"
 USING_NS_CC;
 
 
@@ -251,16 +252,28 @@ void GameLayer::update(float dt)
         labelSetString(distancevarlabel,trackvar);
         labelSetString(mark,(float)track.getTrackState());
         
+        //生成障碍并显示
         if (blockvar >= bmr.getBlockDistance()) {
             blockvar -= bmr.getBlockDistance();
-            Block * block = bmr.createBlock();
-            Sprite * blockactor =dynamic_cast<Sprite*>(block->getActor());
-            blockactor->setAnchorPoint(ccp(0,0));
-            blockactor->setScale(0.75, 1.0);
-            //blockactor->setPosition(origin.x + 40 + (block->getW_index() + (int)track.getTrackState()) * track.getCircuitWidth(), origin.y + block->getH_index() * track.getCircuitWidth() + visibleSize.height);
-            blockactor->setPosition(origin.x + 40 + (block->getW_index() + (int)track.getTrackState()) * track.getCircuitWidth(), origin.y + block->getH_index() * track.getCircuitWidth() );
-            this->addChild(block,1);
+            bmr.createManager(&track,this);
+//            //int crnm = BlockCreateNumber[bmr.getCreateBlockType()];
+//            
+//            //for (int i = 0; i < crnm; i++) {
+//                Block * block = bmr.createBlock();
+//                Sprite * blockactor =dynamic_cast<Sprite*>(block->getActor());
+//                blockactor->setAnchorPoint(ccp(0,0));
+//                blockactor->setScale(0.75, 1.0);
+//                //blockactor->setPosition(origin.x + 40 + (block->getW_index() + (int)track.getTrackState()) * track.getCircuitWidth(), origin.y + block->getH_index() * track.getCircuitWidth() + visibleSize.height);
+//                blockactor->setPosition(origin.x + 40 + (block->getW_index() + (int)track.getTrackState()) * track.getCircuitWidth(), origin.y + block->getH_index() * track.getCircuitWidth() * 0.5 );
+//                this->addChild(block,1);
+//            //}
+
         }
+        
+        //障碍运动
+        bmr.blockMove(&track, this);
+        
+        
         
 //        /*
 //         auto s = getChildByTag(kActionLayer);

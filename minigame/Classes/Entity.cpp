@@ -62,6 +62,7 @@ bool Entity::init()
         setH_index(0);
         moveUpDown = {0,false,0,0};
         moveLeftRight = {0,false,0,0};
+
     }
     return true;
     //actor = Sprite::create();
@@ -69,3 +70,30 @@ bool Entity::init()
 //    setMoveUpDown(<#Movement var#>);
 //    setMoveLeftRight(<#Movement var#>);
 }
+
+void Entity::setMoveUpDown(Movement obj)
+{
+    moveUpDown.type = obj.type;
+    moveUpDown.direction = obj.direction;
+    moveUpDown.enable = obj.enable;
+    moveUpDown.speed = obj.speed;
+}
+
+void Entity::setMoveLeftRight(Movement obj)
+{
+    moveLeftRight.type = obj.type;
+    moveLeftRight.direction = obj.direction;
+    moveLeftRight.enable = obj.enable;
+    moveLeftRight.speed = obj.speed;
+}
+
+Movement Entity::getMoveUpDown()
+{
+    return moveUpDown;
+}
+
+Movement Entity::getMoveLeftRight()
+{
+    return moveLeftRight;
+}
+

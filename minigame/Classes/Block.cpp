@@ -35,7 +35,7 @@ Block::~Block()
 bool Block::init()
 {
     if (Entity::init()) {
-        setCreateNumber(4);
+        //setCreateNumber(4);
         setType(NormalBlock);
         setIsActive(true);
         effectlist = new int[10];
@@ -63,4 +63,9 @@ void Block::setEffectlist(CCArray * array)
         CCInteger * obj =(CCInteger *)array->objectAtIndex(i);
         effectlist[i] = obj->getValue();
     }
+}
+
+bool Block::isAlive()
+{
+    return isActive;
 }

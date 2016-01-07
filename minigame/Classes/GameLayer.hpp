@@ -12,6 +12,7 @@
 #include <stdio.h>
 #include "Track.hpp"
 #include "BlockManager.hpp"
+//#include "GameLayerVar.h"
 
 class GameLayer : public cocos2d::Layer
 {

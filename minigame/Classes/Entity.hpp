@@ -23,7 +23,10 @@ class Entity : public cocos2d::Node{
     Node * actor;//节点类型
 //    Movement * moveUpDown;
 //    Movement * moveLeftRight;
-
+protected:
+    Movement moveUpDown;
+    Movement moveLeftRight;
+    
     CC_SYNTHESIZE(string, filename, Filename);//图片文件名字
     //大小
     CC_SYNTHESIZE(float, _width, Width);
@@ -32,8 +35,8 @@ class Entity : public cocos2d::Node{
     CC_SYNTHESIZE(int, w_index, W_index);
     CC_SYNTHESIZE(int, h_index, H_index);
     
-    CC_SYNTHESIZE(Movement, moveUpDown, MoveUpDown); //上下移动
-    CC_SYNTHESIZE(Movement, moveLeftRight, MoveLeftRight);
+//    CC_SYNTHESIZE(Movement, moveUpDown, MoveUpDown); //上下移动
+//    CC_SYNTHESIZE(Movement, moveLeftRight, MoveLeftRight);
 public:
     bool setActor(Node * actor);
     Node * getActor();
@@ -44,6 +47,13 @@ public:
     //Entity(void);
     virtual ~Entity(void);
     virtual bool init();
+    
+    void setMoveUpDown(Movement obj);
+    Movement  getMoveUpDown();
+
+    void setMoveLeftRight(Movement obj);
+    Movement  getMoveLeftRight();
+
     //virtual
 //    virtual void update(float dt);
 //    virtual bool init();
