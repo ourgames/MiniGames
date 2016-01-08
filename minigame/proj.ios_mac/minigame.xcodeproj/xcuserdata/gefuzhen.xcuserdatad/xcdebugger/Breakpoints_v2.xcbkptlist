@@ -395,7 +395,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "194"
             endingLineNumber = "194"
-            landmarkName = "BlockManager::getCreateBlockType()"
+            landmarkName = "BlockManager::initDict()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -411,7 +411,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "421"
             endingLineNumber = "421"
-            landmarkName = "BlockManager::createManager(Track *track,cocos2d::Node * render_node)"
+            landmarkName = "BlockManager::createBlock()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -427,7 +427,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "430"
             endingLineNumber = "430"
-            landmarkName = "BlockManager::createManager(Track *track,cocos2d::Node * render_node)"
+            landmarkName = "BlockManager::createBlock()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -443,7 +443,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "434"
             endingLineNumber = "434"
-            landmarkName = "BlockManager::createManager(Track *track,cocos2d::Node * render_node)"
+            landmarkName = "BlockManager::createBlock()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -458,7 +458,9 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "303"
-            endingLineNumber = "303">
+            endingLineNumber = "303"
+            landmarkName = "BlockManager::initEffectDict()"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -473,7 +475,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "454"
             endingLineNumber = "454"
-            landmarkName = "BlockManager::displayBlock(Track *track,cocos2d::Node * render_node)"
+            landmarkName = "BlockManager::createBlock()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -489,7 +491,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "458"
             endingLineNumber = "458"
-            landmarkName = "BlockManager::displayBlock(Track *track,cocos2d::Node * render_node)"
+            landmarkName = "BlockManager::createBlock()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -505,7 +507,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "427"
             endingLineNumber = "427"
-            landmarkName = "BlockManager::createManager(Track *track,cocos2d::Node * render_node)"
+            landmarkName = "BlockManager::createBlock()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -521,7 +523,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "409"
             endingLineNumber = "409"
-            landmarkName = "BlockManager::createManager(Track *track,cocos2d::Node * render_node)"
+            landmarkName = "BlockManager::getCreateBlockType()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -553,7 +555,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "481"
             endingLineNumber = "481"
-            landmarkName = "BlockManager::blockMove(Track *track, cocos2d::Node *render_node)"
+            landmarkName = "BlockManager::createBlock()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -564,13 +566,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/BlockManager.cpp"
-            timestampString = "473857223.044237"
+            timestampString = "473924071.613427"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "493"
-            endingLineNumber = "493"
-            landmarkName = "BlockManager::blockMove(Track *track, cocos2d::Node *render_node)"
-            landmarkType = "5">
+            startingLineNumber = "543"
+            endingLineNumber = "543">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -585,7 +585,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "327"
             endingLineNumber = "327"
-            landmarkName = "BlockManager::createManager()"
+            landmarkName = "BlockManager::initEffectDict()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -601,7 +601,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "270"
             endingLineNumber = "270"
-            landmarkName = "BlockManager::createBlock()"
+            landmarkName = "BlockManager::initEffectDict()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -617,7 +617,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "446"
             endingLineNumber = "446"
-            landmarkName = "BlockManager::createManager(Track *track,cocos2d::Node * render_node)"
+            landmarkName = "BlockManager::createBlock()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -632,9 +632,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "388"
-            endingLineNumber = "388"
-            landmarkName = "BlockManager::createManager(Track *track,cocos2d::Node * render_node)"
-            landmarkType = "5">
+            endingLineNumber = "388">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -729,7 +727,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "265"
             endingLineNumber = "265"
-            landmarkName = "BlockManager::createBlock()"
+            landmarkName = "BlockManager::initEffectDict()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -745,7 +743,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "271"
             endingLineNumber = "271"
-            landmarkName = "BlockManager::createBlock()"
+            landmarkName = "BlockManager::initEffectDict()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -761,7 +759,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "428"
             endingLineNumber = "428"
-            landmarkName = "BlockManager::createManager(Track *track,cocos2d::Node * render_node)"
+            landmarkName = "BlockManager::createBlock()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

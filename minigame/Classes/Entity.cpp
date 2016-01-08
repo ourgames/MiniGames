@@ -97,3 +97,22 @@ Movement Entity::getMoveLeftRight()
     return moveLeftRight;
 }
 
+
+void Entity::setMoveUpDownEnable(bool val)
+{
+    moveUpDown.enable = val;
+}
+bool Entity::getMoveUpDownEnable()
+{
+    return moveUpDown.enable;
+}
+
+void Entity::setMoveLeftRightEnable(bool val)
+{
+    moveLeftRight.enable = val;
+}
+bool Entity::getMoveLeftRightEnable()
+{
+    return moveLeftRight.enable;
+}
+

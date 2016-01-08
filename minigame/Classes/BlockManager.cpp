@@ -55,10 +55,10 @@ void BlockManager::initDict()
     //int array1[10] = {1,6};
     //CCInteger array1[10] = {1,6};
     CCArray * array1 = CCArray::createWithCapacity(10);
-    CCInteger * array1_1 = CCInteger::create(1);
-    CCInteger * array1_2 = CCInteger::create(6);
+    CCInteger * array1_1 = CCInteger::create(0);
+    //CCInteger * array1_2 = CCInteger::create(6);
     array1->addObject(array1_1);
-    array1->addObject(array1_2);
+    //array1->addObject(array1_2);
     //ccArray;
     
     //std::string filename1 = "cloud.png";
@@ -66,8 +66,8 @@ void BlockManager::initDict()
     
 //    float _width1 = 65;
 //    float _height1 = 65;
-    CCFloat * _width1 = CCFloat::create(65);
-    CCFloat * _height1 = CCFloat::create(65);
+    CCFloat * _width1 = CCFloat::create(1);
+    CCFloat * _height1 = CCFloat::create(1);
     
 //    int windex1 = 0;
 //    int hindex1 = 0;
@@ -94,8 +94,163 @@ void BlockManager::initDict()
     
     dict1->setObject(createnum1, "createnum");
     
+    
+    
+    CCDictionary * dict2 = CCDictionary::create();
+    CCArray * array2 = CCArray::createWithCapacity(10);
+    CCInteger * array2_1 = CCInteger::create(1);
+    array2->addObject(array2_1);
+    CCString * filename2 = CCString::create("building_1.png");
+    CCFloat * _width2 = CCFloat::create(2);
+    CCFloat * _height2 = CCFloat::create(2);
+    CCInteger * windex2 = CCInteger::create(0);
+    CCInteger * hindex2 = CCInteger::create(0);
+    MoveMent * mvud2 = MoveMent::create(0,true,1,50);//上下，可动，下，50
+    MoveMent * mvlr2 = MoveMent::create(1,false,0,0);
+    
+    CCInteger *createnum2 = CCInteger::create(BlockCreateNumber[1]);
+    
+    dict2->setObject(array2, "efflist");
+    dict2->setObject(filename2, "filename");
+    dict2->setObject(_width2, "width");
+    dict2->setObject(_height2, "height");
+    dict2->setObject(windex2, "windex");
+    dict2->setObject(hindex2, "hindex");
+    dict2->setObject(mvud2, "movementud");
+    dict2->setObject(mvlr2, "movementlr");
+    dict2->setObject(createnum2, "createnum");
+    
+    CCDictionary * dict3 = CCDictionary::create();
+    CCArray * array3 = CCArray::createWithCapacity(10);
+    CCInteger * array3_1 = CCInteger::create(2);
+    CCInteger * array3_2 = CCInteger::create(7);
+    array3->addObject(array3_1);
+    array3->addObject(array3_2);
+    CCString * filename3 = CCString::create("puff_1.png");
+    CCFloat * _width3 = CCFloat::create(1);
+    CCFloat * _height3 = CCFloat::create(1);
+    CCInteger * windex3 = CCInteger::create(0);
+    CCInteger * hindex3 = CCInteger::create(0);
+    MoveMent * mvud3 = MoveMent::create(0,true,1,50);//上下，可动，下，50
+    MoveMent * mvlr3 = MoveMent::create(1,false,0,0);
+    
+    CCInteger *createnum3 = CCInteger::create(BlockCreateNumber[2]);
+    
+    dict3->setObject(array3, "efflist");
+    dict3->setObject(filename3, "filename");
+    dict3->setObject(_width3, "width");
+    dict3->setObject(_height3, "height");
+    dict3->setObject(windex3, "windex");
+    dict3->setObject(hindex3, "hindex");
+    dict3->setObject(mvud3, "movementud");
+    dict3->setObject(mvlr3, "movementlr");
+    dict3->setObject(createnum3, "createnum");
+    
+    
+    CCDictionary * dict4 = CCDictionary::create();
+    CCArray * array4 = CCArray::createWithCapacity(10);
+    CCInteger * array4_1 = CCInteger::create(0);
+    array4->addObject(array4_1);
+    CCString * filename4 = CCString::create("player_float.png");
+    CCFloat * _width4 = CCFloat::create(1);
+    CCFloat * _height4 = CCFloat::create(1);
+    CCInteger * windex4 = CCInteger::create(0);
+    CCInteger * hindex4 = CCInteger::create(0);
+    MoveMent * mvud4 = MoveMent::create(0,true,1,50);//上下，可动，下，50
+    MoveMent * mvlr4 = MoveMent::create(1,true,0,2);
+    
+    CCInteger *createnum4 = CCInteger::create(BlockCreateNumber[3]);
+    
+    dict4->setObject(array4, "efflist");
+    dict4->setObject(filename4, "filename");
+    dict4->setObject(_width4, "width");
+    dict4->setObject(_height4, "height");
+    dict4->setObject(windex4, "windex");
+    dict4->setObject(hindex4, "hindex");
+    dict4->setObject(mvud4, "movementud");
+    dict4->setObject(mvlr4, "movementlr");
+    dict4->setObject(createnum4, "createnum");
+    
+    CCDictionary * dict5 = CCDictionary::create();
+    CCArray * array5 = CCArray::createWithCapacity(10);
+    CCInteger * array5_1 = CCInteger::create(0);
+    array5->addObject(array5_1);
+    CCString * filename5 = CCString::create("player_float.png");
+    CCFloat * _width5 = CCFloat::create(1);
+    CCFloat * _height5 = CCFloat::create(1);
+    CCInteger * windex5 = CCInteger::create(0);
+    CCInteger * hindex5 = CCInteger::create(0);
+    MoveMent * mvud5 = MoveMent::create(0,true,1,50);//上下，可动，下，50
+    MoveMent * mvlr5 = MoveMent::create(1,true,1,2);
+    
+    CCInteger *createnum5 = CCInteger::create(BlockCreateNumber[4]);
+    
+    dict5->setObject(array5, "efflist");
+    dict5->setObject(filename5, "filename");
+    dict5->setObject(_width5, "width");
+    dict5->setObject(_height5, "height");
+    dict5->setObject(windex5, "windex");
+    dict5->setObject(hindex5, "hindex");
+    dict5->setObject(mvud5, "movementud");
+    dict5->setObject(mvlr5, "movementlr");
+    dict5->setObject(createnum5, "createnum");
+    
+    CCDictionary * dict6 = CCDictionary::create();
+    CCArray * array6 = CCArray::createWithCapacity(10);
+    CCInteger * array6_1 = CCInteger::create(0);
+    array6->addObject(array6_1);
+    CCString * filename6 = CCString::create("puff_2.png");
+    CCFloat * _width6 = CCFloat::create(1);
+    CCFloat * _height6 = CCFloat::create(1);
+    CCInteger * windex6 = CCInteger::create(0);
+    CCInteger * hindex6 = CCInteger::create(0);
+    MoveMent * mvud6 = MoveMent::create(0,true,1,50);//上下，可动，下，50
+    MoveMent * mvlr6 = MoveMent::create(1,true,0,2);
+    
+    CCInteger *createnum6 = CCInteger::create(BlockCreateNumber[5]);
+    
+    dict6->setObject(array6, "efflist");
+    dict6->setObject(filename6, "filename");
+    dict6->setObject(_width6, "width");
+    dict6->setObject(_height6, "height");
+    dict6->setObject(windex6, "windex");
+    dict6->setObject(hindex6, "hindex");
+    dict6->setObject(mvud6, "movementud");
+    dict6->setObject(mvlr6, "movementlr");
+    dict6->setObject(createnum6, "createnum");
+    
+    CCDictionary * dict7 = CCDictionary::create();
+    CCArray * array7 = CCArray::createWithCapacity(10);
+    CCInteger * array7_1 = CCInteger::create(1);
+    array7->addObject(array7_1);
+    CCString * filename7 = CCString::create("building_4.png");
+    CCFloat * _width7 = CCFloat::create(1);
+    CCFloat * _height7 = CCFloat::create(1);
+    CCInteger * windex7 = CCInteger::create(0);
+    CCInteger * hindex7 = CCInteger::create(0);
+    MoveMent * mvud7 = MoveMent::create(0,true,1,60);//上下，可动，下，50
+    MoveMent * mvlr7 = MoveMent::create(1,false,0,0);
+    
+    CCInteger *createnum7 = CCInteger::create(BlockCreateNumber[6]);
+    
+    dict7->setObject(array7, "efflist");
+    dict7->setObject(filename7, "filename");
+    dict7->setObject(_width7, "width");
+    dict7->setObject(_height7, "height");
+    dict7->setObject(windex7, "windex");
+    dict7->setObject(hindex7, "hindex");
+    dict7->setObject(mvud7, "movementud");
+    dict7->setObject(mvlr7, "movementlr");
+    dict7->setObject(createnum7, "createnum");
+    
     //dict->setObject(dict1, "normalblock");
     dict->setObject(dict1, 0);
+    dict->setObject(dict2, 1);
+    dict->setObject(dict3, 2);
+    dict->setObject(dict4, 3);
+    dict->setObject(dict5, 4);
+    dict->setObject(dict6, 5);
+    dict->setObject(dict7, 6);
     dict->retain();
     //return dict;
 }
@@ -118,7 +273,7 @@ void BlockManager::initEffectDict()
     CCInteger * effectobject1 = CCInteger::create(0);
     CCInteger * effectproperty1 = CCInteger::create(0);
     CCFloat * value1 = CCFloat::create(80);
-    CCFloat * effecttime1 = CCFloat::create(100);
+    CCFloat * effecttime1 = CCFloat::create(0);
     
     dict1->setObject(effectobject1, "effobj");
     dict1->setObject(effectproperty1, "effproperty");
@@ -130,8 +285,8 @@ void BlockManager::initEffectDict()
     
     CCInteger * effectobject2 = CCInteger::create(0);
     CCInteger * effectproperty2 = CCInteger::create(0);
-    CCFloat * value2 = CCFloat::create(80);
-    CCFloat * effecttime2 = CCFloat::create(100);
+    CCFloat * value2 = CCFloat::create(120);
+    CCFloat * effecttime2 = CCFloat::create(0);
     
     dict2->setObject(effectobject2, "effobj");
     dict2->setObject(effectproperty2, "effproperty");
@@ -142,8 +297,8 @@ void BlockManager::initEffectDict()
     
     CCInteger * effectobject3 = CCInteger::create(0);
     CCInteger * effectproperty3 = CCInteger::create(0);
-    CCFloat * value3 = CCFloat::create(80);
-    CCFloat * effecttime3 = CCFloat::create(100);
+    CCFloat * value3 = CCFloat::create(40);
+    CCFloat * effecttime3 = CCFloat::create(0);
     
     dict3->setObject(effectobject3, "effobj");
     dict3->setObject(effectproperty3, "effproperty");
@@ -155,22 +310,78 @@ void BlockManager::initEffectDict()
     
     CCInteger * effectobject4 = CCInteger::create(0);
     CCInteger * effectproperty4 = CCInteger::create(0);
-    CCFloat * value4 = CCFloat::create(80);
-    CCFloat * effecttime4 = CCFloat::create(100);
+    CCFloat * value4 = CCFloat::create(100);
+    CCFloat * effecttime4 = CCFloat::create(0);
     
     dict4->setObject(effectobject4, "effobj");
     dict4->setObject(effectproperty4, "effproperty");
     dict4->setObject(value4, "value");
     dict4->setObject(effecttime4, "effecttime");
     
+    CCDictionary * dict5 = CCDictionary::create();
+    
+    CCInteger * effectobject5 = CCInteger::create(0);
+    CCInteger * effectproperty5 = CCInteger::create(1);
+    CCFloat * value5 = CCFloat::create(100);
+    CCFloat * effecttime5 = CCFloat::create(0);
+    
+    dict5->setObject(effectobject5, "effobj");
+    dict5->setObject(effectproperty5, "effproperty");
+    dict5->setObject(value5, "value");
+    dict5->setObject(effecttime5, "effecttime");
+    
+    
+    CCDictionary * dict6 = CCDictionary::create();
+    
+    CCInteger * effectobject6 = CCInteger::create(1);
+    CCInteger * effectproperty6 = CCInteger::create(2);
+    CCFloat * value6 = CCFloat::create(50);
+    CCFloat * effecttime6 = CCFloat::create(1500);
+    
+    dict6->setObject(effectobject6, "effobj");
+    dict6->setObject(effectproperty6, "effproperty");
+    dict6->setObject(value6, "value");
+    dict6->setObject(effecttime6, "effecttime");
+    
+    CCDictionary * dict7 = CCDictionary::create();
+    
+    CCInteger * effectobject7 = CCInteger::create(0);
+    CCInteger * effectproperty7 = CCInteger::create(3);
+    CCFloat * value7 = CCFloat::create(100);
+    CCFloat * effecttime7 = CCFloat::create(3000);
+    
+    dict7->setObject(effectobject7, "effobj");
+    dict7->setObject(effectproperty7, "effproperty");
+    dict7->setObject(value7, "value");
+    dict7->setObject(effecttime7, "effecttime");
+    
+    
+    CCDictionary * dict8 = CCDictionary::create();
+    
+    CCInteger * effectobject8 = CCInteger::create(0);
+    CCInteger * effectproperty8 = CCInteger::create(4);
+    CCFloat * value8 = CCFloat::create(0);
+    CCFloat * effecttime8 = CCFloat::create(100);
+    
+    dict8->setObject(effectobject8, "effobj");
+    dict8->setObject(effectproperty8, "effproperty");
+    dict8->setObject(value8, "value");
+    dict8->setObject(effecttime8, "effecttime");
     
     
     
     
+    effectdict->setObject(dict1, 0);
+    effectdict->setObject(dict2, 1);
+    effectdict->setObject(dict3, 2);
+    effectdict->setObject(dict4, 3);
+    effectdict->setObject(dict5, 4);
+    effectdict->setObject(dict6, 5);
+    effectdict->setObject(dict7, 6);
+    effectdict->setObject(dict8, 7);
     
-    dict->setObject(dict1, 0);
     
-    dict->retain();
+    effectdict->retain();
     //return dict;
 }
 
@@ -195,8 +406,8 @@ int BlockManager::getCreateBlockType()
     int tempNum = 1;
     for (int i = 0; i < BlockNum; i++) {
         if (randNum >= tempNum && randNum < tempNum + blockcreatechance[i]) {
-            //return i;
-            return 0;
+            return i;
+            //return 0;
         }
         else
             tempNum += blockcreatechance[i];
@@ -268,6 +479,56 @@ Block * BlockManager::createBlock()
         Movement mvstrut2= {objmv2->getType(),objmv2->getEnable(),objmv2->getDirection(),objmv2->getSpeed()};
         bl->setMoveLeftRight(mvstrut2);
 //    }
+    return bl;
+    //
+    //
+}
+Block * BlockManager::createBlock(int type)
+{
+    int bt;
+    bt = type;
+    //根据获取的障碍类型获得对应的数值参数
+    Block * bl = Block::create();
+    bl->retain();
+    //    for (int i = 0; i < BlockCreateNumber[bt]; i++) {
+    //        //根据获取的障碍类型获得对应的数值参数
+    //        Block * bl = Block::create();
+    
+    CCDictionary * blockproer = (CCDictionary *)dict->objectForKey(bt);
+    //CCDictionary * blockproer = (CCDictionary *)dict->objectForKey(0);
+    //设置effctlist
+    bl->setEffectlist((CCArray * )(blockproer->objectForKey("efflist")));
+    //设置文件名
+    CCString * fi = dynamic_cast<CCString*>(blockproer->objectForKey("filename"));
+    bl->setFilename(fi->getCString());
+    //添加精灵节点
+    bl->addActor();
+    //设置大小
+    bl->setWidth(dynamic_cast<CCFloat *>(blockproer->objectForKey("width"))->getValue());
+    bl->setHeight(dynamic_cast<CCFloat*>(blockproer->objectForKey("height"))->getValue());
+    //设置位置
+    if (bl->getWidth() == 2) {
+        int ix = rand() % 4;
+        int iy = rand() % 2;
+        bl->setW_index(ix);
+        bl->setH_index(iy);
+    }
+    else
+    {
+        int ix = rand() % 5;
+        int iy = rand() % 4;
+        bl->setW_index(ix);
+        bl->setH_index(iy);
+    }
+    //设置运动
+    MoveMent * objmv = dynamic_cast<MoveMent *>(blockproer->objectForKey("movementud"));
+    Movement mvstrut= {objmv->getType(),objmv->getEnable(),objmv->getDirection(),objmv->getSpeed()};
+    bl->setMoveUpDown(mvstrut);
+    
+    MoveMent * objmv2 = dynamic_cast<MoveMent *>(blockproer->objectForKey("movementlr"));
+    Movement mvstrut2= {objmv2->getType(),objmv2->getEnable(),objmv2->getDirection(),objmv2->getSpeed()};
+    bl->setMoveLeftRight(mvstrut2);
+    //    }
     return bl;
     //
     //
@@ -379,8 +640,8 @@ void BlockManager::createManager()
 }
 void BlockManager::createManager(Track *track,cocos2d::Node * render_node)
 {
-    
-    int crnm =BlockCreateNumber[getCreateBlockType()];
+    int bk = getCreateBlockType();
+    int crnm =BlockCreateNumber[bk];
     cocos2d::Size visibleSize = Director::getInstance()->getVisibleSize();
     cocos2d::Vec2 origin = Director::getInstance()->getVisibleOrigin();
     if (crnm == 4) {
@@ -437,13 +698,13 @@ void BlockManager::createManager(Track *track,cocos2d::Node * render_node)
     }
     else
     {
-        Block * block = createBlock();
+        Block * block = createBlock(bk);
         Sprite * blockactor =dynamic_cast<Sprite*>(block->getActor());
         blockactor->setAnchorPoint(ccp(0,0));
-        blockactor->setScale(0.75, 1.0);
-        blockactor->setPosition(origin.x + 40 + (block->getW_index() + (int)track->getTrackState()) * track->getCircuitWidth(), origin.y + block->getH_index() * track->getCircuitWidth() * 0.5 + visibleSize.height);
-        render_node->addChild(blockactor);
-        blocklist->addObject(blockactor);
+        //blockactor->setScale(0.75, 1.0);
+        blockactor->setPosition(origin.x + 20 + (block->getW_index() + (int)track->getTrackState()) * track->getCircuitWidth(), origin.y + block->getH_index() * track->getCircuitWidth() * 0.5 + visibleSize.height);
+        render_node->addChild(block);
+        blocklist->addObject(block);
         //blockactor->setPosition(origin.x + 40 + (block->getW_index() + (int)track.getTrackState()) * track.getCircuitWidth(), origin.y + block->getH_index() * track.getCircuitWidth() + visibleSize.height);
         //blockactor->setPosition(origin.x + 40 + (block->getW_index() + (int)track.getTrackState()) * track.getCircuitWidth(), origin.y + block->getH_index() * track.getCircuitWidth() * 0.5 );
         //this->addChild(block,1);
@@ -502,14 +763,20 @@ void BlockManager::blockMove(Track *track, cocos2d::Node *render_node)
                 switch (block->getMoveLeftRight().direction) {
                     case 0://左
                         blockactor->setPositionX(blockactor->getPositionX() - block->getMoveLeftRight().speed);
-                        if (blockactor->getPositionX() + blockactor->getContentSize().width <= 0) {
-                            block->setIsActive(false);
+//                        if (blockactor->getPositionX() + blockactor->getContentSize().width <= 0) {
+//                            block->setIsActive(false);
+//                        }
+                        if (blockactor->getPositionX() <= origin.x) {
+                            block->setMoveLeftRightEnable(false);
                         }
                         break;
                     case 1://右
                         blockactor->setPositionX(blockactor->getPositionX() + block->getMoveLeftRight().speed);
-                        if (blockactor->getPositionX()  >= visibleSize.width) {
-                            block->setIsActive(false);
+//                        if (blockactor->getPositionX()  >= visibleSize.width) {
+//                            block->setIsActive(false);
+//                        }
+                        if (blockactor->getPositionX() + blockactor->getContentSize().width >= visibleSize.width) {
+                            block->setMoveLeftRightEnable(false);
                         }
                         break;
                     default:

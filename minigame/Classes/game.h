@@ -74,4 +74,5 @@ static int BlockNum = 7;
 static int ItemNum = 4;
 static int EffectNumber = 10;
 static int BlockCreateNumber[7] = {4,1,1,1,1,1,1};
+static float BlockScore[7] = {50,100,100,150,150,300,100};
 #endif /* game_h */

@@ -50,10 +50,16 @@ public:
     
     void setMoveUpDown(Movement obj);
     Movement  getMoveUpDown();
-
+    
+    void setMoveUpDownEnable(bool val);
+    bool getMoveUpDownEnable();
+    
     void setMoveLeftRight(Movement obj);
     Movement  getMoveLeftRight();
 
+    void setMoveLeftRightEnable(bool val);
+    bool getMoveLeftRightEnable();
+    
     //virtual
 //    virtual void update(float dt);
 //    virtual bool init();

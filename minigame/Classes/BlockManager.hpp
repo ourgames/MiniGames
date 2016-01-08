@@ -41,6 +41,7 @@ public:
     
     int getCreateBlockType();
     Block * createBlock();
+    Block * createBlock(int type);
     Block * createClone(Block * obj);
     void displayBlock(Track *track,cocos2d::Node * render_node);
     void createManager(Track *track,cocos2d::Node * render_node);
