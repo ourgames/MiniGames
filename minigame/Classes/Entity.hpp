@@ -40,7 +40,7 @@ protected:
 public:
     bool setActor(Node * actor);
     Node * getActor();
-    bool addActor();
+    virtual bool addActor();
     
     CREATE_FUNC(Entity);
     

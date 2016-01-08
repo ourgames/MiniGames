@@ -44,6 +44,7 @@ Node * Entity::getActor()
 
 bool Entity::addActor()
 {
+    
     SpriteFrameCache * frameCache = SpriteFrameCache::getInstance();
     frameCache->addSpriteFramesWithFile("sprite_sheet.plist", "sprite_sheet.png");
     //actor = Sprite::create(filename);

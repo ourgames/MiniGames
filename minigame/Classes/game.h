@@ -75,4 +75,15 @@ static int ItemNum = 4;
 static int EffectNumber = 10;
 static int BlockCreateNumber[7] = {4,1,1,1,1,1,1};
 static float BlockScore[7] = {50,100,100,150,150,300,100};
+
+
+float block_dizzy;
+float block_dizzy_var;
+
+float invincible_time;
+float invincible_time_var;
+
+float magnet_time;
+float magnet_time_var;
+
 #endif /* game_h */

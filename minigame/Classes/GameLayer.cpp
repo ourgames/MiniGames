@@ -91,6 +91,22 @@ bool GameLayer::init()
     
     return true;
 }
+Player * GameLayer::createPlayer()
+{
+    Player * player = Player::create();
+    player->retain();
+    
+    player->setFilename("xiabai.jpg");
+    Node * playeractor =player->getActor();
+    playeractor = Sprite::create("xiaobai.jpg");
+    playeractor->setAnchorPoint(ccp(0,0));
+    playeractor->setScale(0.3, 0.3);
+    //player->setPosition(origin.x + 20 + track->getCircuitWidth() * (2 + (int)track->getTrackState()), origin.y + playeractor->getContentSize().height * 0.3/2);
+    playeractor->setPosition(origin.x + 20 + track.getCircuitWidth() * (2 + (int)track.getTrackState()), origin.y + playeractor->getContentSize().height * 0.3/2);
+    player->addChild(playeractor);
+    
+    return player;
+}
 
 void GameLayer::createGameScreen()
 {
@@ -116,8 +132,10 @@ void GameLayer::createGameScreen()
     player->setScale(0.07, 0.07);
     player->setPosition(origin.x + 40 + track.getCircuitWidth() * (2 + (int)track.getTrackState()), player->getContentSize().height * 0.05 /2);
     player->retain();
-    this->addChild(player,1);
+    //this->addChild(player,1);
     
+    playerreal = createPlayer();
+    this->addChild(playerreal,1);
     
     distancelabel = Label::createWithTTF("Hello World", "fonts/Marker Felt.ttf", 24);
     distancelabel->setPosition(origin.x + visibleSize.width - distancelabel->getContentSize().width, origin.y + visibleSize.height - distancelabel->getContentSize().height);

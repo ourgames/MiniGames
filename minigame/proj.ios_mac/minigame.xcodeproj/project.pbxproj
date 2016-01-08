@@ -83,6 +83,8 @@
 		6EBD81241C3BAE61008A665C /* daxia.png in Resources */ = {isa = PBXBuildFile; fileRef = 6EBD81221C3BAE61008A665C /* daxia.png */; };
 		6EBD81271C3BD077008A665C /* BlockManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6EBD81251C3BD077008A665C /* BlockManager.cpp */; };
 		6EBD81281C3BD077008A665C /* BlockManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6EBD81251C3BD077008A665C /* BlockManager.cpp */; };
+		6EBD812E1C3F9013008A665C /* xiaobai.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6EBD812D1C3F9013008A665C /* xiaobai.jpg */; };
+		6EBD812F1C3F9013008A665C /* xiaobai.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6EBD812D1C3F9013008A665C /* xiaobai.jpg */; };
 		8262943E1AAF051F00CB7CF7 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8262943D1AAF051F00CB7CF7 /* Security.framework */; };
 		BF171245129291EC00B8313A /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB012928DE900B8313A /* OpenGLES.framework */; };
 		BF1712471292920000B8313A /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB412928DE900B8313A /* libz.dylib */; };
@@ -200,6 +202,7 @@
 		6EBD81261C3BD077008A665C /* BlockManager.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = BlockManager.hpp; sourceTree = "<group>"; };
 		6EBD81291C3CB6C0008A665C /* Movement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Movement.h; sourceTree = "<group>"; };
 		6EBD812A1C3E0417008A665C /* GameLayerVar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameLayerVar.h; sourceTree = "<group>"; };
+		6EBD812D1C3F9013008A665C /* xiaobai.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = xiaobai.jpg; sourceTree = "<group>"; };
 		8262943D1AAF051F00CB7CF7 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		BF170DB012928DE900B8313A /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		BF170DB412928DE900B8313A /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
@@ -334,9 +337,10 @@
 				521A8EA819F11F5000D177D7 /* fonts */,
 				3EACC98E19EE6D4300EB3C5E /* res */,
 				46880B7619C43A67006E1F66 /* CloseNormal.png */,
+				6EBD812D1C3F9013008A665C /* xiaobai.jpg */,
 				6EBD81061C3B5863008A665C /* yejing.jpg */,
-				6EBD81091C3B5A23008A665C /* sprite_sheet.plist */,
 				6EBD81221C3BAE61008A665C /* daxia.png */,
+				6EBD81091C3B5A23008A665C /* sprite_sheet.plist */,
 				6EBD810A1C3B5A23008A665C /* sprite_sheet.png */,
 				46880B7719C43A67006E1F66 /* CloseSelected.png */,
 				46880B7A19C43A67006E1F66 /* HelloWorld.png */,
@@ -525,6 +529,7 @@
 				5087E77F17EB970100C73F5D /* Default@2x.png in Resources */,
 				50EF629917ECD46A001EB2F8 /* Icon-100.png in Resources */,
 				5087E78317EB970100C73F5D /* Icon-152.png in Resources */,
+				6EBD812E1C3F9013008A665C /* xiaobai.jpg in Resources */,
 				46880B8119C43A67006E1F66 /* HelloWorld.png in Resources */,
 				46880B7D19C43A67006E1F66 /* CloseSelected.png in Resources */,
 				5087E77D17EB970100C73F5D /* Default-568h@2x.png in Resources */,
@@ -555,6 +560,7 @@
 				46880B8219C43A67006E1F66 /* HelloWorld.png in Resources */,
 				503AE0F817EB97AB00D1A890 /* Icon.icns in Resources */,
 				6EBD810E1C3B5A23008A665C /* sprite_sheet.png in Resources */,
+				6EBD812F1C3F9013008A665C /* xiaobai.jpg in Resources */,
 				6EBD81241C3BAE61008A665C /* daxia.png in Resources */,
 				3EACC99019EE6D4300EB3C5E /* res in Resources */,
 				6EBD810C1C3B5A23008A665C /* sprite_sheet.plist in Resources */,

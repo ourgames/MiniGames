@@ -272,7 +272,7 @@ void BlockManager::initEffectDict()
     
     CCInteger * effectobject1 = CCInteger::create(0);
     CCInteger * effectproperty1 = CCInteger::create(0);
-    CCFloat * value1 = CCFloat::create(80);
+    CCFloat * value1 = CCFloat::create(-80);
     CCFloat * effecttime1 = CCFloat::create(0);
     
     dict1->setObject(effectobject1, "effobj");
@@ -285,7 +285,7 @@ void BlockManager::initEffectDict()
     
     CCInteger * effectobject2 = CCInteger::create(0);
     CCInteger * effectproperty2 = CCInteger::create(0);
-    CCFloat * value2 = CCFloat::create(120);
+    CCFloat * value2 = CCFloat::create(-120);
     CCFloat * effecttime2 = CCFloat::create(0);
     
     dict2->setObject(effectobject2, "effobj");
@@ -297,7 +297,7 @@ void BlockManager::initEffectDict()
     
     CCInteger * effectobject3 = CCInteger::create(0);
     CCInteger * effectproperty3 = CCInteger::create(0);
-    CCFloat * value3 = CCFloat::create(40);
+    CCFloat * value3 = CCFloat::create(-40);
     CCFloat * effecttime3 = CCFloat::create(0);
     
     dict3->setObject(effectobject3, "effobj");
@@ -787,6 +787,68 @@ void BlockManager::blockMove(Track *track, cocos2d::Node *render_node)
         
     }
 }
+
+void BlockManager::isCollision(Player * player)
+{
+    //Player * player = player;
+    Ref * obj;
+    CCRect rect = player->getBoundingBox();
+    CCARRAY_FOREACH(blocklist, obj){
+        
+        Block * block = (Block *)obj;
+        Sprite * blockactor =dynamic_cast<Sprite*>(block->getActor());
+        //CCRect rect = player->getBoundingBox();
+        CCPoint point = blockactor->getPosition();
+        if (rect.containsPoint(point)) {
+            CCArray * effli = block->getEffectlist();
+            int count = effli->count();
+            for (int i = 0; i < count; i++) {
+                CCInteger * id = dynamic_cast<CCInteger*>(effli->getObjectAtIndex(i));
+                
+                //Effect * eobj = Effect::create();
+                
+                CCDictionary * effctproer = (CCDictionary *)effectdict->objectForKey(id->getValue());
+                CCInteger * effectobject = effctproer->objectForKey("effobj");
+                int effectobjectv = effectobject->getValue();
+                
+                //CCInteger * effectproperty = effctproer->objectForKey("effproperty");
+                int effectproperty = dynamic_cast<CCInteger * >(effctproer->objectForKey("effproperty"))->getValue();
+                
+                //CCFloat * value = effctproer->objectForKey("value");
+                float value = dynamic_cast<CCFloat*>(effctproer->objectForKey("value"))->getValue();
+                //CCFloat * effcttime = effctproer->objectForKey("effecttime");
+                float effcttime = dynamic_cast<CCFloat*>(effctproer->objectForKey("effecttime"))->getValue();
+                switch (effectobjectv) {
+                    case 0:
+                        switch (effectproperty) {
+                            case 0:
+                                player->setTotalStamina(player->getTotalStamina() + value);
+                                break;
+                            case 1:
+                                player->setScore(player->getScore() + value);
+                                break;
+                            case 2:
+                                break;
+                            case 3:
+                                player->setPickUpDistance(player->getPickUpDistance() + value);
+                                magnet_time = effecttime;
+                            case 4:
+                                block_dizzy = effecttime;
+                                break;
+                            default:
+                                break;
+                        }
+                        break;
+                    case 1:
+                        break;
+                    default:
+                        break;
+                }
+            }
+        }
+    }
+}
+
 
 BlockManager::~BlockManager()
 {

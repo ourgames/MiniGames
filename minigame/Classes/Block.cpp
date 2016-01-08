@@ -38,7 +38,8 @@ bool Block::init()
         //setCreateNumber(4);
         setType(NormalBlock);
         setIsActive(true);
-        effectlist = new int[10];
+        //effectlist = new int[10];
+        effectlist = CCArray::createWithCapacity(10);
     }
     return true;
     //blockcreatechance = new int[7];
@@ -61,8 +62,13 @@ void Block::setEffectlist(CCArray * array)
     int count = array->count();
     for (int i = 0; i < count; i++) {
         CCInteger * obj =(CCInteger *)array->objectAtIndex(i);
-        effectlist[i] = obj->getValue();
+        effectlist->addObject(obj);
     }
+}
+
+CCArray * Block::getEffectlist()
+{
+    return effectlist;
 }
 
 bool Block::isAlive()

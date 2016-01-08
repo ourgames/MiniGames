@@ -14,6 +14,7 @@
 #include "game.h"
 #include "Block.hpp"
 #include "Track.hpp"
+#include "Player.hpp"
 
 #define MAX_COUNT 100
 
@@ -51,6 +52,8 @@ public:
     //CCDictionary * initDict();
     void initDict();
     void initEffectDict();
+    
+    void isCollision(Player * player);
     
     void setBlockCreateChance(int * num);
 };
