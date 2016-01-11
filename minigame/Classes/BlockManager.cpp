@@ -11,6 +11,7 @@
 #include "Movement.h"
 #include "GameLayerVar.h"
 //#include "Track.hpp"
+#include "LocalController.h"
 
 BlockManager::BlockManager()
 {
@@ -254,136 +255,187 @@ void BlockManager::initDict()
     dict->retain();
     //return dict;
 }
-
-void BlockManager::initEffectDict()
+std::string getPropById(std::string xmlId,std::string propName)
 {
-    effectdict = CCDictionary::create();
-    
-    //    CCDictionary * dict1 = CCDictionary::create();
-    //    //读配置文件
-    //    for (int i = 0; i < BlockNum; i++) {
-    //        //根据id读取数值
-    //        CCDictionary * dict1 = CCDictionary::create();
-    //        int * efflistvalue = new int[10];
-    //    }
-    //自己设置
-    
-    CCDictionary * dict1 = CCDictionary::create();
-    
-    CCInteger * effectobject1 = CCInteger::create(0);
-    CCInteger * effectproperty1 = CCInteger::create(0);
-    CCFloat * value1 = CCFloat::create(-80);
-    CCFloat * effecttime1 = CCFloat::create(0);
-    
-    dict1->setObject(effectobject1, "effobj");
-    dict1->setObject(effectproperty1, "effproperty");
-    dict1->setObject(value1, "value");
-    dict1->setObject(effecttime1, "effecttime");
-    
-    
-    CCDictionary * dict2 = CCDictionary::create();
-    
-    CCInteger * effectobject2 = CCInteger::create(0);
-    CCInteger * effectproperty2 = CCInteger::create(0);
-    CCFloat * value2 = CCFloat::create(-120);
-    CCFloat * effecttime2 = CCFloat::create(0);
-    
-    dict2->setObject(effectobject2, "effobj");
-    dict2->setObject(effectproperty2, "effproperty");
-    dict2->setObject(value2, "value");
-    dict2->setObject(effecttime2, "effecttime");
-    
-    CCDictionary * dict3 = CCDictionary::create();
-    
-    CCInteger * effectobject3 = CCInteger::create(0);
-    CCInteger * effectproperty3 = CCInteger::create(0);
-    CCFloat * value3 = CCFloat::create(-40);
-    CCFloat * effecttime3 = CCFloat::create(0);
-    
-    dict3->setObject(effectobject3, "effobj");
-    dict3->setObject(effectproperty3, "effproperty");
-    dict3->setObject(value3, "value");
-    dict3->setObject(effecttime3, "effecttime");
-    
-    
-    CCDictionary * dict4 = CCDictionary::create();
-    
-    CCInteger * effectobject4 = CCInteger::create(0);
-    CCInteger * effectproperty4 = CCInteger::create(0);
-    CCFloat * value4 = CCFloat::create(100);
-    CCFloat * effecttime4 = CCFloat::create(0);
-    
-    dict4->setObject(effectobject4, "effobj");
-    dict4->setObject(effectproperty4, "effproperty");
-    dict4->setObject(value4, "value");
-    dict4->setObject(effecttime4, "effecttime");
-    
-    CCDictionary * dict5 = CCDictionary::create();
-    
-    CCInteger * effectobject5 = CCInteger::create(0);
-    CCInteger * effectproperty5 = CCInteger::create(1);
-    CCFloat * value5 = CCFloat::create(100);
-    CCFloat * effecttime5 = CCFloat::create(0);
-    
-    dict5->setObject(effectobject5, "effobj");
-    dict5->setObject(effectproperty5, "effproperty");
-    dict5->setObject(value5, "value");
-    dict5->setObject(effecttime5, "effecttime");
-    
-    
-    CCDictionary * dict6 = CCDictionary::create();
-    
-    CCInteger * effectobject6 = CCInteger::create(1);
-    CCInteger * effectproperty6 = CCInteger::create(2);
-    CCFloat * value6 = CCFloat::create(50);
-    CCFloat * effecttime6 = CCFloat::create(1500);
-    
-    dict6->setObject(effectobject6, "effobj");
-    dict6->setObject(effectproperty6, "effproperty");
-    dict6->setObject(value6, "value");
-    dict6->setObject(effecttime6, "effecttime");
-    
-    CCDictionary * dict7 = CCDictionary::create();
-    
-    CCInteger * effectobject7 = CCInteger::create(0);
-    CCInteger * effectproperty7 = CCInteger::create(3);
-    CCFloat * value7 = CCFloat::create(100);
-    CCFloat * effecttime7 = CCFloat::create(3000);
-    
-    dict7->setObject(effectobject7, "effobj");
-    dict7->setObject(effectproperty7, "effproperty");
-    dict7->setObject(value7, "value");
-    dict7->setObject(effecttime7, "effecttime");
-    
-    
-    CCDictionary * dict8 = CCDictionary::create();
-    
-    CCInteger * effectobject8 = CCInteger::create(0);
-    CCInteger * effectproperty8 = CCInteger::create(4);
-    CCFloat * value8 = CCFloat::create(0);
-    CCFloat * effecttime8 = CCFloat::create(100);
-    
-    dict8->setObject(effectobject8, "effobj");
-    dict8->setObject(effectproperty8, "effproperty");
-    dict8->setObject(value8, "value");
-    dict8->setObject(effecttime8, "effecttime");
-    
-    
-    
-    
-    effectdict->setObject(dict1, 0);
-    effectdict->setObject(dict2, 1);
-    effectdict->setObject(dict3, 2);
-    effectdict->setObject(dict4, 3);
-    effectdict->setObject(dict5, 4);
-    effectdict->setObject(dict6, 5);
-    effectdict->setObject(dict7, 6);
-    effectdict->setObject(dict8, 7);
-    
-    
-    effectdict->retain();
-    //return dict;
+    auto retDict = LocalController::shared()->DBXMLManager()->getObjectByKey(xmlId);
+    if (!retDict) {
+        return string("");
+    }
+    auto ret = retDict->valueForKey(propName);
+    if (!ret->getCString()) {
+        return string("");
+    }
+    return string(ret->getCString());
 }
+//void BlockManager::initDict()
+//{
+//    dict = CCDictionary::create();
+
+    //CCDictionary * dictt = LocalController::shared()->DBXMLManager()->getObjectByKey("id");
+    //int count = dictt->count();
+    
+    //
+/////for (int i = 0; i < count; i++) {
+        //int keyid = dynamic_cast<CCInteger*>(dictt->objectForKey("id"))->getValue();
+       // auto arr = dictt->allKeys();
+        //CCDictionary * id =dynamic_cast<CCDictionary*>(dictt->objectForKey(i));
+//        int keyid = id->getValue();
+//        
+//        
+//        CCDictionary * dicttemp = CCDictionary::create();
+//        
+//        CCArray * array = dynamic_cast<CCArray*>(dictt->objectForKey("efflist"));
+//        CCString * filename = dynamic_cast<CCString*>(dictt->objectForKey("filename"));
+//        CCFloat * width = dynamic_cast<CCFloat* >(dictt->objectForKey("width"));
+//        CCFloat * height = dynamic_cast<CCFloat*>(dictt->objectForKey("height"));
+//        CCInteger * windex = dynamic_cast<CCInteger*>(dictt->objectForKey("windex"));
+//        CCInteger * hindex = dynamic_cast<CCInteger*>(dictt->objectForKey("hindex"));
+//        MoveMent * movementud = dynamic_cast<MoveMent*>(dictt->objectForKey("movementud"));
+//        MoveMent * movementlr = dynamic_cast<MoveMent*>(dictt->objectForKey("movementlr"));
+//        
+//        dicttemp->setObject(array, "efflist");
+//        dicttemp->setObject(filename, "filename");
+//        dicttemp->setObject(width, "width");
+//        dicttemp->setObject(height, "height");
+//        dicttemp->setObject(windex, "windex");
+//        dicttemp->setObject(hindex, "hindex");
+//        dicttemp->setObject(movementud, "movementud");
+//        dicttemp->setObject(movementlr, "movementlr");
+//        
+//        dict->setObject(dicttemp, i);
+   // }
+//}
+
+
+//void BlockManager::initEffectDict()
+//{
+//    effectdict = CCDictionary::create();
+//    
+//    //    CCDictionary * dict1 = CCDictionary::create();
+//    //    //读配置文件
+//    //    for (int i = 0; i < BlockNum; i++) {
+//    //        //根据id读取数值
+//    //        CCDictionary * dict1 = CCDictionary::create();
+//    //        int * efflistvalue = new int[10];
+//    //    }
+//    //自己设置
+//    
+//    CCDictionary * dict1 = CCDictionary::create();
+//    
+//    CCInteger * effectobject1 = CCInteger::create(0);
+//    CCInteger * effectproperty1 = CCInteger::create(0);
+//    CCFloat * value1 = CCFloat::create(-80);
+//    CCFloat * effecttime1 = CCFloat::create(0);
+//    
+//    dict1->setObject(effectobject1, "effobj");
+//    dict1->setObject(effectproperty1, "effproperty");
+//    dict1->setObject(value1, "value");
+//    dict1->setObject(effecttime1, "effecttime");
+//    
+//    
+//    CCDictionary * dict2 = CCDictionary::create();
+//    
+//    CCInteger * effectobject2 = CCInteger::create(0);
+//    CCInteger * effectproperty2 = CCInteger::create(0);
+//    CCFloat * value2 = CCFloat::create(-120);
+//    CCFloat * effecttime2 = CCFloat::create(0);
+//    
+//    dict2->setObject(effectobject2, "effobj");
+//    dict2->setObject(effectproperty2, "effproperty");
+//    dict2->setObject(value2, "value");
+//    dict2->setObject(effecttime2, "effecttime");
+//    
+//    CCDictionary * dict3 = CCDictionary::create();
+//    
+//    CCInteger * effectobject3 = CCInteger::create(0);
+//    CCInteger * effectproperty3 = CCInteger::create(0);
+//    CCFloat * value3 = CCFloat::create(-40);
+//    CCFloat * effecttime3 = CCFloat::create(0);
+//    
+//    dict3->setObject(effectobject3, "effobj");
+//    dict3->setObject(effectproperty3, "effproperty");
+//    dict3->setObject(value3, "value");
+//    dict3->setObject(effecttime3, "effecttime");
+//    
+//    
+//    CCDictionary * dict4 = CCDictionary::create();
+//    
+//    CCInteger * effectobject4 = CCInteger::create(0);
+//    CCInteger * effectproperty4 = CCInteger::create(0);
+//    CCFloat * value4 = CCFloat::create(100);
+//    CCFloat * effecttime4 = CCFloat::create(0);
+//    
+//    dict4->setObject(effectobject4, "effobj");
+//    dict4->setObject(effectproperty4, "effproperty");
+//    dict4->setObject(value4, "value");
+//    dict4->setObject(effecttime4, "effecttime");
+//    
+//    CCDictionary * dict5 = CCDictionary::create();
+//    
+//    CCInteger * effectobject5 = CCInteger::create(0);
+//    CCInteger * effectproperty5 = CCInteger::create(1);
+//    CCFloat * value5 = CCFloat::create(100);
+//    CCFloat * effecttime5 = CCFloat::create(0);
+//    
+//    dict5->setObject(effectobject5, "effobj");
+//    dict5->setObject(effectproperty5, "effproperty");
+//    dict5->setObject(value5, "value");
+//    dict5->setObject(effecttime5, "effecttime");
+//    
+//    
+//    CCDictionary * dict6 = CCDictionary::create();
+//    
+//    CCInteger * effectobject6 = CCInteger::create(1);
+//    CCInteger * effectproperty6 = CCInteger::create(2);
+//    CCFloat * value6 = CCFloat::create(50);
+//    CCFloat * effecttime6 = CCFloat::create(1500);
+//    
+//    dict6->setObject(effectobject6, "effobj");
+//    dict6->setObject(effectproperty6, "effproperty");
+//    dict6->setObject(value6, "value");
+//    dict6->setObject(effecttime6, "effecttime");
+//    
+//    CCDictionary * dict7 = CCDictionary::create();
+//    
+//    CCInteger * effectobject7 = CCInteger::create(0);
+//    CCInteger * effectproperty7 = CCInteger::create(3);
+//    CCFloat * value7 = CCFloat::create(100);
+//    CCFloat * effecttime7 = CCFloat::create(3000);
+//    
+//    dict7->setObject(effectobject7, "effobj");
+//    dict7->setObject(effectproperty7, "effproperty");
+//    dict7->setObject(value7, "value");
+//    dict7->setObject(effecttime7, "effecttime");
+//    
+//    
+//    CCDictionary * dict8 = CCDictionary::create();
+//    
+//    CCInteger * effectobject8 = CCInteger::create(0);
+//    CCInteger * effectproperty8 = CCInteger::create(4);
+//    CCFloat * value8 = CCFloat::create(0);
+//    CCFloat * effecttime8 = CCFloat::create(100);
+//    
+//    dict8->setObject(effectobject8, "effobj");
+//    dict8->setObject(effectproperty8, "effproperty");
+//    dict8->setObject(value8, "value");
+//    dict8->setObject(effecttime8, "effecttime");
+//    
+//    
+//    
+//    
+//    effectdict->setObject(dict1, 0);
+//    effectdict->setObject(dict2, 1);
+//    effectdict->setObject(dict3, 2);
+//    effectdict->setObject(dict4, 3);
+//    effectdict->setObject(dict5, 4);
+//    effectdict->setObject(dict6, 5);
+//    effectdict->setObject(dict7, 6);
+//    effectdict->setObject(dict8, 7);
+//    
+//    
+//    effectdict->retain();
+//    //return dict;
+//}
 
 //BlockType BlockManager::getCreateBlockType()
 //{
@@ -484,6 +536,133 @@ Block * BlockManager::createBlock()
     //
 }
 Block * BlockManager::createBlock(int type)
+{
+    int bt;
+    bt = type;
+    //根据获取的障碍类型获得对应的数值参数
+    Block * bl = Block::create();
+    bl->retain();
+    //    for (int i = 0; i < BlockCreateNumber[bt]; i++) {
+    //        //根据获取的障碍类型获得对应的数值参数
+    //        Block * bl = Block::create();
+    
+    CCDictionary * blockproer = (CCDictionary *)dict->objectForKey(bt);
+    //CCDictionary * blockproer = (CCDictionary *)dict->objectForKey(0);
+    //设置effctlist
+    bl->setEffectlist((CCArray * )(blockproer->objectForKey("efflist")));
+    //设置文件名
+    CCString * fi = dynamic_cast<CCString*>(blockproer->objectForKey("filename"));
+    bl->setFilename(fi->getCString());
+    //添加精灵节点
+    bl->addActor();
+    //设置大小
+    bl->setWidth(dynamic_cast<CCFloat *>(blockproer->objectForKey("width"))->getValue());
+    bl->setHeight(dynamic_cast<CCFloat*>(blockproer->objectForKey("height"))->getValue());
+    //设置位置
+    if (bl->getWidth() == 2) {
+        int ix = rand() % 4;
+        int iy = rand() % 2;
+        bl->setW_index(ix);
+        bl->setH_index(iy);
+    }
+    else
+    {
+        int ix = rand() % 5;
+        int iy = rand() % 4;
+        bl->setW_index(ix);
+        bl->setH_index(iy);
+    }
+    //设置运动
+    MoveMent * objmv = dynamic_cast<MoveMent *>(blockproer->objectForKey("movementud"));
+    Movement mvstrut= {objmv->getType(),objmv->getEnable(),objmv->getDirection(),objmv->getSpeed()};
+    bl->setMoveUpDown(mvstrut);
+    
+    MoveMent * objmv2 = dynamic_cast<MoveMent *>(blockproer->objectForKey("movementlr"));
+    Movement mvstrut2= {objmv2->getType(),objmv2->getEnable(),objmv2->getDirection(),objmv2->getSpeed()};
+    bl->setMoveLeftRight(mvstrut2);
+    //    }
+    return bl;
+    //
+    //
+}
+CCArray* BlockManager::split(const char* src, const char* sym)
+{
+    CCArray * ret = CCArray::create();
+    
+    std::string s = src;
+    
+    int nend=0;
+    int nbegin=0;
+    while(nend != -1)
+    {
+        nend = s.find(sym, nbegin);
+        if(nend == -1)
+            ret->addObject(CCString::create(s.substr(nbegin, s.length()-nbegin)));
+        else
+            ret->addObject(CCString::create(s.substr(nbegin, nend-nbegin)));
+        nbegin = nend + strlen(sym);
+    }
+    return ret;
+}
+
+Block * BlockManager::createBlockByFile()
+{
+    int bt;
+    //根据获取的障碍类型获得对应的数值参数
+    Block * bl = Block::create();
+    bl->retain();
+
+    //设置effctlist
+    std::string efl = getPropById("0", "efflist");
+    //CCArray * arr = CCArray::createWithCapacity(10);
+    CCArray * arr = split(efl.c_str(), ",");
+    
+    bl->setEffectlist(arr);
+    //设置文件名
+    std::string fi = getPropById("0","filename");
+    bl->setFilename(fi);
+    //添加精灵节点
+    bl->addActor();
+    //设置大小
+    bl->setWidth(atoi(getPropById("0","width").c_str()));
+    bl->setHeight(atoi(getPropById("0","height").c_str()));
+    //设置位置
+    int ix = rand() % 5;
+    int iy = rand() % 4;
+    bl->setW_index(ix);
+    bl->setH_index(iy);
+    //设置运动
+    std::string mv1 = getPropById("0", "movementud");
+    CCArray * mv11 = split(mv1.c_str(), ",");
+    
+    //MoveMent * objmv = dynamic_cast<MoveMent *>(blockproer->objectForKey("movementud"));
+    //Movement mvstrut= {objmv->getType(),objmv->getEnable(),objmv->getDirection(),objmv->getSpeed()};
+    int mv1type = dynamic_cast<CCInteger*>(mv11->getObjectAtIndex(0))->getValue();
+    bool mv1enable = dynamic_cast<CCBool*>(mv11->getObjectAtIndex(1))->getValue();
+    
+    int mv1dir = dynamic_cast<CCInteger*>(mv11->getObjectAtIndex(2))->getValue();
+    float mv1speed = dynamic_cast<CCFloat*>(mv11->getObjectAtIndex(3))->getValue();
+    Movement mvstrut= {mv1type,mv1enable,mv1dir,mv1speed};
+    
+    bl->setMoveUpDown(mvstrut);
+    
+    std::string mv2 = getPropById("0", "movementlr");
+    CCArray * mv22 = split(mv2.c_str(), ",");
+    
+    //MoveMent * objmv = dynamic_cast<MoveMent *>(blockproer->objectForKey("movementud"));
+    //Movement mvstrut= {objmv->getType(),objmv->getEnable(),objmv->getDirection(),objmv->getSpeed()};
+    int mv2type = dynamic_cast<CCInteger*>(mv22->getObjectAtIndex(0))->getValue();
+    bool mv2enable = dynamic_cast<CCBool*>(mv22->getObjectAtIndex(1))->getValue();
+    
+    int mv2dir = dynamic_cast<CCInteger*>(mv11->getObjectAtIndex(2))->getValue();
+    float mv2speed = dynamic_cast<CCFloat*>(mv11->getObjectAtIndex(3))->getValue();
+    
+    Movement mvstrut2= {mv2type,mv2enable,mv2dir,mv2speed};
+    bl->setMoveLeftRight(mvstrut2);
+  
+    return bl;
+}
+Block * BlockManager::createBlockByFile(int type)
 {
     int bt;
     bt = type;
@@ -788,66 +967,66 @@ void BlockManager::blockMove(Track *track, cocos2d::Node *render_node)
     }
 }
 
-void BlockManager::isCollision(Player * player)
-{
-    //Player * player = player;
-    Ref * obj;
-    CCRect rect = player->getBoundingBox();
-    CCARRAY_FOREACH(blocklist, obj){
-        
-        Block * block = (Block *)obj;
-        Sprite * blockactor =dynamic_cast<Sprite*>(block->getActor());
-        //CCRect rect = player->getBoundingBox();
-        CCPoint point = blockactor->getPosition();
-        if (rect.containsPoint(point)) {
-            CCArray * effli = block->getEffectlist();
-            int count = effli->count();
-            for (int i = 0; i < count; i++) {
-                CCInteger * id = dynamic_cast<CCInteger*>(effli->getObjectAtIndex(i));
-                
-                //Effect * eobj = Effect::create();
-                
-                CCDictionary * effctproer = (CCDictionary *)effectdict->objectForKey(id->getValue());
-                CCInteger * effectobject = effctproer->objectForKey("effobj");
-                int effectobjectv = effectobject->getValue();
-                
-                //CCInteger * effectproperty = effctproer->objectForKey("effproperty");
-                int effectproperty = dynamic_cast<CCInteger * >(effctproer->objectForKey("effproperty"))->getValue();
-                
-                //CCFloat * value = effctproer->objectForKey("value");
-                float value = dynamic_cast<CCFloat*>(effctproer->objectForKey("value"))->getValue();
-                //CCFloat * effcttime = effctproer->objectForKey("effecttime");
-                float effcttime = dynamic_cast<CCFloat*>(effctproer->objectForKey("effecttime"))->getValue();
-                switch (effectobjectv) {
-                    case 0:
-                        switch (effectproperty) {
-                            case 0:
-                                player->setTotalStamina(player->getTotalStamina() + value);
-                                break;
-                            case 1:
-                                player->setScore(player->getScore() + value);
-                                break;
-                            case 2:
-                                break;
-                            case 3:
-                                player->setPickUpDistance(player->getPickUpDistance() + value);
-                                magnet_time = effecttime;
-                            case 4:
-                                block_dizzy = effecttime;
-                                break;
-                            default:
-                                break;
-                        }
-                        break;
-                    case 1:
-                        break;
-                    default:
-                        break;
-                }
-            }
-        }
-    }
-}
+//void BlockManager::isCollision(Player * player)
+//{
+//    //Player * player = player;
+//    Ref * obj;
+//    CCRect rect = player->getBoundingBox();
+//    CCARRAY_FOREACH(blocklist, obj){
+//        
+//        Block * block = (Block *)obj;
+//        Sprite * blockactor =dynamic_cast<Sprite*>(block->getActor());
+//        //CCRect rect = player->getBoundingBox();
+//        CCPoint point = blockactor->getPosition();
+//        if (rect.containsPoint(point)) {
+//            CCArray * effli = block->getEffectlist();
+//            int count = effli->count();
+//            for (int i = 0; i < count; i++) {
+//                CCInteger * id = dynamic_cast<CCInteger*>(effli->getObjectAtIndex(i));
+//                
+//                //Effect * eobj = Effect::create();
+//                
+//                CCDictionary * effctproer = (CCDictionary *)effectdict->objectForKey(id->getValue());
+//                CCInteger * effectobject = dynamic_cast<CCInteger * >(effctproer->objectForKey("effobj"));
+//                int effectobjectv = effectobject->getValue();
+//                
+//                //CCInteger * effectproperty = effctproer->objectForKey("effproperty");
+//                int effectproperty = dynamic_cast<CCInteger * >(effctproer->objectForKey("effproperty"))->getValue();
+//                
+//                //CCFloat * value = effctproer->objectForKey("value");
+//                float value = dynamic_cast<CCFloat*>(effctproer->objectForKey("value"))->getValue();
+//                //CCFloat * effcttime = effctproer->objectForKey("effecttime");
+//                float effecttime = dynamic_cast<CCFloat*>(effctproer->objectForKey("effecttime"))->getValue();
+//                switch (effectobjectv) {
+//                    case 0:
+//                        switch (effectproperty) {
+//                            case 0:
+//                                player->setTotalStamina(player->getTotalStamina() + value);
+//                                break;
+//                            case 1:
+//                                player->setScore(player->getScore() + value);
+//                                break;
+//                            case 2:
+//                                break;
+//                            case 3:
+//                                player->setPickUpDistance(player->getPickUpDistance() + value);
+//                                magnet_time = effecttime;
+//                            case 4:
+//                                block_dizzy = effecttime;
+//                                break;
+//                            default:
+//                                break;
+//                        }
+//                        break;
+//                    case 1:
+//                        break;
+//                    default:
+//                        break;
+//                }
+//            }
+//        }
+//    }
+//}
 
 
 BlockManager::~BlockManager()

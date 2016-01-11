@@ -204,14 +204,14 @@ void GameLayer::labelSetString(cocos2d::Label * label,float distance)
     label->setString(str);
 }
 
-bool GameLayer::isCollasion()
-{
-//    auto s1 = getChildByTag(kTagSprite);
-//    auto s2 = getChildByTag(kTagSprite2);
-//    CCRect rect = s1->getBoundingBox();
-//    CCPoint point = s2->getPosition();
-//    return rect.containsPoint(point);
-}
+//bool GameLayer::isCollasion()
+//{
+////    auto s1 = getChildByTag(kTagSprite);
+////    auto s2 = getChildByTag(kTagSprite2);
+////    CCRect rect = s1->getBoundingBox();
+////    CCPoint point = s2->getPosition();
+////    return rect.containsPoint(point);
+//}
 
 void GameLayer::onEnter()
 {

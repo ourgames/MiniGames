@@ -63,6 +63,6 @@ public:
     void createObstacle(int fre,cocos2d::Node * render_node);
     Player * createPlayer();
     
-    bool isCollasion();
+    //bool isCollasion();
 };
 #endif /* GameLayer_hpp */

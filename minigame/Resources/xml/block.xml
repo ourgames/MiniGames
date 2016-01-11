@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<tns:database xmlns:tns="http://www.iw.com/sns/platform/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <Group id="block">
+        <ItemSpec id="0" efflist="0" filename="cloud.png" width="1" height="1" windex="0" hindex="0" movementud="0,true,1,50" movementlr="1,false,0,0"/>
+        <ItemSpec id="1" efflist="1" filename="building_1.png" width="2" height="2" windex="0" hindex="0" movementud="0,true,1,50" movementlr="1,false,0,0"/>
+        <ItemSpec id="2" efflist="2,7" filename="puff_1.png" width="1" height="1" windex="0" hindex="0" movementud="0,true,1,50" movementlr="1,false,0,0"/>
+        <ItemSpec id="3" efflist="0" filename="player_float.png" width="1" height="1" windex="0" hindex="0" movementud="0,true,1,50" movementlr="1,true,0,2"/>
+        <ItemSpec id="4" efflist="0" filename="player_float.png" width="1" height="1" windex="0" hindex="0" movementud="0,true,1,50" movementlr="1,true,1,2"/>
+        <ItemSpec id="5" efflist="0" filename="puff_2.png" width="1" height="1" windex="0" hindex="0" movementud="0,true,1,50" movementlr="1,true,0,2"/>
+        <ItemSpec id="6" efflist="1" filename="building_4.png" width="1" height="1" windex="0" hindex="0" movementud="0,true,1,60" movementlr="1,false,0,0"/>
+    </Group>
+</tns:database>

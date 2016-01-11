@@ -14,7 +14,7 @@
 #include "game.h"
 #include "Block.hpp"
 #include "Track.hpp"
-#include "Player.hpp"
+//#include "Player.hpp"
 
 #define MAX_COUNT 100
 
@@ -43,6 +43,11 @@ public:
     int getCreateBlockType();
     Block * createBlock();
     Block * createBlock(int type);
+    
+    CCArray* split(const char* src, const char* sym);
+    Block * createBlockByFile();
+    Block * createBlockByFile(int type);
+    
     Block * createClone(Block * obj);
     void displayBlock(Track *track,cocos2d::Node * render_node);
     void createManager(Track *track,cocos2d::Node * render_node);
@@ -51,9 +56,11 @@ public:
     
     //CCDictionary * initDict();
     void initDict();
-    void initEffectDict();
+//    void initEffectDict();
     
-    void isCollision(Player * player);
+    std::string getPropById(std::string xmlId,std::string propName);
+    
+//    void isCollision(Player * player);
     
     void setBlockCreateChance(int * num);
 };
