@@ -60,6 +60,8 @@ public:
     void setMoveLeftRightEnable(bool val);
     bool getMoveLeftRightEnable();
     
+    void setMoveUpDownDir(int dire);
+    void setMoveLeftRightDir(int dire);
     //virtual
 //    virtual void update(float dt);
 //    virtual bool init();

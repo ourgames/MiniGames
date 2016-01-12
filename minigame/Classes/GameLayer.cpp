@@ -87,6 +87,7 @@ bool GameLayer::init()
     auto listener = EventListenerTouchOneByOne::create();
     listener->onTouchBegan = CC_CALLBACK_2(GameLayer::onTouchBegan, this);
     listener->onTouchEnded = CC_CALLBACK_2(GameLayer::onTouchEnded, this);
+    
     _eventDispatcher->addEventListenerWithSceneGraphPriority(listener, this);
     
     return true;
@@ -97,13 +98,25 @@ Player * GameLayer::createPlayer()
     player->retain();
     
     player->setFilename("xiabai.jpg");
-    Node * playeractor =player->getActor();
-    playeractor = Sprite::create("xiaobai.jpg");
+   
+//    Node * playeractor =player->getActor();
+//    playeractor = Sprite::create("xiaobai.jpg");
+    
+    Sprite * playeractor = Sprite::create("xiaobai.jpg");
+    
+    
     playeractor->setAnchorPoint(ccp(0,0));
     playeractor->setScale(0.3, 0.3);
     //player->setPosition(origin.x + 20 + track->getCircuitWidth() * (2 + (int)track->getTrackState()), origin.y + playeractor->getContentSize().height * 0.3/2);
     playeractor->setPosition(origin.x + 20 + track.getCircuitWidth() * (2 + (int)track.getTrackState()), origin.y + playeractor->getContentSize().height * 0.3/2);
-    player->addChild(playeractor);
+    //playeractor->retain();
+    player->setActor(playeractor);
+    
+    Movement playermv1 = {0,false,0,0};
+    Movement playermv2 = {1,true,0,3};
+    player->setMoveUpDown(playermv1);
+    player->setMoveLeftRight(playermv2);
+    //player->addChild(playeractor);
     
     return player;
 }
@@ -260,9 +273,9 @@ void GameLayer::update(float dt)
             trackvar -= track.getChangeCourseDistance();
             track.changeChannel();
             //trackvar -= track.getChangeCourseDistance();
-            player->retain();
-            player->setPosition(origin.x + 40 + track.getCircuitWidth() * (2 + (int)track.getTrackState()), origin.y + player->getContentSize().height * 0.05 /2);
-            player->release();
+//            playerreal->retain();
+//            playerreal->getActor()->setPosition(origin.x + 20 + track.getCircuitWidth() * (2 + (int)track.getTrackState()), origin.y + playerreal->getActor()->getContentSize().height * 0.3 /2);
+//            playerreal->release();
         }
         
         //显示距离
@@ -340,25 +353,117 @@ bool GameLayer::onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *event)
     return true;
 }
 
+//void GameLayer::onTouchEnded(cocos2d::Touch *touch, cocos2d::Event *event)
+//{
+//    auto location = touch->getLocation();
+//    
+//    //auto s = getChildByTag(kTagSprite);
+//    //s->stopAllActions();
+//    //Node * playeractor = playerreal->getActor();
+//    Node * playeractor = playerreal->getActor();
+//    float left = origin.x + track.getCircuitWidth() * ((int)track.getTrackState());
+//    float right = origin.x + track.getCircuitWidth() * ((int)track.getTrackState() + 5) - playeractor->getContentSize().width;
+//    float up = 200;
+//    float down = origin.y;
+//    if (location.x >= left && location.x < right/2 && location.y > down && location.y < up) {
+//        if (playeractor->getPositionX() - playerreal->getMoveLeftRight().speed < left) {
+//            playeractor->setPositionX(left);
+//        }
+//        else
+//            playeractor->setPositionX(playeractor->getPositionX() - playerreal->getMoveLeftRight().speed);
+////        playerreal->setMoveLeftRightDir(0);
+////        if (playerreal->getIsAlive()) {
+////            if (playerreal->getMoveUpDown().enable) {
+////                
+////            }
+////            if (playerreal->getMoveLeftRightEnable()) {
+////                switch (playerreal->getMoveLeftRight().direction) {
+////                    case 0:
+////                        if (playeractor->getPositionX() - playerreal->getMoveLeftRight().speed < left) {
+////                            playeractor->setPositionX(left);
+////                        }
+////                        else
+////                            playeractor->setPositionX(playeractor->getPositionX() - playerreal->getMoveLeftRight().speed);
+////                        break;
+////                    case 1:
+////                        if (playeractor->getPositionX() + playerreal->getMoveLeftRight().speed > right) {
+////                            playeractor->setPositionX(right);
+////                        }
+////                        else
+////                            playeractor->setPositionX(playeractor->getPositionX() + playerreal->getMoveLeftRight().speed);
+////                    default:
+////                        break;
+////                }
+////            }
+////        }
+//    }
+//    if (location.x >= right/2 && location.x < right && location.y > down && location.y < up) {
+//        if (playeractor->getPositionX() + playerreal->getMoveLeftRight().speed > right) {
+//            playeractor->setPositionX(right);
+//        }
+//        else
+//            playeractor->setPositionX(playeractor->getPositionX() + playerreal->getMoveLeftRight().speed);
+//    }
+//    //playeractor->runAction(MoveTo::create(1, Vec2(location.x,location.y)));
+////    float o = location.x - playerreal->getPosition().x;
+////    float a = location.y - playerreal->getPosition().y;
+////    float at = (float) CC_RADIANS_TO_DEGREES(atanf(o/a));
+////    
+////    if (a < 0) {
+////        if (o < 0) {
+////            at = 180 + fabs(at);
+////        }
+////        else
+////            at = 180 - fabs(at);
+////    }
+//    //s->runAction(RotateTo::create(1, at));
+//}
+
 void GameLayer::onTouchEnded(cocos2d::Touch *touch, cocos2d::Event *event)
 {
 //    auto location = touch->getLocation();
 //    
-//    auto s = getChildByTag(kTagSprite);
-//    //s->stopAllActions();
-//    s->runAction(MoveTo::create(1, Vec2(location.x,location.y)));
-//    float o = location.x - s->getPosition().x;
-//    float a = location.y - s->getPosition().y;
-//    float at = (float) CC_RADIANS_TO_DEGREES(atanf(o/a));
-//    
-//    if (a < 0) {
-//        if (o < 0) {
-//            at = 180 + fabs(at);
+//    Node * playeractor = playerreal->getActor();
+//    float left = origin.x;
+//    float right = visibleSize.width;
+//    float up = 200;
+//    float down = origin.y;
+//    if (location.x >= left && location.x < right/2 && location.y > down && location.y < up) {
+//        if (playeractor->getPositionX() - playerreal->getMoveLeftRight().speed < left) {
+//            playeractor->setPositionX(left);
 //        }
 //        else
-//            at = 180 - fabs(at);
+//            playeractor->setPositionX(playeractor->getPositionX() - playerreal->getMoveLeftRight().speed);
 //    }
-//    //s->runAction(RotateTo::create(1, at));
+//    if (location.x >= right/2 && location.x < right && location.y > down && location.y < up) {
+//        if (playeractor->getPositionX() + playerreal->getMoveLeftRight().speed > right) {
+//            playeractor->setPositionX(right);
+//        }
+//        else
+//            playeractor->setPositionX(playeractor->getPositionX() + playerreal->getMoveLeftRight().speed);
+//    }
+    auto location = touch->getLocation();
+    
+    Node * playeractor = playerreal->getActor();
+    float left = origin.x;
+    float right = visibleSize.width;
+    float up = 200;
+    float down = origin.y;
+    if (location.x <= visibleSize.width/2) {
+        if (playeractor->getPositionX() - playerreal->getMoveLeftRight().speed < left) {
+            playeractor->setPositionX(left);
+        }
+        else
+            playeractor->setPositionX(playeractor->getPositionX() - playerreal->getMoveLeftRight().speed);
+    }
+    else{
+        if (playeractor->getPositionX() + playerreal->getMoveLeftRight().speed > right) {
+            playeractor->setPositionX(right);
+        }
+        else
+            playeractor->setPositionX(playeractor->getPositionX() + playerreal->getMoveLeftRight().speed);
+    }
+    
 }
 
 void GameLayer::menuCloseCallback(Ref* pSender)

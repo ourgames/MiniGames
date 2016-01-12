@@ -30,6 +30,8 @@ public:
     
     virtual bool init();
     
+    //bool getIsAlive();
+    //void setIsAlive();
     //Player * createPlayer(Track *track);
     
     //bool addActor();

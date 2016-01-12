@@ -106,5 +106,16 @@
             </PersistentString>
          </PersistentStrings>
       </ContextState>
+      <ContextState
+         contextName = "BlockManager::split(char const*, char const*):BlockManager.cpp">
+      </ContextState>
+      <ContextState
+         contextName = "GameLayer::onTouchEnded(cocos2d::Touch*, cocos2d::Event*):GameLayer.cpp">
+         <PersistentStrings>
+            <PersistentString
+               value = "playerreal">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
    </ContextStates>
 </VariablesViewState>
