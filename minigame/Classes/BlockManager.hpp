@@ -15,6 +15,9 @@
 #include "Block.hpp"
 #include "Track.hpp"
 //#include "Player.hpp"
+#include "LocalController.h"
+//#include <iostream>
+#include <string>
 
 #define MAX_COUNT 100
 
@@ -40,6 +43,8 @@ public:
     BlockManager();
     ~BlockManager();
     
+    std::string getPropById(std::string xmlId,std::string propName);
+    //const char * getPropById(const char * xmlId,const char * propName);
     int getCreateBlockType();
     Block * createBlock();
     Block * createBlock(int type);
@@ -58,7 +63,7 @@ public:
     void initDict();
 //    void initEffectDict();
     
-    std::string getPropById(std::string xmlId,std::string propName);
+   //std::string getPropById(std::string xmlId,std::string propName);
     
 //    void isCollision(Player * player);
     

@@ -11,7 +11,8 @@
 #include "Movement.h"
 #include "GameLayerVar.h"
 //#include "Track.hpp"
-#include "LocalController.h"
+//#include "LocalController.h"
+#include <stdlib.h>
 
 BlockManager::BlockManager()
 {
@@ -255,18 +256,7 @@ void BlockManager::initDict()
     dict->retain();
     //return dict;
 }
-std::string getPropById(std::string xmlId,std::string propName)
-{
-    auto retDict = LocalController::shared()->DBXMLManager()->getObjectByKey(xmlId);
-    if (!retDict) {
-        return string("");
-    }
-    auto ret = retDict->valueForKey(propName);
-    if (!ret->getCString()) {
-        return string("");
-    }
-    return string(ret->getCString());
-}
+
 //void BlockManager::initDict()
 //{
 //    dict = CCDictionary::create();
@@ -602,7 +592,35 @@ CCArray* BlockManager::split(const char* src, const char* sym)
             ret->addObject(CCString::create(s.substr(nbegin, nend-nbegin)));
         nbegin = nend + strlen(sym);
     }
+    //ret->retain();
+    //ret->autorelease();
     return ret;
+}
+/*
+const char * getPropById(const char * xmlId,const char * propName)
+{
+    auto retDict = LocalController::shared()->DBXMLManager()->getObjectByKey(xmlId);
+    if (!retDict) {
+        const char * sr = "";
+        return sr;
+    }
+    auto ret = retDict->valueForKey(propName);
+    if (!ret->getCString()) {
+        return ret->getCString();
+    }
+    return ret->getCString();
+}
+*/
+std::string BlockManager::getPropById(std::string xmlId, std::string propName){
+    auto retDict = LocalController::shared()->DBXMLManager()->getObjectByKey(xmlId);
+    if (!retDict) {
+        return string("");
+    }
+    auto ret = retDict->valueForKey(propName);
+    if (!ret->getCString()) {
+        return string("");
+    }
+    return string(ret->getCString());
 }
 
 Block * BlockManager::createBlockByFile()
@@ -613,7 +631,9 @@ Block * BlockManager::createBlockByFile()
     bl->retain();
 
     //设置effctlist
-    std::string efl = getPropById("0", "efflist");
+//    const char * str1 = "0";
+//    const char * str2 = "efflist";
+    std::string efl = getPropById("0","efflist");
     //CCArray * arr = CCArray::createWithCapacity(10);
     CCArray * arr = split(efl.c_str(), ",");
     
@@ -634,14 +654,19 @@ Block * BlockManager::createBlockByFile()
     //设置运动
     std::string mv1 = getPropById("0", "movementud");
     CCArray * mv11 = split(mv1.c_str(), ",");
-    
+    //mv11->retain();
     //MoveMent * objmv = dynamic_cast<MoveMent *>(blockproer->objectForKey("movementud"));
     //Movement mvstrut= {objmv->getType(),objmv->getEnable(),objmv->getDirection(),objmv->getSpeed()};
-    int mv1type = dynamic_cast<CCInteger*>(mv11->getObjectAtIndex(0))->getValue();
-    bool mv1enable = dynamic_cast<CCBool*>(mv11->getObjectAtIndex(1))->getValue();
+    //CCObject * sint = mv11->getObjectAtIndex(0);
+    //CCInteger * sint =dynamic_cast<CCInteger*>(mv11->getObjectAtIndex(0));
+    //sint->retain();
+    //int mv1type = sint->getValue();
     
-    int mv1dir = dynamic_cast<CCInteger*>(mv11->getObjectAtIndex(2))->getValue();
-    float mv1speed = dynamic_cast<CCFloat*>(mv11->getObjectAtIndex(3))->getValue();
+    int mv1type = (dynamic_cast<CCString*>(mv11->getObjectAtIndex(0)))->intValue();
+    bool mv1enable = dynamic_cast<CCString*>(mv11->getObjectAtIndex(1))->boolValue();
+    
+    int mv1dir = dynamic_cast<CCString*>(mv11->getObjectAtIndex(2))->intValue();
+    float mv1speed = dynamic_cast<CCString*>(mv11->getObjectAtIndex(3))->floatValue();
     Movement mvstrut= {mv1type,mv1enable,mv1dir,mv1speed};
     
     bl->setMoveUpDown(mvstrut);
@@ -651,40 +676,56 @@ Block * BlockManager::createBlockByFile()
     
     //MoveMent * objmv = dynamic_cast<MoveMent *>(blockproer->objectForKey("movementud"));
     //Movement mvstrut= {objmv->getType(),objmv->getEnable(),objmv->getDirection(),objmv->getSpeed()};
-    int mv2type = dynamic_cast<CCInteger*>(mv22->getObjectAtIndex(0))->getValue();
-    bool mv2enable = dynamic_cast<CCBool*>(mv22->getObjectAtIndex(1))->getValue();
+    int mv2type = dynamic_cast<CCString*>(mv22->getObjectAtIndex(0))->intValue();
+    bool mv2enable = dynamic_cast<CCString*>(mv22->getObjectAtIndex(1))->boolValue();
     
-    int mv2dir = dynamic_cast<CCInteger*>(mv11->getObjectAtIndex(2))->getValue();
-    float mv2speed = dynamic_cast<CCFloat*>(mv11->getObjectAtIndex(3))->getValue();
+    int mv2dir = dynamic_cast<CCString*>(mv22->getObjectAtIndex(2))->intValue();
+    float mv2speed = dynamic_cast<CCString*>(mv22->getObjectAtIndex(3))->floatValue();
     
     Movement mvstrut2= {mv2type,mv2enable,mv2dir,mv2speed};
     bl->setMoveLeftRight(mvstrut2);
   
     return bl;
+
 }
+
 Block * BlockManager::createBlockByFile(int type)
 {
-    int bt;
-    bt = type;
+    //char * bt;
+    //itoa(type,bt,10);
+    stringstream is;
+    is<<type;
+    std::string bt;
+    is>>bt;
+    
     //根据获取的障碍类型获得对应的数值参数
     Block * bl = Block::create();
     bl->retain();
-    //    for (int i = 0; i < BlockCreateNumber[bt]; i++) {
-    //        //根据获取的障碍类型获得对应的数值参数
-    //        Block * bl = Block::create();
-    
-    CCDictionary * blockproer = (CCDictionary *)dict->objectForKey(bt);
-    //CCDictionary * blockproer = (CCDictionary *)dict->objectForKey(0);
-    //设置effctlist
-    bl->setEffectlist((CCArray * )(blockproer->objectForKey("efflist")));
-    //设置文件名
-    CCString * fi = dynamic_cast<CCString*>(blockproer->objectForKey("filename"));
-    bl->setFilename(fi->getCString());
-    //添加精灵节点
+    std::string efl = getPropById(bt,"efflist");
+    CCArray * arr = split(efl.c_str(), ",");
+    bl->setEffectlist(arr);
+    std::string fi = getPropById(bt,"filename");
+    bl->setFilename(fi);
     bl->addActor();
-    //设置大小
-    bl->setWidth(dynamic_cast<CCFloat *>(blockproer->objectForKey("width"))->getValue());
-    bl->setHeight(dynamic_cast<CCFloat*>(blockproer->objectForKey("height"))->getValue());
+    bl->setWidth(atoi(getPropById(bt,"width").c_str()));
+    bl->setHeight(atoi(getPropById(bt,"height").c_str()));
+    
+//    //    for (int i = 0; i < BlockCreateNumber[bt]; i++) {
+//    //        //根据获取的障碍类型获得对应的数值参数
+//    //        Block * bl = Block::create();
+//    
+//    CCDictionary * blockproer = (CCDictionary *)dict->objectForKey(bt);
+//    //CCDictionary * blockproer = (CCDictionary *)dict->objectForKey(0);
+//    //设置effctlist
+//    bl->setEffectlist((CCArray * )(blockproer->objectForKey("efflist")));
+//    //设置文件名
+//    CCString * fi = dynamic_cast<CCString*>(blockproer->objectForKey("filename"));
+//    bl->setFilename(fi->getCString());
+//    //添加精灵节点
+//    bl->addActor();
+//    //设置大小
+//    bl->setWidth(dynamic_cast<CCFloat *>(blockproer->objectForKey("width"))->getValue());
+//    bl->setHeight(dynamic_cast<CCFloat*>(blockproer->objectForKey("height"))->getValue());
     //设置位置
     if (bl->getWidth() == 2) {
         int ix = rand() % 4;
@@ -699,15 +740,37 @@ Block * BlockManager::createBlockByFile(int type)
         bl->setW_index(ix);
         bl->setH_index(iy);
     }
-    //设置运动
-    MoveMent * objmv = dynamic_cast<MoveMent *>(blockproer->objectForKey("movementud"));
-    Movement mvstrut= {objmv->getType(),objmv->getEnable(),objmv->getDirection(),objmv->getSpeed()};
+//    //设置运动
+    std::string mv1 = getPropById(bt, "movementud");
+    CCArray * mv11 = split(mv1.c_str(), ",");
+    int mv1type = (dynamic_cast<CCString*>(mv11->getObjectAtIndex(0)))->intValue();
+    bool mv1enable = dynamic_cast<CCString*>(mv11->getObjectAtIndex(1))->boolValue();
+    
+    int mv1dir = dynamic_cast<CCString*>(mv11->getObjectAtIndex(2))->intValue();
+    float mv1speed = dynamic_cast<CCString*>(mv11->getObjectAtIndex(3))->floatValue();
+    Movement mvstrut= {mv1type,mv1enable,mv1dir,mv1speed};
+    
     bl->setMoveUpDown(mvstrut);
     
-    MoveMent * objmv2 = dynamic_cast<MoveMent *>(blockproer->objectForKey("movementlr"));
-    Movement mvstrut2= {objmv2->getType(),objmv2->getEnable(),objmv2->getDirection(),objmv2->getSpeed()};
+    std::string mv2 = getPropById(bt, "movementlr");
+    CCArray * mv22 = split(mv2.c_str(), ",");
+    int mv2type = dynamic_cast<CCString*>(mv22->getObjectAtIndex(0))->intValue();
+    bool mv2enable = dynamic_cast<CCString*>(mv22->getObjectAtIndex(1))->boolValue();
+    
+    int mv2dir = dynamic_cast<CCString*>(mv22->getObjectAtIndex(2))->intValue();
+    float mv2speed = dynamic_cast<CCString*>(mv22->getObjectAtIndex(3))->floatValue();
+    
+    Movement mvstrut2= {mv2type,mv2enable,mv2dir,mv2speed};
     bl->setMoveLeftRight(mvstrut2);
-    //    }
+    
+//    MoveMent * objmv = dynamic_cast<MoveMent *>(blockproer->objectForKey("movementud"));
+//    Movement mvstrut= {objmv->getType(),objmv->getEnable(),objmv->getDirection(),objmv->getSpeed()};
+//    bl->setMoveUpDown(mvstrut);
+//    
+//    MoveMent * objmv2 = dynamic_cast<MoveMent *>(blockproer->objectForKey("movementlr"));
+//    Movement mvstrut2= {objmv2->getType(),objmv2->getEnable(),objmv2->getDirection(),objmv2->getSpeed()};
+//    bl->setMoveLeftRight(mvstrut2);
+//    //    }
     return bl;
     //
     //
@@ -758,16 +821,19 @@ Block * BlockManager::createClone(Block *obj)
 {
     
 }
+
+
+
 void BlockManager::createManager()
 {
     int crnm =BlockCreateNumber[getCreateBlockType()];
     
     if (crnm == 4) {
         //
-        Block * block1 = createBlock();
-        Block * block2 = createBlock();
-        Block * block3 = createBlock();
-        Block * block4 = createBlock();
+        Block * block1 = createBlockByFile();
+        Block * block2 = createBlockByFile();
+        Block * block3 = createBlockByFile();
+        Block * block4 = createBlockByFile();
         
         CCArray * bkarr = CCArray::createWithCapacity(4);
         bkarr->retain();
@@ -825,10 +891,10 @@ void BlockManager::createManager(Track *track,cocos2d::Node * render_node)
     cocos2d::Vec2 origin = Director::getInstance()->getVisibleOrigin();
     if (crnm == 4) {
         //
-        Block * block1 = createBlock();
-        Block * block2 = createBlock();
-        Block * block3 = createBlock();
-        Block * block4 = createBlock();
+        Block * block1 = createBlockByFile();
+        Block * block2 = createBlockByFile();
+        Block * block3 = createBlockByFile();
+        Block * block4 = createBlockByFile();
         
         CCArray * bkarr = CCArray::createWithCapacity(4);
         bkarr->retain();
@@ -877,7 +943,7 @@ void BlockManager::createManager(Track *track,cocos2d::Node * render_node)
     }
     else
     {
-        Block * block = createBlock(bk);
+        Block * block = createBlockByFile(bk);
         Sprite * blockactor =dynamic_cast<Sprite*>(block->getActor());
         blockactor->setAnchorPoint(ccp(0,0));
         //blockactor->setScale(0.75, 1.0);

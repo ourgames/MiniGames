@@ -47,7 +47,13 @@
             <PersistentString
                value = "dictt">
             </PersistentString>
+            <PersistentString
+               value = "mv11">
+            </PersistentString>
          </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "BlockManager::createBlockByFile():BlockManager.cpp">
       </ContextState>
       <ContextState
          contextName = "Block::setEffectlist(cocos2d::__Array*):Block.cpp">
