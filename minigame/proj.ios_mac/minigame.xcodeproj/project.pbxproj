@@ -107,6 +107,8 @@
 		D6B0611B1803AB670077942B /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6B0611A1803AB670077942B /* CoreMotion.framework */; };
 		ED545A7C1B68A1F400C3958E /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = ED545A7B1B68A1F400C3958E /* libiconv.dylib */; };
 		ED545A7E1B68A1FA00C3958E /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = ED545A7D1B68A1FA00C3958E /* libiconv.dylib */; };
+		ED8221891C46591800199F20 /* Attribute.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ED8221851C46591800199F20 /* Attribute.cpp */; };
+		ED82218A1C46591800199F20 /* DisplayObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ED8221871C46591800199F20 /* DisplayObject.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -239,6 +241,10 @@
 		D6B0611A1803AB670077942B /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.0.sdk/System/Library/Frameworks/CoreMotion.framework; sourceTree = DEVELOPER_DIR; };
 		ED545A7B1B68A1F400C3958E /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.4.sdk/usr/lib/libiconv.dylib; sourceTree = DEVELOPER_DIR; };
 		ED545A7D1B68A1FA00C3958E /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = usr/lib/libiconv.dylib; sourceTree = SDKROOT; };
+		ED8221851C46591800199F20 /* Attribute.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Attribute.cpp; sourceTree = "<group>"; };
+		ED8221861C46591800199F20 /* Attribute.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Attribute.hpp; sourceTree = "<group>"; };
+		ED8221871C46591800199F20 /* DisplayObject.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DisplayObject.cpp; sourceTree = "<group>"; };
+		ED8221881C46591800199F20 /* DisplayObject.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = DisplayObject.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -379,6 +385,10 @@
 		46880B8319C43A87006E1F66 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				ED8221851C46591800199F20 /* Attribute.cpp */,
+				ED8221861C46591800199F20 /* Attribute.hpp */,
+				ED8221871C46591800199F20 /* DisplayObject.cpp */,
+				ED8221881C46591800199F20 /* DisplayObject.hpp */,
 				46880B8419C43A87006E1F66 /* AppDelegate.cpp */,
 				46880B8519C43A87006E1F66 /* AppDelegate.h */,
 				46880B8619C43A87006E1F66 /* HelloWorldScene.cpp */,
@@ -628,9 +638,11 @@
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
 				6EBD80FB1C3A782F008A665C /* Item.cpp in Sources */,
 				6EBD81201C3B8E9F008A665C /* GameLayer.cpp in Sources */,
+				ED8221891C46591800199F20 /* Attribute.cpp in Sources */,
 				6EBD80F61C3A7106008A665C /* Effect.cpp in Sources */,
 				6EA80C371C439B80005738C8 /* LocalController.cpp in Sources */,
 				6EA80C451C439CBB005738C8 /* CCINIParser.cpp in Sources */,
+				ED82218A1C46591800199F20 /* DisplayObject.cpp in Sources */,
 				6EA80C471C439CBB005738C8 /* CCRapidXMLParser.cpp in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
 				6EBD80F21C3A70F5008A665C /* Block.cpp in Sources */,
