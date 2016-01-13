@@ -12,6 +12,8 @@
 #include <stdio.h>
 #include "Track.hpp"
 #include "BlockManager.hpp"
+#include "Player.hpp"
+
 //#include "GameLayerVar.h"
 
 class GameLayer : public cocos2d::Layer
@@ -20,6 +22,7 @@ class GameLayer : public cocos2d::Layer
     cocos2d::Vec2 origin;
     Track track;
     BlockManager bmr;
+    Player* playerreal;
     
     cocos2d::CCArray * bg;//背景层
     cocos2d::Sprite * player;
@@ -58,7 +61,8 @@ public:
     void onTouchEnded(cocos2d::Touch * touch,cocos2d::Event * event);
     
     void createObstacle(int fre,cocos2d::Node * render_node);
+    Player * createPlayer();
     
-    bool isCollasion();
+    //bool isCollasion();
 };
 #endif /* GameLayer_hpp */

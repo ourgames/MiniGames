@@ -28,7 +28,8 @@ class Block : public Entity
 //    CC_SYNTHESIZE(float, blockReduce, BlockReduce);
 public:
     //Vector<Entity> entitylist;
-    int * effectlist;
+    //int * effectlist;
+    CCArray * effectlist;
     
     //Block(void);
     virtual ~Block();
@@ -39,5 +40,6 @@ public:
     virtual bool init();
     bool isAlive();
     void setEffectlist(cocos2d::CCArray * array);
+    CCArray * getEffectlist();
 };
 #endif /* Block_hpp */

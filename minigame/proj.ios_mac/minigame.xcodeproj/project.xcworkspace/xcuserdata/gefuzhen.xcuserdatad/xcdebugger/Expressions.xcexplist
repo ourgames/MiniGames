@@ -6,15 +6,20 @@
          contextName = "Block::init():Block.cpp">
       </ContextState>
       <ContextState
+         contextName = "BlockManager::initDict():BlockManager.cpp">
+         <PersistentStrings>
+            <PersistentString
+               value = "dict">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "BlockManager::blockMove(Track*, cocos2d::Node*):BlockManager.cpp">
          <PersistentStrings>
             <PersistentString
                value = "blocklist">
             </PersistentString>
          </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "BlockManager::initDict():BlockManager.cpp">
       </ContextState>
       <ContextState
          contextName = "cocos2d::__Dictionary::objectForKey(std::__1::basic_string&lt;char, std::__1::char_traits&lt;char&gt;, std::__1::allocator&lt;char&gt; &gt; const&amp;):CCDictionary.cpp">
@@ -37,6 +42,20 @@
          contextName = "GameLayer::update(float):GameLayer.cpp">
       </ContextState>
       <ContextState
+         contextName = "cocos2d::__Integer::getValue() const:CCInteger.h">
+         <PersistentStrings>
+            <PersistentString
+               value = "dictt">
+            </PersistentString>
+            <PersistentString
+               value = "mv11">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "BlockManager::createBlockByFile():BlockManager.cpp">
+      </ContextState>
+      <ContextState
          contextName = "Block::setEffectlist(cocos2d::__Array*):Block.cpp">
          <PersistentStrings>
             <PersistentString
@@ -52,6 +71,9 @@
          <PersistentStrings>
             <PersistentString
                value = "dict1">
+            </PersistentString>
+            <PersistentString
+               value = "dictt">
             </PersistentString>
             <PersistentString
                value = "dict">
@@ -71,16 +93,27 @@
                value = "block2">
             </PersistentString>
             <PersistentString
-               value = "blockactor">
+               value = "block3">
             </PersistentString>
             <PersistentString
-               value = "block3">
+               value = "blockactor">
             </PersistentString>
             <PersistentString
                value = "bkarr">
             </PersistentString>
             <PersistentString
                value = "ix">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "BlockManager::split(char const*, char const*):BlockManager.cpp">
+      </ContextState>
+      <ContextState
+         contextName = "GameLayer::onTouchEnded(cocos2d::Touch*, cocos2d::Event*):GameLayer.cpp">
+         <PersistentStrings>
+            <PersistentString
+               value = "playerreal">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

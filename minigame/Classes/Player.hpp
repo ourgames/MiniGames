@@ -11,6 +11,7 @@
 
 #include <stdio.h>
 #include "Entity.hpp"
+#include "Track.hpp"
 
 class Player : public Entity
 {
@@ -22,12 +23,18 @@ class Player : public Entity
     CC_SYNTHESIZE(bool, isAlive, IsAlive);
     
 public:
-    Player(void);
+    //Player(void);
     virtual ~Player();
     
     CREATE_FUNC(Player);
     
     virtual bool init();
+    
+    //bool getIsAlive();
+    //void setIsAlive();
+    //Player * createPlayer(Track *track);
+    
+    //bool addActor();
     //bool getIsAlive();
     //void setIsAlive(bool var);
 };

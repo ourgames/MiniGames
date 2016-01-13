@@ -32,9 +32,11 @@ Entity::~Entity()
     
 }
 
-bool Entity::setActor(cocos2d::Node *actor)
+bool Entity::setActor(cocos2d::Node *obj)
 {
-    actor = actor;
+    actor = obj;
+    //actor->retain();
+    this->addChild(actor);
 }
 
 Node * Entity::getActor()
@@ -44,11 +46,12 @@ Node * Entity::getActor()
 
 bool Entity::addActor()
 {
+    
     SpriteFrameCache * frameCache = SpriteFrameCache::getInstance();
     frameCache->addSpriteFramesWithFile("sprite_sheet.plist", "sprite_sheet.png");
     //actor = Sprite::create(filename);
     actor = Sprite::createWithSpriteFrameName(getFilename());
-    actor->retain();
+    //actor->retain();
     this->addChild(dynamic_cast<Sprite*>(actor));
 }
 
@@ -115,4 +118,26 @@ bool Entity::getMoveLeftRightEnable()
 {
     return moveLeftRight.enable;
 }
+
+void Entity::setMoveLeftRightDir(int dire)
+{
+    moveLeftRight.direction = dire;
+}
+
+void Entity::setMoveUpDownDir(int dire)
+{
+    moveUpDown.direction = dire;
+}
+
+
+
+
+
+
+
+
+
+
+
+
 

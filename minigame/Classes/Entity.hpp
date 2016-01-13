@@ -40,7 +40,7 @@ protected:
 public:
     bool setActor(Node * actor);
     Node * getActor();
-    bool addActor();
+    virtual bool addActor();
     
     CREATE_FUNC(Entity);
     
@@ -60,6 +60,8 @@ public:
     void setMoveLeftRightEnable(bool val);
     bool getMoveLeftRightEnable();
     
+    void setMoveUpDownDir(int dire);
+    void setMoveLeftRightDir(int dire);
     //virtual
 //    virtual void update(float dt);
 //    virtual bool init();
