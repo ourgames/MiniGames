@@ -76,6 +76,10 @@ void DurationEffect::calcuAfterEffectValue()
                 {
                     afterValue = value * mNumber;
                 }
+                if(mNumberType == EffectNumType::EQUAL)
+                {
+                    afterValue =  mNumber;
+                }
                 if(afterValue < 0)
                 {
                     afterValue = 0;
@@ -154,7 +158,28 @@ void InstantEffect::onEffectStart()
     IAttribute * pAttribute = mTargetAttribute;
     if(pAttribute)
     {
-        pAttribute->setBaseValue(mNumber);
+        //pAttribute->setBaseValue(mNumber);
+        float afterValue = 0.0;
+        float value = pAttribute->getBaseValue();
+        if(mNumberType == EffectNumType::ADD)
+        {
+            afterValue = value + mNumber;
+        }
+        if(mNumberType == EffectNumType::MUL)
+        {
+            afterValue = value * mNumber;
+        }
+        if(mNumberType == EffectNumType::EQUAL)
+        {
+            afterValue =  mNumber;
+        }
+        if(afterValue < 0)
+        {
+            afterValue = 0;
+            //to do
+        }
+        //return afterValue;
+        pAttribute->setBaseValue(afterValue);
     }
 }
 
