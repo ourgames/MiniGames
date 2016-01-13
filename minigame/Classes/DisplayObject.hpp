@@ -34,6 +34,8 @@ public:
     virtual void addEffect(IEffect * ) = 0;
     
     virtual void onCollision(IDisplayObject * pCollisionTarget) = 0;
+    
+    virtual ~IDisplayObject() {}
    
 };
 
@@ -55,7 +57,24 @@ public:
     
     virtual void addEffect(IEffect * );
     
+    virtual void updatePosition(float dt)
+    {
+        float xSpeed = getAttributeValueByKey(AttributeType::SPEED_X);
+        float ySpeed = getAttributeValueByKey(AttributeType::SPEED_Y);
+        mPosition.x = mPosition.x + dt * xSpeed;
+        mPosition.y = mPosition.y + dt * xSpeed;
+    }
+    
 protected:
+    float getAttributeValueByKey(AttributeType key)
+    {
+        IAttribute * pAttribute =  mAttributeList.at(key);
+        if(pAttribute)
+        {
+            return pAttribute->getAfterEffectValue();
+        }
+        return -1;
+    }
     cocos2d::Vec2 mPosition;
     cocos2d::Rect mCollisionBox;
     cocos2d::Map<int, IAttribute*> mAttributeList;

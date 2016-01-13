@@ -19,6 +19,7 @@ void BaseDisplayObject::addAttribute(IAttribute * pAttribute)
         if(mAttributeList.at(key) == nullptr)
         {
             mAttributeList.insert(key, pAttribute);
+            pAttribute->setDisplayObject(this);
         }
         
     }

@@ -52,6 +52,8 @@ public:
     //virtual void onEffectStart() = 0;
     //virtual void onEffectFinish() = 0;
     virtual void setTargetAttribute(IAttribute * pAttribute) = 0;
+    
+    virtual ~IEffect() {}
 };
 
 class Effect

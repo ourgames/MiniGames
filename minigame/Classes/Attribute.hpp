@@ -15,7 +15,7 @@
 
 //using namespace std;
 
-
+class IDisplayObject;
 
 class IAttribute : public  cocos2d::Ref
 {
@@ -40,6 +40,12 @@ public:
     virtual bool isLockDecrease() = 0;
     
     virtual void update(float dt) = 0;
+    
+    virtual void setDisplayObject(IDisplayObject * ) = 0;
+    
+    virtual IDisplayObject * getDisplayObject() = 0;
+    
+    virtual ~IAttribute() {}
     
 };
 
@@ -73,6 +79,10 @@ public:
     
     virtual void update(float dt);
     
+    virtual void setDisplayObject(IDisplayObject * pDisplayObject) {mDisplayObject = pDisplayObject; }
+    
+    virtual IDisplayObject * getDisplayObject() {return mDisplayObject; }
+    
 private:
     //bool isAttributeDirty();
     void sortAllEffect();
@@ -85,6 +95,7 @@ private:
     bool mIsAttributeDirty;
     bool mIsLockIncrease;
     bool mIsLockDecrease;
+    IDisplayObject * mDisplayObject;
 };
 
 #endif /* Attribute_hpp */
