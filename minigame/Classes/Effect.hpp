@@ -70,6 +70,7 @@ typedef enum
 {
     ADD,
     MUL,
+    EQUAL,
     Lock,
 }EffectNumType;
 
