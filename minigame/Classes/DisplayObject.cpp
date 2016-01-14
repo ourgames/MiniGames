@@ -20,6 +20,7 @@ void BaseDisplayObject::addAttribute(IAttribute * pAttribute)
         {
             mAttributeList.insert(key, pAttribute);
             pAttribute->setDisplayObject(this);
+            mAttributeKeyList.push_back(key);
         }
         
     }

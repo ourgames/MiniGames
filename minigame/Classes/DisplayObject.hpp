@@ -11,7 +11,7 @@
 
 
 
-#include <string>
+#include <string> 
 #include "Attribute.hpp"
 #include "Effect.hpp"
 
@@ -45,11 +45,18 @@ public:
 class BaseDisplayObject : public IDisplayObject
 {
 public:
-    BaseDisplayObject(cocos2d::Vec2 position) : mPosition(position)
+    BaseDisplayObject(cocos2d::Vec2 position, cocos2d::Size collisionSize) : mPosition(position)
     {
-        
+        mCollisionBox.size.width = collisionSize.width;
+        mCollisionBox.size.height = collisionSize.height;
+        mCollisionBox.origin.x = mPosition.x - mCollisionBox.size.width * 0.5;
+        mCollisionBox.origin.y = mPosition.y - mCollisionBox.size.height * 0.5;
     }
-    virtual ~BaseDisplayObject() {mAttributeList.clear();}
+    virtual ~BaseDisplayObject()
+    {
+        mAttributeList.clear();
+        mAttributeKeyList.clear();
+    }
     
     virtual cocos2d::Rect getCollisionBox() {return mCollisionBox; }
     
@@ -62,9 +69,24 @@ public:
         float xSpeed = getAttributeValueByKey(AttributeType::SPEED_X);
         float ySpeed = getAttributeValueByKey(AttributeType::SPEED_Y);
         mPosition.x = mPosition.x + dt * xSpeed;
-        mPosition.y = mPosition.y + dt * xSpeed;
+        mPosition.y = mPosition.y + dt * ySpeed;
+        
+        mCollisionBox.origin.x = mPosition.x - mCollisionBox.size.width * 0.5;
+        mCollisionBox.origin.y = mPosition.y - mCollisionBox.size.height * 0.5;
     }
-    
+
+    virtual void updateAttribute(float dt)
+    {
+        for(auto iter = mAttributeKeyList.begin(); iter != mAttributeKeyList.end(); ++iter)
+        {
+            int key = *(iter);
+            IAttribute * pAttribute = mAttributeList.at(key);
+            if(pAttribute)
+            {
+                pAttribute->update(dt);
+            }
+        }
+    }
 protected:
     float getAttributeValueByKey(AttributeType key)
     {
@@ -77,8 +99,11 @@ protected:
     }
     cocos2d::Vec2 mPosition;
     cocos2d::Rect mCollisionBox;
+    //cocos2d::Size mCollisionSize;
     cocos2d::Map<int, IAttribute*> mAttributeList;
-    
+    std::vector<int> mAttributeKeyList;
 };
+
+//in layer.update
 
 #endif /* DisplayObject_hpp */
