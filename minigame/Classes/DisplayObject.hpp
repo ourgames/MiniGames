@@ -45,13 +45,23 @@ public:
 class BaseDisplayObject : public IDisplayObject
 {
 public:
-    BaseDisplayObject(cocos2d::Vec2 position, cocos2d::Size collisionSize) : mPosition(position)
+    BaseDisplayObject(cocos2d::Vec2 position, cocos2d::Size collisionSize, cocos2d::Vec2 speed) : mPosition(position)
     {
         mCollisionBox.size.width = collisionSize.width;
         mCollisionBox.size.height = collisionSize.height;
         mCollisionBox.origin.x = mPosition.x - mCollisionBox.size.width * 0.5;
         mCollisionBox.origin.y = mPosition.y - mCollisionBox.size.height * 0.5;
-    }
+        
+        IAttribute * pXSpeedAttribute = Attribute::create(AttributeType::SPEED_X, speed.x);
+        addAttribute(pXSpeedAttribute);
+        IAttribute * pYSpeedAttribute = Attribute::create(AttributeType::SPEED_Y, speed.y);
+        addAttribute(pYSpeedAttribute);
+        IAttribute * pXSizeAttribute = Attribute::create(AttributeType::COLLISION_SIZE_X, collisionSize.width);
+        addAttribute(pXSizeAttribute);
+        IAttribute * pYSizeAttribute = Attribute::create(AttributeType::COLLISION_SIZE_Y, collisionSize.height);
+        addAttribute(pYSizeAttribute);
+    };
+    
     virtual ~BaseDisplayObject()
     {
         mAttributeList.clear();
@@ -70,9 +80,10 @@ public:
         float ySpeed = getAttributeValueByKey(AttributeType::SPEED_Y);
         mPosition.x = mPosition.x + dt * xSpeed;
         mPosition.y = mPosition.y + dt * ySpeed;
-        
-        mCollisionBox.origin.x = mPosition.x - mCollisionBox.size.width * 0.5;
-        mCollisionBox.origin.y = mPosition.y - mCollisionBox.size.height * 0.5;
+        float xSize = getAttributeValueByKey(AttributeType::COLLISION_SIZE_X);
+        float ySize = getAttributeValueByKey(AttributeType::COLLISION_SIZE_Y);
+        mCollisionBox.origin.x = mPosition.x - xSize * 0.5;
+        mCollisionBox.origin.y = mPosition.y - ySize * 0.5;
     }
 
     virtual void updateAttribute(float dt)

@@ -23,10 +23,10 @@ typedef enum
     SPEED_Y, //Y方向速度
     STAMINA,//体力
     SOCRE,//分数
-    COLLISION_DISTANCE_X,//X方向碰撞距离
-    COLLISION_DISTANCE_Y,//Y方向碰撞距离
-    MAGNET_DISTANCE_X,//X方向吸收距离
-    MAGNET_DISTANCE_Y,//Y方向吸收距离
+    COLLISION_SIZE_X,//X方向碰撞距离
+    COLLISION_SIZE_Y,//Y方向碰撞距离
+    MAGNET_SIZE_X,//X方向吸收距离
+    MAGNET_SIZE_Y,//Y方向吸收距离
     
 }AttributeType;
 
@@ -108,6 +108,9 @@ public:
     DurationEffect(int priority, AttributeType attributeKey, float startTime, float durationTime, float number, EffectNumType numberType);
     virtual ~DurationEffect();
     
+    static DurationEffect * create(int priority, AttributeType attributeKey, float startTime, float durationTime, float number, EffectNumType numberType) {}
+    virtual bool init() {}
+    
     //virtual void updateEffectTime(float dt);
     //virtual float getStartTime();
     //virtual float getEndTime();
@@ -131,6 +134,8 @@ public:
     InstantEffect(int priority, AttributeType attributeKey, float startTime, float durationTime, float number, EffectNumType numberType);
     virtual ~InstantEffect();
     
+    static InstantEffect * create(int priority, AttributeType attributeKey, float startTime, float durationTime, float number, EffectNumType numberType) {}
+    virtual bool init() {}
     //virtual void updateEffectTime(float dt);
     //virtual float getStartTime();
     //virtual float getEndTime();
