@@ -257,44 +257,6 @@ void BlockManager::initDict()
     //return dict;
 }
 
-//void BlockManager::initDict()
-//{
-//    dict = CCDictionary::create();
-
-    //CCDictionary * dictt = LocalController::shared()->DBXMLManager()->getObjectByKey("id");
-    //int count = dictt->count();
-    
-    //
-/////for (int i = 0; i < count; i++) {
-        //int keyid = dynamic_cast<CCInteger*>(dictt->objectForKey("id"))->getValue();
-       // auto arr = dictt->allKeys();
-        //CCDictionary * id =dynamic_cast<CCDictionary*>(dictt->objectForKey(i));
-//        int keyid = id->getValue();
-//        
-//        
-//        CCDictionary * dicttemp = CCDictionary::create();
-//        
-//        CCArray * array = dynamic_cast<CCArray*>(dictt->objectForKey("efflist"));
-//        CCString * filename = dynamic_cast<CCString*>(dictt->objectForKey("filename"));
-//        CCFloat * width = dynamic_cast<CCFloat* >(dictt->objectForKey("width"));
-//        CCFloat * height = dynamic_cast<CCFloat*>(dictt->objectForKey("height"));
-//        CCInteger * windex = dynamic_cast<CCInteger*>(dictt->objectForKey("windex"));
-//        CCInteger * hindex = dynamic_cast<CCInteger*>(dictt->objectForKey("hindex"));
-//        MoveMent * movementud = dynamic_cast<MoveMent*>(dictt->objectForKey("movementud"));
-//        MoveMent * movementlr = dynamic_cast<MoveMent*>(dictt->objectForKey("movementlr"));
-//        
-//        dicttemp->setObject(array, "efflist");
-//        dicttemp->setObject(filename, "filename");
-//        dicttemp->setObject(width, "width");
-//        dicttemp->setObject(height, "height");
-//        dicttemp->setObject(windex, "windex");
-//        dicttemp->setObject(hindex, "hindex");
-//        dicttemp->setObject(movementud, "movementud");
-//        dicttemp->setObject(movementlr, "movementlr");
-//        
-//        dict->setObject(dicttemp, i);
-   // }
-//}
 
 
 //void BlockManager::initEffectDict()
@@ -427,19 +389,6 @@ void BlockManager::initDict()
 //    //return dict;
 //}
 
-//BlockType BlockManager::getCreateBlockType()
-//{
-//    
-//    int randNum = rand() % 100 + 1;
-//    int tempNum = 1;
-//    for (int i = 0; i < BlockNum; i++) {
-//        if (randNum >= tempNum && randNum < tempNum + blockcreatechance[i]) {
-//            return (BlockType)(i);
-//        }
-//        else
-//            tempNum += blockcreatechance[i];
-//    }
-//}
 
 int BlockManager::getCreateBlockType()
 {
@@ -459,34 +408,6 @@ int BlockManager::getCreateBlockType()
 Block * BlockManager::createBlock()
 {
       int bt;
-//    //根据获取的障碍类型获得对应的数值参数
-//    Block * bl = Block::create();
-//    bl->retain();
-//    //CCDictionary * blockproer = (CCDictionary *)dict->objectForKey(bt);
-//    CCDictionary * blockproer = (CCDictionary *)dict->objectForKey(0);
-//    //设置effctlist
-//    bl->setEffectlist((CCArray * )(blockproer->objectForKey("efflist")));
-//    //设置文件名
-//    CCString * fi = dynamic_cast<CCString*>(blockproer->objectForKey("filename"));
-//    bl->setFilename(fi->getCString());
-//    //添加精灵节点
-//    bl->addActor();
-//    //设置大小
-//    bl->setWidth(dynamic_cast<CCFloat *>(blockproer->objectForKey("width"))->getValue());
-//    bl->setHeight(dynamic_cast<CCFloat*>(blockproer->objectForKey("height"))->getValue());
-//    //设置位置
-//    int ix = rand() % 4;
-//    int iy = rand() % 5;
-//    bl->setW_index(ix);
-//    bl->setH_index(iy);
-//    //设置运动
-//    MoveMent * objmv = dynamic_cast<MoveMent *>(blockproer->objectForKey("movementud"));
-//    Movement mvstrut= {objmv->getType(),objmv->getEnable(),objmv->getDirection(),objmv->getSpeed()};
-//    bl->setMoveUpDown(mvstrut);
-//    
-//    MoveMent * objmv2 = dynamic_cast<MoveMent *>(blockproer->objectForKey("movementlr"));
-//    Movement mvstrut2= {objmv2->getType(),objmv2->getEnable(),objmv2->getDirection(),objmv2->getSpeed()};
-//    bl->setMoveUpDown(mvstrut2);
     
     //根据获取的障碍类型获得对应的数值参数
     Block * bl = Block::create();
@@ -776,53 +697,6 @@ Block * BlockManager::createBlockByFile(int type)
     //
 }
 
-//Block * BlockManager::createBlockNormal()
-//{
-//    int bt;
-//    //根据获取的障碍类型获得对应的数值参数
-//    Block * bl = Block::create();
-//    bl->retain();
-//    //    for (int i = 0; i < BlockCreateNumber[bt]; i++) {
-//    //        //根据获取的障碍类型获得对应的数值参数
-//    //        Block * bl = Block::create();
-//    
-//    //CCDictionary * blockproer = (CCDictionary *)dict->objectForKey(bt);
-//    CCDictionary * blockproer = (CCDictionary *)dict->objectForKey(0);
-//    //设置effctlist
-//    bl->setEffectlist((CCArray * )(blockproer->objectForKey("efflist")));
-//    //设置文件名
-//    CCString * fi = dynamic_cast<CCString*>(blockproer->objectForKey("filename"));
-//    bl->setFilename(fi->getCString());
-//    //添加精灵节点
-//    bl->addActor();
-//    //设置大小
-//    bl->setWidth(dynamic_cast<CCFloat *>(blockproer->objectForKey("width"))->getValue());
-//    bl->setHeight(dynamic_cast<CCFloat*>(blockproer->objectForKey("height"))->getValue());
-//    //设置位置
-//    int ix = rand() % 4;
-//    int iy = rand() % 5;
-//    bl->setW_index(ix);
-//    bl->setH_index(iy);
-//    //设置运动
-//    MoveMent * objmv = dynamic_cast<MoveMent *>(blockproer->objectForKey("movementud"));
-//    Movement mvstrut= {objmv->getType(),objmv->getEnable(),objmv->getDirection(),objmv->getSpeed()};
-//    bl->setMoveUpDown(mvstrut);
-//    
-//    MoveMent * objmv2 = dynamic_cast<MoveMent *>(blockproer->objectForKey("movementlr"));
-//    Movement mvstrut2= {objmv2->getType(),objmv2->getEnable(),objmv2->getDirection(),objmv2->getSpeed()};
-//    bl->setMoveUpDown(mvstrut2);
-//    //    }
-//    return bl;
-//    //
-//    //
-//}
-
-Block * BlockManager::createClone(Block *obj)
-{
-    
-}
-
-
 
 void BlockManager::createManager()
 {
@@ -1033,27 +907,36 @@ void BlockManager::blockMove(Track *track, cocos2d::Node *render_node)
     }
 }
 
-//void BlockManager::isCollision(Player * player)
-//{
-//    //Player * player = player;
-//    Ref * obj;
-//    CCRect rect = player->getBoundingBox();
-//    CCARRAY_FOREACH(blocklist, obj){
-//        
-//        Block * block = (Block *)obj;
-//        Sprite * blockactor =dynamic_cast<Sprite*>(block->getActor());
-//        //CCRect rect = player->getBoundingBox();
-//        CCPoint point = blockactor->getPosition();
-//        if (rect.containsPoint(point)) {
-//            CCArray * effli = block->getEffectlist();
-//            int count = effli->count();
-//            for (int i = 0; i < count; i++) {
-//                CCInteger * id = dynamic_cast<CCInteger*>(effli->getObjectAtIndex(i));
-//                
+void BlockManager::isCollision(Player * player,Track *track)
+{
+    Node * playeractor = player->getActor();
+    Ref * obj;
+    CCRect rect = playeractor->getBoundingBox();
+    
+    rect.size.width += player->getPickUpDistance();
+    rect.size.height += player->getPickUpDistance();
+    
+    CCARRAY_FOREACH(blocklist, obj){
+        Block * block = (Block *)obj;
+        Sprite * blockactor =dynamic_cast<Sprite*>(block->getActor());
+        CCPoint point = blockactor->getPosition();
+        if (block->isAlive() && rect.containsPoint(point)) {
+            CCArray * effli = block->getEffectlist();
+            int count = effli->count();
+            for (int i = 0; i < count; i++) {
+                CCString * id = dynamic_cast<CCString*>(effli->getObjectAtIndex(i));
+                
 //                //Effect * eobj = Effect::create();
-//                
-//                CCDictionary * effctproer = (CCDictionary *)effectdict->objectForKey(id->getValue());
-//                CCInteger * effectobject = dynamic_cast<CCInteger * >(effctproer->objectForKey("effobj"));
+                //std::string effobjs = getPropById(id->getCString(), "effobj");
+//                std::string effprops = getPropById(id, "effproperty");
+//                std::string values = getPropById(id, "value");
+//                std::string effecttimes = getPropById(id, "effecttime");
+                
+                int effobj = atoi(getPropById(id->getCString(), "effobj").c_str());
+                int effprop = atoi(getPropById(id->getCString(),"effproperty").c_str());
+                float value = atof(getPropById(id->getCString(), "value").c_str());
+                float time = atof(getPropById(id->getCString(),"effecttime").c_str());
+                
 //                int effectobjectv = effectobject->getValue();
 //                
 //                //CCInteger * effectproperty = effctproer->objectForKey("effproperty");
@@ -1062,44 +945,83 @@ void BlockManager::blockMove(Track *track, cocos2d::Node *render_node)
 //                //CCFloat * value = effctproer->objectForKey("value");
 //                float value = dynamic_cast<CCFloat*>(effctproer->objectForKey("value"))->getValue();
 //                //CCFloat * effcttime = effctproer->objectForKey("effecttime");
-//                float effecttime = dynamic_cast<CCFloat*>(effctproer->objectForKey("effecttime"))->getValue();
-//                switch (effectobjectv) {
-//                    case 0:
-//                        switch (effectproperty) {
-//                            case 0:
-//                                player->setTotalStamina(player->getTotalStamina() + value);
-//                                break;
-//                            case 1:
-//                                player->setScore(player->getScore() + value);
-//                                break;
-//                            case 2:
-//                                break;
-//                            case 3:
-//                                player->setPickUpDistance(player->getPickUpDistance() + value);
-//                                magnet_time = effecttime;
-//                            case 4:
-//                                block_dizzy = effecttime;
-//                                break;
-//                            default:
-//                                break;
-//                        }
-//                        break;
-//                    case 1:
-//                        break;
-//                    default:
-//                        break;
-//                }
-//            }
-//        }
-//    }
-//}
+                //float effecttime = dynamic_cast<CCFloat*>(effctproer->objectForKey("effecttime"))->getValue();
+                if (effobj == 0) {
+                    switch (effprop) {
+                        case 0:
+                            player->setTotalStamina(player->getTotalStamina() + value);
+                            break;
+                        case 1:
+                            player->setScore(player->getScore() + value);
+                            break;
+                        case 2:
+                        case 3:
+                            player->setIsMagnet(true);
+                            player->setPickUpDistance(player->getPickUpDistance() + value);
+                            MagVal = value;
+                            MagnetTime = time;
+                            MagnetTimeVar = 0;
+                            break;
+                        case 4:
+                            player->setIsDizzy(true);
+                            player->setMoveLeftRightEnable(false);
+                            BlockDizzy = time;
+                            BlockDizzyVar = 0;
+                            break;
+                        default:
+                            break;
+                    }
+                }
+                if (effobj == 1 && effprop == 2) {
+                    player->setIsUpSpeed(true);
+                    track->setCourseSpeed(track->getCourseSpeed() + value);
+                    //ChangeSpeed = value;
+                    InviVal = value;
+                    InvincibleTime = time;
+                    InvincibleTimeVar = 0;
+                }
+                
+            }
+            block->setIsActive(false);
+            block->setVisible(false);
+            //blocklist->removeObject(obj);
+        }
+    }
+}
 
+void BlockManager::deleteDeathBlock()
+{
+    Ref * obj;
+    cocos2d::Size visibleSize = Director::getInstance()->getVisibleSize();
+    cocos2d::Vec2 origin = Director::getInstance()->getVisibleOrigin();
+    
+//    blocklist->removeObject(<#cocos2d::Ref *object#>)
+//    CCARRAY_FOREACH(blocklist, obj){
+//        
+//        Block * block = (Block *)obj;
+//        Sprite * blockactor =dynamic_cast<Sprite*>(block->getActor());
+//        
+//        if (!block->isAlive()) {// 活着
+//            
+//        }
+//        
+//    }
+    int num = blocklist->count();
+    for (int i = num - 1; i >= 0; i--) {
+        Block * block = (Block *)blocklist->getObjectAtIndex(i);
+        Sprite * blockactor =dynamic_cast<Sprite*>(block->getActor());
+        if (!block->isAlive()) {
+            //blocklist->removeObject(block);
+            blocklist->removeObjectAtIndex(i);
+        }
+    }
+}
 
 BlockManager::~BlockManager()
 {
     delete [] blockcreatechance;
     dict->release();
-    
+    //blocklist->release();
     blocklist->removeAllObjects();
     CC_SAFE_RELEASE_NULL(blocklist);
 }

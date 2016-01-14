@@ -43,7 +43,8 @@ bool GameLayer::init()
     
     distance = 0;
     trackvar = 0;
-    
+    blockvar = 0;
+    blocktimevar = 0;
 //    delay = 1.5;
 //    totletime = 0;
     
@@ -97,23 +98,19 @@ Player * GameLayer::createPlayer()
     Player * player = Player::create();
     player->retain();
     
-    player->setFilename("xiabai.jpg");
-   
-//    Node * playeractor =player->getActor();
-//    playeractor = Sprite::create("xiaobai.jpg");
-    
+    player->setFilename("xiaobai.jpg");
     Sprite * playeractor = Sprite::create("xiaobai.jpg");
     
     
     playeractor->setAnchorPoint(ccp(0,0));
     playeractor->setScale(0.3, 0.3);
     //player->setPosition(origin.x + 20 + track->getCircuitWidth() * (2 + (int)track->getTrackState()), origin.y + playeractor->getContentSize().height * 0.3/2);
-    playeractor->setPosition(origin.x + 20 + track.getCircuitWidth() * (2 + (int)track.getTrackState()), origin.y + playeractor->getContentSize().height * 0.3/2);
+    playeractor->setPosition(origin.x + 20 + track.getCircuitWidth() * (2 + (int)track.getTrackState()), origin.y + playeractor->getContentSize().height * 2);
     //playeractor->retain();
     player->setActor(playeractor);
     
     Movement playermv1 = {0,false,0,0};
-    Movement playermv2 = {1,true,0,3};
+    Movement playermv2 = {1,false,0,3};
     player->setMoveUpDown(playermv1);
     player->setMoveLeftRight(playermv2);
     //player->addChild(playeractor);
@@ -127,25 +124,17 @@ void GameLayer::createGameScreen()
     SpriteFrameCache * frameCache = SpriteFrameCache::getInstance();
     frameCache->addSpriteFramesWithFile("sprite_sheet.plist", "sprite_sheet.png");
     
-    bg = CCArray::createWithCapacity(4);
+    bg = CCArray::createWithCapacity(3);
     bg->retain();
     
     Sprite * _bg;
-    for (int i = 0; i < 4; i++) {
+    for (int i = 0; i < 3; i++) {
         _bg = Sprite::create("yejing.jpg");
         _bg->setAnchorPoint(ccp(0,0));
-        _bg->setPosition(origin.x,origin.y + i * _bg->getContentSize().height );
+        _bg->setPosition(origin.x,origin.y + i * _bg->boundingBox().size.height );
         this->addChild(_bg,-100);
         bg->addObject(_bg);
     }
-
-    //
-    player = Sprite::create("daxia.png");
-    player->setAnchorPoint(ccp(0,0));
-    player->setScale(0.07, 0.07);
-    player->setPosition(origin.x + 40 + track.getCircuitWidth() * (2 + (int)track.getTrackState()), player->getContentSize().height * 0.05 /2);
-    player->retain();
-    //this->addChild(player,1);
     
     playerreal = createPlayer();
     this->addChild(playerreal,1);
@@ -165,49 +154,8 @@ void GameLayer::createGameScreen()
     labelSetString(distancevarlabel,trackvar);
     this->addChild(distancevarlabel,1);
     
-    
-//
-//    auto moveTo1 = MoveTo::create(1.0, Point(origin.x + visibleSize.width * 0.5,origin.y + visibleSize.height * 0.85));
-//    //player->runAction(moveTo1);
-//    
-//    
-//    
-//    
-//    auto player2 = Sprite::create("xiaobai.jpg");
-//    player2->setScale(0.5, 0.5);
-//    player2->setPosition(origin.x + visibleSize.width * 0.5,origin.y + visibleSize.height * 0.75);
-//    //this->addChild(player2,1,kTagSprite2);
-//    
-//    //    layer->addChild(player,10,kTagSprite);
-//    //    createObstacle(10,layer);
 }
 
-void GameLayer::createObstacle(int num,cocos2d::Node * render_node)
-{
-    //clouds = CCArray::createWithCapacity(35);
-    //clouds->retain();
-//    
-//    for (int i = 0; i < num; i++) {
-//        int rand_w = rand() % 5;
-//        int rand_h = rand() % 7;
-//        
-//        Sprite * _cloud = Sprite::createWithSpriteFrameName("cloud.png");
-//        _cloud->setAnchorPoint(ccp(0,0));
-//        _cloud->setPosition(origin.x + rand_w * 128,origin.y + rand_h * 128 + 64 + visibleSize.height);
-//        
-//        float distance = origin.y + rand_h * 128 + 64 + visibleSize.height + _cloud->getContentSize().height;
-//        float time = distance / 30;
-//        auto obstacle_moveTo = MoveTo::create(time, Point(origin.x + rand_w * 128,origin.y - _cloud->getContentSize().height));
-//        _cloud->runAction(obstacle_moveTo);
-//        
-//        render_node->addChild(_cloud,10);
-//    
-//        //clouds->addObject(_cloud);
-//        //w->addObject(rand_w);
-//        
-//    }
-    
-}
 
 void GameLayer::labelSetString(cocos2d::Label * label,float distance)
 {
@@ -217,14 +165,6 @@ void GameLayer::labelSetString(cocos2d::Label * label,float distance)
     label->setString(str);
 }
 
-//bool GameLayer::isCollasion()
-//{
-////    auto s1 = getChildByTag(kTagSprite);
-////    auto s2 = getChildByTag(kTagSprite2);
-////    CCRect rect = s1->getBoundingBox();
-////    CCPoint point = s2->getPosition();
-////    return rect.containsPoint(point);
-//}
 
 void GameLayer::onEnter()
 {
@@ -234,36 +174,77 @@ void GameLayer::onEnter()
 void GameLayer::onExit()
 {
     bg->release();
-    player->release();
-    //clouds->release();
-    
+    playerreal->release();
     CCLayer::onExit();
 }
 
 void GameLayer::update(float dt)
 {
-    distance += dt * 80;
-    trackvar += dt * 80;
-    blockvar += dt * 80;
+    distance += dt * track.getCourseSpeed();
+    trackvar += dt * track.getCourseSpeed();
+    blockvar += dt * track.getCourseSpeed();
+    blocktimevar += dt;
     
-//    totletime += dt;
-//    if (totletime >= delay) {
-//        int number = rand() % 5;
-//        createObstacle(number, this);
-//        totletime = 0;
-//    }
+    if (playerreal->getIsMagnet()) {
+        MagnetTimeVar += dt;
+        if (MagnetTimeVar >= MagnetTime) {
+            
+            playerreal->setIsMagnet(false);
+            playerreal->setPickUpDistance(playerreal->getPickUpDistance() - MagVal);
+            //playerreal->setPickUpDistance(playerreal->getPickUpDistance()-Mag)
+            MagnetTime = 0;
+            MagnetTimeVar = 0;
+            MagVal = 0;
+        }
+        
+    }
+    
+    if (playerreal->getIsDizzy()) {
+        BlockDizzyVar += dt;
+        if (BlockDizzyVar >= BlockDizzy) {
+            playerreal->setMoveLeftRightEnable(true);
+            playerreal->setIsDizzy(false);
+            BlockDizzy = 0;
+            BlockDizzyVar = 0;
+        }
+    }
+    
+    if (playerreal->getIsUpSpeed()) {
+        InvincibleTimeVar += dt;
+        if (InvincibleTimeVar >= InvincibleTime) {
+            playerreal->setIsUpSpeed(false);
+            track.setCourseSpeed(track.getCourseSpeed() - InviVal);
+            InviVal = 0;
+            InvincibleTime = 0;
+            InvincibleTimeVar = 0;
+        }
+    }
     if (true) {//游戏未结束
         
         // 背景移动
         bg->retain();
         Sprite * _bg;
         int _count = bg->count();
+//        for (int i = 0; i < _count; i++) {
+//            _bg = (Sprite * )bg->objectAtIndex(i);
+//            _bg->setPositionY(_bg->getPositionY() - track.getCourseSpeed());
+//            if (_bg->getPositionY() + _bg->boundingBox().size.height < 0) {
+//                Sprite * next_bg = (Sprite * )bg->objectAtIndex((i + 3) % 4);
+//                _bg->setPositionY(next_bg->getPositionY() + next_bg->boundingBox().size.height);
+//            }
+//        }
         for (int i = 0; i < _count; i++) {
             _bg = (Sprite * )bg->objectAtIndex(i);
-            _bg->setPositionY(_bg->getPositionY() - track.getCourseSpeed());
+            //_bg->setPositionY(_bg->getPositionY() - track.getCourseSpeed());
             if (_bg->getPositionY() + _bg->boundingBox().size.height < 0) {
                 Sprite * next_bg = (Sprite * )bg->objectAtIndex((i + 2) % 3);
-                _bg->setPositionY(next_bg->getPositionY() + next_bg->getContentSize().height - 20);
+                //_bg->setPositionY(next_bg->getPositionY() + next_bg->boundingBox().size.height - track.getCourseSpeed() * dt);
+                _bg->setPositionY(next_bg->getPositionY() + next_bg->boundingBox().size.height);
+                _bg->setPositionY(_bg->getPositionY() - track.getCourseSpeed());
+            }
+            else
+            {
+                _bg->setPositionY(_bg->getPositionY() - track.getCourseSpeed());
             }
         }
         bg->release();
@@ -280,8 +261,8 @@ void GameLayer::update(float dt)
         
         //显示距离
         labelSetString(distancelabel,distance);
-        labelSetString(distancevarlabel,trackvar);
-        labelSetString(mark,(float)track.getTrackState());
+        labelSetString(distancevarlabel,playerreal->getTotalStamina());
+        labelSetString(mark,playerreal->getScore());
         
         //生成障碍并显示
         if (blockvar >= bmr.getBlockDistance()) {
@@ -301,147 +282,54 @@ void GameLayer::update(float dt)
 
         }
         
+        if (blocktimevar >= bmr.getBlockTime()) {
+            if (bmr.getBlockDistance() - bmr.getBlockReduce() <= 200) {
+                bmr.setBlockDistance(200);
+            }
+            else
+                bmr.setBlockDistance(bmr.getBlockDistance() - bmr.getBlockReduce());
+            blocktimevar -= bmr.getBlockTime();
+        }
+        
+        
         //障碍运动
         bmr.blockMove(&track, this);
         
+        //主角移动
+        Node * playeractor = playerreal->getActor();
+        if (playerreal->getMoveLeftRightEnable())
+        {
+            switch (playerreal->getMoveLeftRight().direction) {
+                case 0:
+                    if (playeractor->getPositionX() - playerreal->getMoveLeftRight().speed < origin.x) {
+                        playeractor->setPositionX(origin.x);
+                    }
+                    else
+                        playeractor->setPositionX(playeractor->getPositionX() - playerreal->getMoveLeftRight().speed);
+                    break;
+                case 1:
+                    if (playeractor->getPositionX() + playerreal->getMoveLeftRight().speed > visibleSize.width) {
+                        playeractor->setPositionX(visibleSize.width);
+                    }
+                    else
+                        playeractor->setPositionX(playeractor->getPositionX() + playerreal->getMoveLeftRight().speed);
+                    break;
+                default:
+                    break;
+            }
+            
+        }
         
+        // 判断碰撞
+        bmr.isCollision(playerreal,&track);
         
-//        /*
-//         auto s = getChildByTag(kActionLayer);
-//         s->setPositionY(s->getPositionY() - 3);
-//         if (s->getPositionY() + s->boundingBox().size.height < 0) {
-//         ;
-//         }
-//         */
-//        //        Sprite * _obstacle;
-//        //        ///clouds->retain();
-//        //        int _obstaclecount = clouds->count();
-//        //        for (int i = 0; i < _obstaclecount; i++) {
-//        //            _obstacle = (Sprite * )clouds->objectAtIndex(i);
-//        //            _obstacle->setPositionY(_obstacle->getPositionY() - 20);
-//        //            if (_obstacle->getPositionY() + _obstacle->boundingBox().size.height < 0) {
-//        //                clouds->removeObjectAtIndex(i);
-//        //            }
-//        //        }
-//        //clouds->release();
-//        
-//        
-//        //player->setPositionX(player->getPositionX() - 2);
-//        player->setPositionY(player->getPositionY() - 25);
-//        
-//        //        if (isCollasion()) {
-//        //            auto s1 = getChildByTag(kTagSprite);
-//        //            auto s2 = getChildByTag(kTagSprite2);
-//        //            s2->setVisible(false);
-//        //        }
+        bmr.deleteDeathBlock();
+
     }
-//    //    else
-//    //    {
-//    //        Sprite * _bg;
-//    //        int _count = bg->count();
-//    //        for (int i = 0; i < _count; i++) {
-//    //            _bg = (Sprite * )bg->objectAtIndex(i);
-//    //            _bg->stopAllActions();
-//    //        }
-//    //    }
-    
-    
 }
 
 bool GameLayer::onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *event)
 {
-    return true;
-}
-
-//void GameLayer::onTouchEnded(cocos2d::Touch *touch, cocos2d::Event *event)
-//{
-//    auto location = touch->getLocation();
-//    
-//    //auto s = getChildByTag(kTagSprite);
-//    //s->stopAllActions();
-//    //Node * playeractor = playerreal->getActor();
-//    Node * playeractor = playerreal->getActor();
-//    float left = origin.x + track.getCircuitWidth() * ((int)track.getTrackState());
-//    float right = origin.x + track.getCircuitWidth() * ((int)track.getTrackState() + 5) - playeractor->getContentSize().width;
-//    float up = 200;
-//    float down = origin.y;
-//    if (location.x >= left && location.x < right/2 && location.y > down && location.y < up) {
-//        if (playeractor->getPositionX() - playerreal->getMoveLeftRight().speed < left) {
-//            playeractor->setPositionX(left);
-//        }
-//        else
-//            playeractor->setPositionX(playeractor->getPositionX() - playerreal->getMoveLeftRight().speed);
-////        playerreal->setMoveLeftRightDir(0);
-////        if (playerreal->getIsAlive()) {
-////            if (playerreal->getMoveUpDown().enable) {
-////                
-////            }
-////            if (playerreal->getMoveLeftRightEnable()) {
-////                switch (playerreal->getMoveLeftRight().direction) {
-////                    case 0:
-////                        if (playeractor->getPositionX() - playerreal->getMoveLeftRight().speed < left) {
-////                            playeractor->setPositionX(left);
-////                        }
-////                        else
-////                            playeractor->setPositionX(playeractor->getPositionX() - playerreal->getMoveLeftRight().speed);
-////                        break;
-////                    case 1:
-////                        if (playeractor->getPositionX() + playerreal->getMoveLeftRight().speed > right) {
-////                            playeractor->setPositionX(right);
-////                        }
-////                        else
-////                            playeractor->setPositionX(playeractor->getPositionX() + playerreal->getMoveLeftRight().speed);
-////                    default:
-////                        break;
-////                }
-////            }
-////        }
-//    }
-//    if (location.x >= right/2 && location.x < right && location.y > down && location.y < up) {
-//        if (playeractor->getPositionX() + playerreal->getMoveLeftRight().speed > right) {
-//            playeractor->setPositionX(right);
-//        }
-//        else
-//            playeractor->setPositionX(playeractor->getPositionX() + playerreal->getMoveLeftRight().speed);
-//    }
-//    //playeractor->runAction(MoveTo::create(1, Vec2(location.x,location.y)));
-////    float o = location.x - playerreal->getPosition().x;
-////    float a = location.y - playerreal->getPosition().y;
-////    float at = (float) CC_RADIANS_TO_DEGREES(atanf(o/a));
-////    
-////    if (a < 0) {
-////        if (o < 0) {
-////            at = 180 + fabs(at);
-////        }
-////        else
-////            at = 180 - fabs(at);
-////    }
-//    //s->runAction(RotateTo::create(1, at));
-//}
-
-void GameLayer::onTouchEnded(cocos2d::Touch *touch, cocos2d::Event *event)
-{
-//    auto location = touch->getLocation();
-//    
-//    Node * playeractor = playerreal->getActor();
-//    float left = origin.x;
-//    float right = visibleSize.width;
-//    float up = 200;
-//    float down = origin.y;
-//    if (location.x >= left && location.x < right/2 && location.y > down && location.y < up) {
-//        if (playeractor->getPositionX() - playerreal->getMoveLeftRight().speed < left) {
-//            playeractor->setPositionX(left);
-//        }
-//        else
-//            playeractor->setPositionX(playeractor->getPositionX() - playerreal->getMoveLeftRight().speed);
-//    }
-//    if (location.x >= right/2 && location.x < right && location.y > down && location.y < up) {
-//        if (playeractor->getPositionX() + playerreal->getMoveLeftRight().speed > right) {
-//            playeractor->setPositionX(right);
-//        }
-//        else
-//            playeractor->setPositionX(playeractor->getPositionX() + playerreal->getMoveLeftRight().speed);
-//    }
     auto location = touch->getLocation();
     
     Node * playeractor = playerreal->getActor();
@@ -449,20 +337,19 @@ void GameLayer::onTouchEnded(cocos2d::Touch *touch, cocos2d::Event *event)
     float right = visibleSize.width;
     float up = 200;
     float down = origin.y;
+    playerreal->setMoveLeftRightEnable(true);
     if (location.x <= visibleSize.width/2) {
-        if (playeractor->getPositionX() - playerreal->getMoveLeftRight().speed < left) {
-            playeractor->setPositionX(left);
-        }
-        else
-            playeractor->setPositionX(playeractor->getPositionX() - playerreal->getMoveLeftRight().speed);
+        playerreal->setMoveLeftRightDir(0);
     }
     else{
-        if (playeractor->getPositionX() + playerreal->getMoveLeftRight().speed > right) {
-            playeractor->setPositionX(right);
-        }
-        else
-            playeractor->setPositionX(playeractor->getPositionX() + playerreal->getMoveLeftRight().speed);
+        playerreal->setMoveLeftRightDir(1);
     }
+    return true;
+}
+
+void GameLayer::onTouchEnded(cocos2d::Touch *touch, cocos2d::Event *event)
+{
+    playerreal->setMoveLeftRightEnable(false);
     
 }
 

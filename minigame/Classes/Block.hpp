@@ -10,7 +10,7 @@
 #define Block_hpp
 
 #include <stdio.h>
-#include "game.h"
+//#include "game.h"
 #include "Entity.hpp"
 
 class Block : public Entity

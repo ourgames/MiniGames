@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<tns:database xmlns:tns="http://www.iw.com/sns/platform/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <Group id="effect">
+        <ItemSpec id="10" effobj="0" effproperty="0" value="-80" effecttime="0"/>
+        <ItemSpec id="11" effobj="0" effproperty="0" value="-120" effecttime="0"/>
+        <ItemSpec id="12" effobj="0" effproperty="0" value="-40" effecttime="0"/>
+        <ItemSpec id="13" effobj="0" effproperty="0" value="100" effecttime="0"/>
+        <ItemSpec id="14" effobj="0" effproperty="1" value="100" effecttime="0"/>
+        <ItemSpec id="15" effobj="1" effproperty="2" value="50" effecttime="1500"/>
+        <ItemSpec id="16" effobj="0" effproperty="3" value="100" effecttime="3000"/>
+        <ItemSpec id="17" effobj="0" effproperty="4" value="0" effecttime="100"/>
+    </Group>
+</tns:database>

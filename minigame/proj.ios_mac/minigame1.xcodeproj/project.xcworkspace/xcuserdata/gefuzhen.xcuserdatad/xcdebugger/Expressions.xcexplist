@@ -3,10 +3,10 @@
    version = "1.0">
    <ContextStates>
       <ContextState
-         contextName = "BlockManager::split(char const*, char const*):BlockManager.cpp">
+         contextName = "cocos2d::__Dictionary::objectForKey(long):CCDictionary.cpp">
       </ContextState>
       <ContextState
-         contextName = "BlockManager::createBlockByFile(int):BlockManager.cpp">
+         contextName = "BlockManager::split(char const*, char const*):BlockManager.cpp">
       </ContextState>
       <ContextState
          contextName = "BlockManager::isCollision(Player*):BlockManager.cpp">
@@ -21,11 +21,6 @@
       </ContextState>
       <ContextState
          contextName = "GameLayer::update(float):GameLayer.cpp">
-         <PersistentStrings>
-            <PersistentString
-               value = "bg">
-            </PersistentString>
-         </PersistentStrings>
       </ContextState>
       <ContextState
          contextName = "BlockManager::createManager():BlockManager.cpp">
@@ -143,7 +138,7 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "cocos2d::__Dictionary::objectForKey(long):CCDictionary.cpp">
+         contextName = "BlockManager::createBlockByFile(int):BlockManager.cpp">
       </ContextState>
    </ContextStates>
 </VariablesViewState>

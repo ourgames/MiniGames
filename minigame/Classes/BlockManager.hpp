@@ -11,10 +11,10 @@
 
 #include <stdio.h>
 #include "cocos2d.h"
-#include "game.h"
+//#include "game.h"
 #include "Block.hpp"
 #include "Track.hpp"
-//#include "Player.hpp"
+#include "Player.hpp"
 #include "LocalController.h"
 //#include <iostream>
 #include <string>
@@ -30,7 +30,6 @@ class BlockManager
     CCDictionary * dict;
     CCDictionary * effectdict;
     
-//    static CCDictionary * dict;
     
     CC_SYNTHESIZE(float, blockDistance, BlockDistance);
     CC_SYNTHESIZE(float, blockCreateDistance, BlockCreateDistance);
@@ -53,7 +52,6 @@ public:
     Block * createBlockByFile();
     Block * createBlockByFile(int type);
     
-    Block * createClone(Block * obj);
     void displayBlock(Track *track,cocos2d::Node * render_node);
     void createManager(Track *track,cocos2d::Node * render_node);
     void createManager();
@@ -65,8 +63,8 @@ public:
     
    //std::string getPropById(std::string xmlId,std::string propName);
     
-//    void isCollision(Player * player);
-    
+    void isCollision(Player * player,Track *track);
+    void deleteDeathBlock();
     void setBlockCreateChance(int * num);
 };
 #endif /* BlockManager_hpp */

@@ -29,6 +29,7 @@
 Block::~Block()
 {
     //delete [] blockcreatechance;
+    effectlist->release();
     delete [] effectlist;
     
 }
@@ -61,9 +62,12 @@ void Block::setEffectlist(CCArray * array)
 {
     int count = array->count();
     for (int i = 0; i < count; i++) {
-        CCInteger * obj =(CCInteger *)array->objectAtIndex(i);
+        //CCInteger * obj =(CCInteger *)array->objectAtIndex(i);
+        CCString * obj =(CCString *)array->objectAtIndex(i);
         effectlist->addObject(obj);
     }
+    
+    effectlist->retain();
 }
 
 CCArray * Block::getEffectlist()

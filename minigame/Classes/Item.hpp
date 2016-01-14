@@ -10,7 +10,7 @@
 #define Item_hpp
 
 #include <stdio.h>
-#include "game.h"
+//#include "game.h"
 #include "Entity.hpp"
 
 class Item : public Entity

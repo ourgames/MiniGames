@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<tns:database xmlns:tns="http://www.iw.com/sns/platform/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <Group id="item">
+        <ItemSpec id="20" efflist="13" width="1" height="1" windex="0" hindex="0" movementud="0,true,1,50" movementlr="1,false,0,0"/>
+        <ItemSpec id="21" efflist="14" width="1" height="1" windex="0" hindex="0" movementud="0,true,1,50" movementlr="1,false,0,0"/>
+        <ItemSpec id="22" efflist="15" width="1" height="1" windex="0" hindex="0" movementud="0,true,1,50" movementlr="1,false,0,0"/>
+        <ItemSpec id="23" efflist="16" width="1" height="1" windex="0" hindex="0" movementud="0,true,1,50" movementlr="1,false,0,0"/>
+    </Group>
+</tns:database>

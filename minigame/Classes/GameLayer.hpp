@@ -25,14 +25,12 @@ class GameLayer : public cocos2d::Layer
     Player* playerreal;
     
     cocos2d::CCArray * bg;//背景层
-    cocos2d::Sprite * player;
-//    cocos2d::CCArray * clouds;
-    
-//    float delay;
-//    float totletime;
+
     float distance;
     float trackvar;
     float blockvar;
+    
+    float blocktimevar;
     
     cocos2d::Label * distancelabel;
     cocos2d::Label * distancevarlabel;
@@ -60,9 +58,7 @@ public:
     bool onTouchBegan(cocos2d::Touch * touch,cocos2d::Event * event);
     void onTouchEnded(cocos2d::Touch * touch,cocos2d::Event * event);
     
-    void createObstacle(int fre,cocos2d::Node * render_node);
     Player * createPlayer();
-    
-    //bool isCollasion();
+
 };
 #endif /* GameLayer_hpp */

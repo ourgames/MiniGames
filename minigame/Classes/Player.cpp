@@ -29,6 +29,9 @@ bool Player::init()
         setScore(0);
         setPickUpDistance(60);
         setIsAlive(true);
+        setIsUpSpeed(false);
+        setIsMagnet(false);
+        setIsDizzy(false);
         //return true;
     }
     return true;

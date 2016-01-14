@@ -22,6 +22,9 @@ class Player : public Entity
     CC_SYNTHESIZE(float, pickUpDistance, PickUpDistance);
     CC_SYNTHESIZE(bool, isAlive, IsAlive);
     
+    CC_SYNTHESIZE(bool, isUpSpeed, IsUpSpeed);
+    CC_SYNTHESIZE(bool, isMagnet, IsMagnet);
+    CC_SYNTHESIZE(bool, isDizzy, IsDizzy);
 public:
     //Player(void);
     virtual ~Player();
