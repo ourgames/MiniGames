@@ -17,8 +17,5 @@ USING_NS_CC;
 
 //cocos2d::Size visibleSize;
 //cocos2d::Vec2 origin;
-//cocos2d::Size visibleSize = Director::getInstance()->getVisibleSize();
-//cocos2d::Vec2 origin = Director::getInstance()->getVisibleOrigin();
-//Track track;
-
+  
 #endif /* GameLayerVar_h */
