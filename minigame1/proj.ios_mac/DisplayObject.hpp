@@ -60,7 +60,12 @@ public:
         addAttribute(pXSizeAttribute);
         IAttribute * pYSizeAttribute = Attribute::create(AttributeType::COLLISION_SIZE_Y, collisionSize.height);
         addAttribute(pYSizeAttribute);
-    };
+    }
+    
+    BaseDisplayObject(cocos2d::Vec2 position)
+    {
+        
+    }
     
     virtual ~BaseDisplayObject()
     {
@@ -98,6 +103,14 @@ public:
             }
         }
     }
+    virtual void setAlive(bool value)
+    {
+        mAlive = value;
+    }
+    virtual bool getAlive()
+    {
+        return mAlive;
+    }
 protected:
     float getAttributeValueByKey(AttributeType key)
     {
@@ -113,6 +126,7 @@ protected:
     //cocos2d::Size mCollisionSize;
     cocos2d::Map<int, IAttribute*> mAttributeList;
     std::vector<int> mAttributeKeyList;
+    bool mAlive;
 };
 
 //in layer.update

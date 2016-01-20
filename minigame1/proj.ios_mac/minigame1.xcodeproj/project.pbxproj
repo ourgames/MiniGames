@@ -75,6 +75,14 @@
 		6E7AC1121C4E3BD20035BEA0 /* DisplayObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6E7AC10B1C4E3BD20035BEA0 /* DisplayObject.cpp */; };
 		6E7AC1131C4E3BD20035BEA0 /* Effect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6E7AC10D1C4E3BD20035BEA0 /* Effect.cpp */; };
 		6E7AC1141C4E3BD20035BEA0 /* Effect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6E7AC10D1C4E3BD20035BEA0 /* Effect.cpp */; };
+		6E7AC1171C4F2BE50035BEA0 /* Block.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6E7AC1151C4F2BE50035BEA0 /* Block.cpp */; };
+		6E7AC1181C4F2BE50035BEA0 /* Block.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6E7AC1151C4F2BE50035BEA0 /* Block.cpp */; };
+		6E7AC1201C4F50360035BEA0 /* CommonUtil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6E7AC11E1C4F50360035BEA0 /* CommonUtil.cpp */; };
+		6E7AC1211C4F50360035BEA0 /* CommonUtil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6E7AC11E1C4F50360035BEA0 /* CommonUtil.cpp */; };
+		6E7AC1241C4F5B140035BEA0 /* GlobalVar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6E7AC1221C4F5B140035BEA0 /* GlobalVar.cpp */; };
+		6E7AC1251C4F5B140035BEA0 /* GlobalVar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6E7AC1221C4F5B140035BEA0 /* GlobalVar.cpp */; };
+		6E7AC1281C4F5CB80035BEA0 /* BlockManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6E7AC1261C4F5CB80035BEA0 /* BlockManager.cpp */; };
+		6E7AC1291C4F5CB80035BEA0 /* BlockManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6E7AC1261C4F5CB80035BEA0 /* BlockManager.cpp */; };
 		8262943E1AAF051F00CB7CF7 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8262943D1AAF051F00CB7CF7 /* Security.framework */; };
 		BF171245129291EC00B8313A /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB012928DE900B8313A /* OpenGLES.framework */; };
 		BF1712471292920000B8313A /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB412928DE900B8313A /* libz.dylib */; };
@@ -190,6 +198,14 @@
 		6E7AC10C1C4E3BD20035BEA0 /* DisplayObject.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = DisplayObject.hpp; path = ../proj.ios_mac/DisplayObject.hpp; sourceTree = "<group>"; };
 		6E7AC10D1C4E3BD20035BEA0 /* Effect.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Effect.cpp; path = ../proj.ios_mac/Effect.cpp; sourceTree = "<group>"; };
 		6E7AC10E1C4E3BD20035BEA0 /* Effect.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Effect.hpp; path = ../proj.ios_mac/Effect.hpp; sourceTree = "<group>"; };
+		6E7AC1151C4F2BE50035BEA0 /* Block.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Block.cpp; sourceTree = "<group>"; };
+		6E7AC1161C4F2BE50035BEA0 /* Block.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Block.hpp; sourceTree = "<group>"; };
+		6E7AC11E1C4F50360035BEA0 /* CommonUtil.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CommonUtil.cpp; sourceTree = "<group>"; };
+		6E7AC11F1C4F50360035BEA0 /* CommonUtil.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = CommonUtil.hpp; sourceTree = "<group>"; };
+		6E7AC1221C4F5B140035BEA0 /* GlobalVar.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GlobalVar.cpp; sourceTree = "<group>"; };
+		6E7AC1231C4F5B140035BEA0 /* GlobalVar.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GlobalVar.hpp; sourceTree = "<group>"; };
+		6E7AC1261C4F5CB80035BEA0 /* BlockManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BlockManager.cpp; sourceTree = "<group>"; };
+		6E7AC1271C4F5CB80035BEA0 /* BlockManager.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = BlockManager.hpp; sourceTree = "<group>"; };
 		8262943D1AAF051F00CB7CF7 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		BF170DB012928DE900B8313A /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		BF170DB412928DE900B8313A /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
@@ -349,6 +365,14 @@
 				46880B8719C43A87006E1F66 /* HelloWorldScene.h */,
 				6E7AC0E31C4E32230035BEA0 /* LocalController.cpp */,
 				6E7AC0E41C4E32230035BEA0 /* LocalController.h */,
+				6E7AC1151C4F2BE50035BEA0 /* Block.cpp */,
+				6E7AC1161C4F2BE50035BEA0 /* Block.hpp */,
+				6E7AC11E1C4F50360035BEA0 /* CommonUtil.cpp */,
+				6E7AC11F1C4F50360035BEA0 /* CommonUtil.hpp */,
+				6E7AC1221C4F5B140035BEA0 /* GlobalVar.cpp */,
+				6E7AC1231C4F5B140035BEA0 /* GlobalVar.hpp */,
+				6E7AC1261C4F5CB80035BEA0 /* BlockManager.cpp */,
+				6E7AC1271C4F5CB80035BEA0 /* BlockManager.hpp */,
 			);
 			name = Classes;
 			path = ../Classes;
@@ -561,11 +585,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				46880B8819C43A87006E1F66 /* AppDelegate.cpp in Sources */,
+				6E7AC1171C4F2BE50035BEA0 /* Block.cpp in Sources */,
 				46880B8A19C43A87006E1F66 /* HelloWorldScene.cpp in Sources */,
 				6E7AC1071C4E3B060035BEA0 /* CCXMLParser.cpp in Sources */,
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
+				6E7AC1201C4F50360035BEA0 /* CommonUtil.cpp in Sources */,
 				6E7AC1031C4E3B060035BEA0 /* CCINIParser.cpp in Sources */,
 				6E7AC0E51C4E32230035BEA0 /* LocalController.cpp in Sources */,
+				6E7AC1241C4F5B140035BEA0 /* GlobalVar.cpp in Sources */,
 				6E7AC1131C4E3BD20035BEA0 /* Effect.cpp in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
 				6E7AC0E91C4E33320035BEA0 /* GameLayer.cpp in Sources */,
@@ -573,6 +600,7 @@
 				6E7AC10F1C4E3BD20035BEA0 /* Attribute.cpp in Sources */,
 				6E7AC1051C4E3B060035BEA0 /* CCRapidXMLParser.cpp in Sources */,
 				6E7AC1111C4E3BD20035BEA0 /* DisplayObject.cpp in Sources */,
+				6E7AC1281C4F5CB80035BEA0 /* BlockManager.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -587,9 +615,13 @@
 				6E7AC1141C4E3BD20035BEA0 /* Effect.cpp in Sources */,
 				6E7AC1081C4E3B060035BEA0 /* CCXMLParser.cpp in Sources */,
 				46880B8B19C43A87006E1F66 /* HelloWorldScene.cpp in Sources */,
+				6E7AC1211C4F50360035BEA0 /* CommonUtil.cpp in Sources */,
 				6E7AC1101C4E3BD20035BEA0 /* Attribute.cpp in Sources */,
 				6E7AC0E61C4E32230035BEA0 /* LocalController.cpp in Sources */,
+				6E7AC1251C4F5B140035BEA0 /* GlobalVar.cpp in Sources */,
+				6E7AC1181C4F2BE50035BEA0 /* Block.cpp in Sources */,
 				6E7AC1041C4E3B060035BEA0 /* CCINIParser.cpp in Sources */,
+				6E7AC1291C4F5CB80035BEA0 /* BlockManager.cpp in Sources */,
 				6E7AC1121C4E3BD20035BEA0 /* DisplayObject.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

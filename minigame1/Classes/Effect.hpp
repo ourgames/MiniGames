@@ -10,7 +10,6 @@
 #define Effect_hpp
 
 #include <stdio.h>
-#include "game.h"
 
 #include <string>
 using namespace std;
@@ -54,18 +53,6 @@ public:
     virtual void setTargetAttribute(IAttribute * pAttribute) = 0;
     
     virtual ~IEffect() {}
-};
-
-class Effect
-{
-    int id;
-    EffectObject eobj;
-    EffectProperty epro;
-    float value;
-    float effcttime;
-public:
-    Effect();
-    ~Effect();
 };
 
 typedef enum
