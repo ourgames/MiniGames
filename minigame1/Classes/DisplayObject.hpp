@@ -18,7 +18,7 @@
 using namespace std;
 
 
-class IDisplayObject : public cocos2d::Ref
+class IDisplayObject : public cocos2d::Node
 {
 public:
     virtual void updateAttribute(float ) = 0;
@@ -60,7 +60,17 @@ public:
         addAttribute(pXSizeAttribute);
         IAttribute * pYSizeAttribute = Attribute::create(AttributeType::COLLISION_SIZE_Y, collisionSize.height);
         addAttribute(pYSizeAttribute);
-    };
+    }
+    
+    BaseDisplayObject();
+    
+    virtual bool init(cocos2d::Vec2 position, cocos2d::Size collisionSize, cocos2d::Vec2 speed);
+   
+    //CREATE_FUNC(BaseDisplayObject);
+    
+    //static BaseDisplayObject * create();
+    
+    //virtual bool init();
     
     virtual ~BaseDisplayObject()
     {
@@ -98,6 +108,16 @@ public:
             }
         }
     }
+    //virtual void onCollision(IDisplayObject *pCollisionTarget);
+    
+    virtual void setAlive(bool value)
+    {
+        mAlive = value;
+    }
+    virtual bool getAlive()
+    {
+        return mAlive;
+    }
 protected:
     float getAttributeValueByKey(AttributeType key)
     {
@@ -113,6 +133,7 @@ protected:
     //cocos2d::Size mCollisionSize;
     cocos2d::Map<int, IAttribute*> mAttributeList;
     std::vector<int> mAttributeKeyList;
+    bool mAlive;
 };
 
 //in layer.update

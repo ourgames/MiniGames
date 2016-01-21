@@ -63,6 +63,12 @@ typedef enum
     Lock,
 }EffectNumType;
 
+typedef enum
+{
+    INSTANT,
+    DURATION,
+}EffectType;
+
 class BaseEffect : public IEffect
 {
 public:

@@ -9,19 +9,6 @@
 #include "Effect.hpp"
 #include "Attribute.hpp"
 
-Effect::Effect()
-{
-    id = 0;
-    eobj = player;
-    epro = hp;
-    value = 0;
-    effcttime = 0;
-}
-
-Effect::~Effect()
-{
-    
-}
 
 DurationEffect::DurationEffect(int priority, AttributeType attributeKey, float startTime, float durationTime, float number, EffectNumType numberType) : BaseEffect( priority,  attributeKey,  startTime,  durationTime,  number,  numberType)
 {

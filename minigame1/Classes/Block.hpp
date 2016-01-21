@@ -11,6 +11,10 @@
 
 #include <stdio.h>
 #include "DisplayObject.hpp"
+#include "CommonUtil.hpp"
+#include "GlobalVar.hpp"
+#include "Attribute.hpp"
+#include "Effect.hpp"
 
 typedef enum
 {
@@ -27,16 +31,27 @@ typedef enum
 class BaseBlock : public BaseDisplayObject
 {
 public:
-    BaseBlock(cocos2d::Vec2 position, cocos2d::Size collisionSize, cocos2d::Vec2 speed,BlockType type);
-    BaseBlock(BlockType type);
-    ~BaseBlock();
+    //BaseBlock(cocos2d::Vec2 position, cocos2d::Size collisionSize, cocos2d::Vec2 speed,BlockType type);
+    //BaseBlock(BlockType type,cocos2d::Vec2 position);
+    BaseBlock();
+    
+    static BaseBlock * create(BlockType type,cocos2d::Vec2 position);
+    //CREATE_FUNC(BaseBlock);
+    //virtual bool init();
+    virtual bool init(BlockType type,cocos2d::Vec2 position);
+    
+    virtual ~BaseBlock();
     BlockType getType();
+   
+    void onCollision(IDisplayObject *pCollisionTarget);
+    void update(float dt);
     
 protected:
+    Node * actor;
     BlockType mBlockType;
     float mScore;
     float mStamina;
     float mTime;
-    
+    std::vector<int> mBlockEffectList;
 };
 #endif /* Block_hpp */

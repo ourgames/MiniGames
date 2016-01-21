@@ -19,7 +19,6 @@ class GameLayer : public cocos2d::Layer
     cocos2d::Size visibleSize;
     cocos2d::Vec2 origin;
 
-    
     cocos2d::CCArray * bg;//背景层
 
 public:

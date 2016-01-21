@@ -27,6 +27,9 @@
 #define TRACKNUM 5
 #define TRACKWIDTH 80
 
+#define MAXSIZE 50
+#define BLOCKEFFECTLISTSIZE 10
+
 static float BlockDistance = 400;
 
 class GlobalVar

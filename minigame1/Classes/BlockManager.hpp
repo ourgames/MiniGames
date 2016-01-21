@@ -21,12 +21,14 @@ public:
     BlockManager();
     ~BlockManager();
     void update(float dt);
+    void updateBaseBlockPosition(float dt);
     void setArray();
     BlockType generateBlockType();
     void generateBlock();
 protected:
     std::vector<float> mChanceArray;
     std::vector<int> mGenerateNumArray;
+    cocos2d::Vector <BaseBlock *> mBaseBlockArray;
     float distimer;
     float timtimer;
 };

@@ -16,6 +16,9 @@ BlockManager::BlockManager()
     if (mGenerateNumArray.empty()) {
         mGenerateNumArray.reserve(BLOCKTYPENUM);
     }
+    if (mBaseBlockArray.empty()) {
+        mBaseBlockArray.reserve(MAXSIZE);
+    }
     distimer = 0;
     timtimer = 0;
 }
@@ -24,6 +27,7 @@ BlockManager::~BlockManager()
 {
     mChanceArray.clear();
     mGenerateNumArray.clear();
+    mBaseBlockArray.clear();
 }
 
 void BlockManager::setArray()
@@ -59,19 +63,10 @@ void BlockManager::generateBlock()
     
     BlockType type = generateBlockType();
     cocos2d::Vec2 position;
-    cocos2d::Size collisionSize;
-    cocos2d::Vec2 speed;
-    float score;
-    float stamina;
-    float time;
-    std::string filename;
-    
     
     int num = mGenerateNumArray.at((int)type);
     
-    std::string blockid = CommonUtil::itos((int)type + BLOCKIDBASE);
-    
-    if (type == BlockType::NormalBlock) {
+    if (type == BlockType::NormalBlock && num == TRACKNUM - 1) {
         int ix = rand() % TRACKNUM;
         for (int i = 0; i < TRACKNUM; i++) {
             if (i == ix) {
@@ -82,20 +77,37 @@ void BlockManager::generateBlock()
                 //位置信息
                 position.x = origin.x + (i+1) * TRACKWIDTH;
                 position.y = origin.y + visibleSize.height;
-                //碰撞盒信息
-                std::string collision = CommonUtil::getPropById(blockid, "collision");
-                CCArray * colli = CommonUtil::split(collision.c_str(), ",");
-                collisionSize.width = (dynamic_cast<CCString*>(colli->getObjectAtIndex(0)))->floatValue();
-                collisionSize.height = (dynamic_cast<CCString*>(colli->getObjectAtIndex(1)))->floatValue();
-                //速度信息
-                std::string speedstr = CommonUtil::getPropById(blockid, "speed");
-                speedstr.erase(0,1);
-                speedstr.erase(speedstr.end()-1, speedstr.end());
-                CCArray * speedli = CommonUtil::split(speedstr.c_str(), ",");
-                speed.x = (dynamic_cast<CCString*>(speedli->getObjectAtIndex(0)))->floatValue();
-                speed.y = (dynamic_cast<CCString*>(speedli->getObjectAtIndex(1)))->floatValue();
                 
+                BaseBlock * blockobj = BaseBlock::create(type, position);
+                mBaseBlockArray.pushBack(blockobj);
             }
+        }
+    }
+    else if(num == 1)
+    {
+        int ix;
+        if (type == BlockType::BigBlock)
+        {
+            ix = rand() % TRACKNUM - 1;
+        }
+        else
+        {
+            ix = rand() % TRACKNUM;
+        }
+        position.x = origin.x + (ix+1) * TRACKWIDTH;
+        position.y = origin.y + visibleSize.height;
+        
+        BaseBlock * blockobj = BaseBlock::create(type, position);
+        mBaseBlockArray.pushBack(blockobj);
+    }
+}
+
+void BlockManager::updateBaseBlockPosition(float dt)
+{
+    if (!mBaseBlockArray.empty()) {
+        for (int i = 0; i < mBaseBlockArray.size(); i++) {
+            auto pBaseBlock = mBaseBlockArray.at(i);
+            pBaseBlock->update(dt);
         }
     }
 }
@@ -105,11 +117,14 @@ void BlockManager::update(float dt)
     distimer += dt * COURCESPEED;
     timtimer += dt;
     
+    updateBaseBlockPosition(dt);
+    
     if (distimer >= BlockDistance) {
         distimer = distimer - BlockDistance;
         //生成障碍
         generateBlock();
     }
+    
     //障碍生成距离隔一段时间缩短一段距离，缩短到最小时不能再减
     if (timtimer >= BLOCKTIME) {
         timtimer = timtimer - BLOCKTIME;

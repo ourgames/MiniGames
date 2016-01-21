@@ -10,6 +10,10 @@
 
 
 
+//BaseDisplayObject::BaseDisplayObject()
+//{
+//    
+//}
 
 void BaseDisplayObject::addAttribute(IAttribute * pAttribute)
 {
