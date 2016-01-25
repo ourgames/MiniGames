@@ -57,8 +57,8 @@ public:
     Attribute(AttributeType key, float baseValue);
     virtual ~Attribute();
     
-    static Attribute* create(AttributeType key, float baseValue) {}
-    virtual bool init() {}
+    static Attribute* create(AttributeType key, float baseValue);
+    virtual bool init();
     virtual void addEffect(IEffect * pEffect) ;
     virtual void removeEffect(IEffect * pEffect) ;
     virtual AttributeType getKey();

@@ -49,6 +49,7 @@ std::string CommonUtil::itos(int val)
 {
     std::string res;
     stringstream buff;
-    buff<< val;
-    buff>>res;
+    buff << val;
+    buff >> res;
+    return res;
 }

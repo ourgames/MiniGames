@@ -71,6 +71,20 @@
 		6E7AC16B1C508DF90035BEA0 /* CCXMLParser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6E7AC1621C508DF90035BEA0 /* CCXMLParser.cpp */; };
 		6E7AC16F1C5100FF0035BEA0 /* EffectManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6E7AC16D1C5100FF0035BEA0 /* EffectManager.cpp */; };
 		6E7AC1701C5100FF0035BEA0 /* EffectManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6E7AC16D1C5100FF0035BEA0 /* EffectManager.cpp */; };
+		6E7F31951C56086000318487 /* sprite_sheet.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6E7F31931C56086000318487 /* sprite_sheet.plist */; };
+		6E7F31961C56086000318487 /* sprite_sheet.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6E7F31931C56086000318487 /* sprite_sheet.plist */; };
+		6E7F31971C56086000318487 /* sprite_sheet.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E7F31941C56086000318487 /* sprite_sheet.png */; };
+		6E7F31981C56086000318487 /* sprite_sheet.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E7F31941C56086000318487 /* sprite_sheet.png */; };
+		6E7F319B1C560A8A00318487 /* xml in Resources */ = {isa = PBXBuildFile; fileRef = 6E7F319A1C560A8A00318487 /* xml */; };
+		6E7F319C1C560A8A00318487 /* xml in Resources */ = {isa = PBXBuildFile; fileRef = 6E7F319A1C560A8A00318487 /* xml */; };
+		6E7F319E1C560B9100318487 /* yejing.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6E7F319D1C560B9100318487 /* yejing.jpg */; };
+		6E7F319F1C560B9100318487 /* yejing.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6E7F319D1C560B9100318487 /* yejing.jpg */; };
+		6E7F31A21C563BC600318487 /* Player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6E7F31A01C563BC600318487 /* Player.cpp */; };
+		6E7F31A31C563BC600318487 /* Player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6E7F31A01C563BC600318487 /* Player.cpp */; };
+		6E7F31A61C563C9600318487 /* Item.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6E7F31A41C563C9600318487 /* Item.cpp */; };
+		6E7F31A71C563C9600318487 /* Item.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6E7F31A41C563C9600318487 /* Item.cpp */; };
+		6E7F31AA1C56529900318487 /* ItemManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6E7F31A81C56529900318487 /* ItemManager.cpp */; };
+		6E7F31AB1C56529900318487 /* ItemManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6E7F31A81C56529900318487 /* ItemManager.cpp */; };
 		8262943E1AAF051F00CB7CF7 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8262943D1AAF051F00CB7CF7 /* Security.framework */; };
 		BF171245129291EC00B8313A /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB012928DE900B8313A /* OpenGLES.framework */; };
 		BF1712471292920000B8313A /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB412928DE900B8313A /* libz.dylib */; };
@@ -196,6 +210,16 @@
 		6E7AC1681C508DF90035BEA0 /* rapidxml.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = rapidxml.hpp; path = Ext/rapidxml.hpp; sourceTree = "<group>"; };
 		6E7AC16D1C5100FF0035BEA0 /* EffectManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EffectManager.cpp; sourceTree = "<group>"; };
 		6E7AC16E1C5100FF0035BEA0 /* EffectManager.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = EffectManager.hpp; sourceTree = "<group>"; };
+		6E7F31931C56086000318487 /* sprite_sheet.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = sprite_sheet.plist; sourceTree = "<group>"; };
+		6E7F31941C56086000318487 /* sprite_sheet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sprite_sheet.png; sourceTree = "<group>"; };
+		6E7F319A1C560A8A00318487 /* xml */ = {isa = PBXFileReference; lastKnownFileType = folder; path = xml; sourceTree = "<group>"; };
+		6E7F319D1C560B9100318487 /* yejing.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = yejing.jpg; sourceTree = "<group>"; };
+		6E7F31A01C563BC600318487 /* Player.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Player.cpp; sourceTree = "<group>"; };
+		6E7F31A11C563BC600318487 /* Player.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Player.hpp; sourceTree = "<group>"; };
+		6E7F31A41C563C9600318487 /* Item.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Item.cpp; sourceTree = "<group>"; };
+		6E7F31A51C563C9600318487 /* Item.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Item.hpp; sourceTree = "<group>"; };
+		6E7F31A81C56529900318487 /* ItemManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ItemManager.cpp; sourceTree = "<group>"; };
+		6E7F31A91C56529900318487 /* ItemManager.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ItemManager.hpp; sourceTree = "<group>"; };
 		8262943D1AAF051F00CB7CF7 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		BF170DB012928DE900B8313A /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		BF170DB412928DE900B8313A /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
@@ -327,10 +351,14 @@
 		46880B7519C43A67006E1F66 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				6E7F319A1C560A8A00318487 /* xml */,
 				521A8EA819F11F5000D177D7 /* fonts */,
 				3EACC98E19EE6D4300EB3C5E /* res */,
 				46880B7619C43A67006E1F66 /* CloseNormal.png */,
+				6E7F319D1C560B9100318487 /* yejing.jpg */,
 				46880B7719C43A67006E1F66 /* CloseSelected.png */,
+				6E7F31931C56086000318487 /* sprite_sheet.plist */,
+				6E7F31941C56086000318487 /* sprite_sheet.png */,
 				46880B7A19C43A67006E1F66 /* HelloWorld.png */,
 			);
 			name = Resources;
@@ -365,6 +393,12 @@
 				6E7AC1471C508D440035BEA0 /* Effect.hpp */,
 				6E7AC16D1C5100FF0035BEA0 /* EffectManager.cpp */,
 				6E7AC16E1C5100FF0035BEA0 /* EffectManager.hpp */,
+				6E7F31A01C563BC600318487 /* Player.cpp */,
+				6E7F31A11C563BC600318487 /* Player.hpp */,
+				6E7F31A41C563C9600318487 /* Item.cpp */,
+				6E7F31A51C563C9600318487 /* Item.hpp */,
+				6E7F31A81C56529900318487 /* ItemManager.cpp */,
+				6E7F31A91C56529900318487 /* ItemManager.hpp */,
 			);
 			name = Classes;
 			path = ../Classes;
@@ -530,9 +564,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6E7F319E1C560B9100318487 /* yejing.jpg in Resources */,
+				6E7F319B1C560A8A00318487 /* xml in Resources */,
 				5087E78117EB970100C73F5D /* Icon-120.png in Resources */,
 				5087E78617EB970100C73F5D /* Icon-76.png in Resources */,
 				5087E77F17EB970100C73F5D /* Default@2x.png in Resources */,
+				6E7F31951C56086000318487 /* sprite_sheet.plist in Resources */,
 				50EF629917ECD46A001EB2F8 /* Icon-100.png in Resources */,
 				5087E78317EB970100C73F5D /* Icon-152.png in Resources */,
 				46880B8119C43A67006E1F66 /* HelloWorld.png in Resources */,
@@ -540,6 +577,7 @@
 				5087E77D17EB970100C73F5D /* Default-568h@2x.png in Resources */,
 				5087E78517EB970100C73F5D /* Icon-72.png in Resources */,
 				521A8E6519F0C34300D177D7 /* Default-736h@3x.png in Resources */,
+				6E7F31971C56086000318487 /* sprite_sheet.png in Resources */,
 				521A8EA919F11F5000D177D7 /* fonts in Resources */,
 				50EF62A317ECD613001EB2F8 /* Icon-50.png in Resources */,
 				5087E78017EB970100C73F5D /* Icon-114.png in Resources */,
@@ -560,10 +598,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6E7F319C1C560A8A00318487 /* xml in Resources */,
 				46880B8219C43A67006E1F66 /* HelloWorld.png in Resources */,
+				6E7F31961C56086000318487 /* sprite_sheet.plist in Resources */,
+				6E7F31981C56086000318487 /* sprite_sheet.png in Resources */,
 				503AE0F817EB97AB00D1A890 /* Icon.icns in Resources */,
 				3EACC99019EE6D4300EB3C5E /* res in Resources */,
 				521A8EAA19F11F5000D177D7 /* fonts in Resources */,
+				6E7F319F1C560B9100318487 /* yejing.jpg in Resources */,
 				46880B7C19C43A67006E1F66 /* CloseNormal.png in Resources */,
 				46880B7E19C43A67006E1F66 /* CloseSelected.png in Resources */,
 			);
@@ -580,6 +622,7 @@
 				6E7AC1481C508D440035BEA0 /* AppDelegate.cpp in Sources */,
 				6E7AC14B1C508D440035BEA0 /* BlockManager.cpp in Sources */,
 				6E7AC14D1C508D440035BEA0 /* DisplayObject.cpp in Sources */,
+				6E7F31A61C563C9600318487 /* Item.cpp in Sources */,
 				6E7AC1491C508D440035BEA0 /* Attribute.cpp in Sources */,
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
 				6E7AC1571C508D520035BEA0 /* GameLayer.cpp in Sources */,
@@ -589,9 +632,11 @@
 				6E7AC16A1C508DF90035BEA0 /* CCRapidXMLParser.cpp in Sources */,
 				6E7AC14A1C508D440035BEA0 /* Block.cpp in Sources */,
 				6E7AC1581C508D520035BEA0 /* GlobalVar.cpp in Sources */,
+				6E7F31AA1C56529900318487 /* ItemManager.cpp in Sources */,
 				6E7AC16B1C508DF90035BEA0 /* CCXMLParser.cpp in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
 				6E7AC14C1C508D440035BEA0 /* CommonUtil.cpp in Sources */,
+				6E7F31A21C563BC600318487 /* Player.cpp in Sources */,
 				6E7AC1591C508D520035BEA0 /* HelloWorldScene.cpp in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
 			);
@@ -601,8 +646,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6E7F31A71C563C9600318487 /* Item.cpp in Sources */,
+				6E7F31AB1C56529900318487 /* ItemManager.cpp in Sources */,
 				6E7AC1701C5100FF0035BEA0 /* EffectManager.cpp in Sources */,
 				503AE10517EB98FF00D1A890 /* main.cpp in Sources */,
+				6E7F31A31C563BC600318487 /* Player.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

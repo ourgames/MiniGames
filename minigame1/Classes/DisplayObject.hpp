@@ -35,6 +35,8 @@ public:
     
     virtual void onCollision(IDisplayObject * pCollisionTarget) = 0;
     
+    virtual cocos2d::Vec2 getPosition() = 0;
+    
     virtual ~IDisplayObject() {}
    
 };
@@ -84,18 +86,75 @@ public:
     
     virtual void addEffect(IEffect * );
     
+//    virtual void updatePosition(float dt)
+//    {
+//        cocos2d::Size visibleSize = cocos2d::Director::getInstance()->getVisibleSize();
+//        cocos2d::Vec2 origin = cocos2d::Director::getInstance()->getVisibleOrigin();
+//        
+//        float xSpeed = getAttributeValueByKey(AttributeType::SPEED_X);
+//        float ySpeed = getAttributeValueByKey(AttributeType::SPEED_Y);
+//        
+//        if (mPosition.x + dt * xSpeed < origin.x + mCollisionBox.size.width/2 ) {
+//            mPosition.x = origin.x + mCollisionBox.size.width/2;
+//        }
+//        else
+//        {
+//            if (mPosition.x + dt * xSpeed > visibleSize.width - mCollisionBox.size.width/2) {
+//                mPosition.x = visibleSize.width - mCollisionBox.size.width/2;
+//            }
+//            else
+//            {
+//                mPosition.x = mPosition.x + dt * xSpeed;
+//                
+//            }
+//        }
+//        if (mPosition.y + dt * ySpeed < origin.y) {
+//            mAlive = false;
+//        }
+//        else
+//            mPosition.y = mPosition.y + dt * ySpeed;
+//        
+//        
+//        float xSize = getAttributeValueByKey(AttributeType::COLLISION_SIZE_X);
+//        float ySize = getAttributeValueByKey(AttributeType::COLLISION_SIZE_Y);
+//        mCollisionBox.origin.x = mPosition.x - xSize * 0.5;
+//        mCollisionBox.origin.y = mPosition.y - ySize * 0.5;
+//    }
     virtual void updatePosition(float dt)
     {
+        cocos2d::Size visibleSize = cocos2d::Director::getInstance()->getVisibleSize();
+        cocos2d::Vec2 origin = cocos2d::Director::getInstance()->getVisibleOrigin();
+        
         float xSpeed = getAttributeValueByKey(AttributeType::SPEED_X);
         float ySpeed = getAttributeValueByKey(AttributeType::SPEED_Y);
-        mPosition.x = mPosition.x + dt * xSpeed;
-        mPosition.y = mPosition.y + dt * ySpeed;
+        
+        if (this->getPositionX() + dt * xSpeed < origin.x + mCollisionBox.size.width/2 ) {
+            this->setPositionX(origin.x + mCollisionBox.size.width/2);
+        }
+        else
+        {
+            if (this->getPositionX() + dt * xSpeed > visibleSize.width - mCollisionBox.size.width/2) {
+                this->setPositionX(visibleSize.width - mCollisionBox.size.width/2);
+            }
+            else
+            {
+                //mPosition.x = mPosition.x + dt * xSpeed;
+                this->setPositionX(this->getPositionX() + dt * xSpeed);
+            }
+        }
+        if (this->getPositionY() + dt * ySpeed < origin.y) {
+            mAlive = false;
+            this->setVisible(false);
+        }
+        else
+            this->setPositionY(this->getPositionY() + dt * ySpeed);
+        
+        
         float xSize = getAttributeValueByKey(AttributeType::COLLISION_SIZE_X);
         float ySize = getAttributeValueByKey(AttributeType::COLLISION_SIZE_Y);
         mCollisionBox.origin.x = mPosition.x - xSize * 0.5;
         mCollisionBox.origin.y = mPosition.y - ySize * 0.5;
     }
-
     virtual void updateAttribute(float dt)
     {
         for(auto iter = mAttributeKeyList.begin(); iter != mAttributeKeyList.end(); ++iter)
@@ -117,6 +176,10 @@ public:
     virtual bool getAlive()
     {
         return mAlive;
+    }
+    virtual cocos2d::Vec2 getPosition()
+    {
+        return mPosition;
     }
 protected:
     float getAttributeValueByKey(AttributeType key)

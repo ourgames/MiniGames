@@ -44,8 +44,10 @@ public:
     BlockType getType();
    
     void onCollision(IDisplayObject *pCollisionTarget);
+    void onAvoid(IDisplayObject *pCollisionTarget);
     void update(float dt);
-    
+    void addCollisionEffect(IDisplayObject *pCollisionTarget);
+    void addAvoidEffect(IDisplayObject *pCollisionTarget);
 protected:
     Node * actor;
     BlockType mBlockType;
@@ -54,4 +56,9 @@ protected:
     float mTime;
     std::vector<int> mBlockEffectList;
 };
+
+//class TrackBlock : public BaseBlock
+//{
+//    static TrackBlock * create(BlockType type,cocos2d::Vec2 position);
+//};
 #endif /* Block_hpp */

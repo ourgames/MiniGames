@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "BaseDisplayObject::updatePosition(float):DisplayObject.hpp">
+      </ContextState>
+      <ContextState
+         contextName = "BlockManager::setArray():BlockManager.cpp">
+         <PersistentStrings>
+            <PersistentString
+               value = "blockid">
+            </PersistentString>
+            <PersistentString
+               value = "BLOCKIDBASE">
+            </PersistentString>
+            <PersistentString
+               value = "BLOCKTYPENUM">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "BlockManager::generateBlockType():BlockManager.cpp">
+         <PersistentStrings>
+            <PersistentString
+               value = "i">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "BaseBlock::update(float):Block.cpp">
+      </ContextState>
+      <ContextState
+         contextName = "BlockManager::generateBlock(cocos2d::Node*):BlockManager.cpp">
+         <PersistentStrings>
+            <PersistentString
+               value = "res">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "BlockManager::generateBlock():BlockManager.cpp">
+      </ContextState>
+      <ContextState
+         contextName = "BaseBlock::init(BlockType, cocos2d::Vec2):Block.cpp">
+      </ContextState>
+      <ContextState
+         contextName = "BaseDisplayObject::init(cocos2d::Vec2, cocos2d::Size, cocos2d::Vec2):DisplayObject.cpp">
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>

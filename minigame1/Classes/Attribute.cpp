@@ -17,7 +17,20 @@ Attribute::~Attribute()
 {
     mEffectList.clear();
 }
-
+Attribute * Attribute::create(AttributeType key, float baseValue)
+{
+    Attribute * attribute = new (std::nothrow)Attribute(key,baseValue);
+    if (attribute && attribute->init()) {
+        attribute->autorelease();
+        return attribute;
+    }
+    CC_SAFE_DELETE(attribute);
+    return nullptr;
+}
+bool Attribute::init()
+{
+    return true;
+}
 void Attribute::addEffect(IEffect * pEffect)
 {
     if(pEffect)
@@ -54,6 +67,7 @@ void Attribute::removeEffect(IEffect * pEffect)
         }
         pEffect->setTargetAttribute(NULL);
     }
+    pEffect->release();//
 }
 
 AttributeType Attribute::getKey()

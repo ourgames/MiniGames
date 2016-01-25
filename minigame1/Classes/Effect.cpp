@@ -15,6 +15,23 @@ DurationEffect::DurationEffect(int priority, AttributeType attributeKey, float s
     //mEndTime = startTime + durationTime;
 }
 
+DurationEffect * DurationEffect::create(int priority, AttributeType attributeKey, float startTime, float durationTime, float number, EffectNumType numberType)
+{
+    DurationEffect * durationeffect = new (std::nothrow) DurationEffect(priority,attributeKey,startTime,durationTime,number,numberType);
+    if (durationeffect && durationeffect->init()) {
+        durationeffect->autorelease();
+        return durationeffect;
+    }
+    CC_SAFE_DELETE(durationeffect);
+    return nullptr;
+}
+
+bool DurationEffect::init()
+{
+    mTargetAttribute = nullptr;
+    return true;
+}
+
 DurationEffect::~DurationEffect()
 {
     
@@ -107,6 +124,22 @@ void DurationEffect::onEffectFinish()
 InstantEffect::InstantEffect(int priority, AttributeType attributeKey, float startTime, float durationTime, float number, EffectNumType numberType) : BaseEffect( priority,  attributeKey,  startTime,  durationTime,  number,  numberType)
 {
     //mEndTime = startTime + durationTime;
+}
+InstantEffect * InstantEffect::create(int priority, AttributeType attributeKey, float startTime, float durationTime, float number, EffectNumType numberType)
+{
+    InstantEffect * instanteffect = new (std::nothrow) InstantEffect(priority,attributeKey,startTime,durationTime,number,numberType);
+    if (instanteffect && instanteffect->init()) {
+        instanteffect->autorelease();
+        return instanteffect;
+    }
+    CC_SAFE_DELETE(instanteffect);
+    return nullptr;
+}
+
+bool InstantEffect::init()
+{
+    mTargetAttribute = nullptr;
+    return true;
 }
 
 InstantEffect::~InstantEffect()

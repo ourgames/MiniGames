@@ -67,6 +67,13 @@ typedef enum
 {
     INSTANT,
     DURATION,
+}EffectInstantType;
+
+typedef enum
+{
+    BLOCKHITSTAMINA,
+    BLOCKAVOIDSCORE,
+    BLCOKDIZZY,
 }EffectType;
 
 class BaseEffect : public IEffect
@@ -101,8 +108,8 @@ public:
     DurationEffect(int priority, AttributeType attributeKey, float startTime, float durationTime, float number, EffectNumType numberType);
     virtual ~DurationEffect();
     
-    static DurationEffect * create(int priority, AttributeType attributeKey, float startTime, float durationTime, float number, EffectNumType numberType) {}
-    virtual bool init() {}
+    static DurationEffect * create(int priority, AttributeType attributeKey, float startTime, float durationTime, float number, EffectNumType numberType);
+    virtual bool init();
     
     //virtual void updateEffectTime(float dt);
     //virtual float getStartTime();
@@ -127,8 +134,8 @@ public:
     InstantEffect(int priority, AttributeType attributeKey, float startTime, float durationTime, float number, EffectNumType numberType);
     virtual ~InstantEffect();
     
-    static InstantEffect * create(int priority, AttributeType attributeKey, float startTime, float durationTime, float number, EffectNumType numberType) {}
-    virtual bool init() {}
+    static InstantEffect * create(int priority, AttributeType attributeKey, float startTime, float durationTime, float number, EffectNumType numberType);
+    virtual bool init();
     //virtual void updateEffectTime(float dt);
     //virtual float getStartTime();
     //virtual float getEndTime();

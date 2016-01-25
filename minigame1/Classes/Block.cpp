@@ -41,7 +41,9 @@ bool BaseBlock::init(BlockType type, cocos2d::Vec2 position)
     std::string filename;
     
     bool result;
-    
+
+    cocos2d::Size visibleSize = Director::getInstance()->getVisibleSize();
+    cocos2d::Vec2 origin = Director::getInstance()->getVisibleOrigin();
     
     std::string blockid = CommonUtil::itos((int)type + BLOCKIDBASE);
     
@@ -79,8 +81,14 @@ bool BaseBlock::init(BlockType type, cocos2d::Vec2 position)
     
     if (BaseDisplayObject::init(position, collisionSize, speed)) {
         mBlockType = type;
-        actor = Sprite::create(filename);
-        this->addChild(actor);
+        
+        SpriteFrameCache * frameCache = SpriteFrameCache::getInstance();
+        frameCache->addSpriteFramesWithFile("sprite_sheet.plist", "sprite_sheet.png");
+        actor = Sprite::createWithSpriteFrameName(filename);
+        //actor->setScale(0.7);
+        //actor->setPosition(visibleSize.width/2, visibleSize.height/2);
+        //actor = Sprite::create(filename);
+        this->addChild(actor,1);
         
         mScore = score;
         mStamina = stamina;
@@ -110,23 +118,102 @@ BaseBlock::~BaseBlock()
     mBlockEffectList.clear();
 }
 
+void BaseBlock::addCollisionEffect(IDisplayObject *pCollisionTarget)
+{
+    //发生碰撞，读表生成effect
+    for (int i = 0; i < mBlockEffectList.size(); i++) {
+        
+        BaseEffect * effect;
+        
+        int eftype = mBlockEffectList.at(i);
+        std::string eftypestr = CommonUtil::itos(eftype + EFFECTIDBASE);
+        
+        //
+        int priority = atoi(CommonUtil::getPropById(eftypestr, "priority").c_str());
+        
+        AttributeType attributekey = (AttributeType)atoi(CommonUtil::getPropById(eftypestr, "attributekey").c_str());
+        
+        float starttime = atof(CommonUtil::getPropById(eftypestr, "starttime").c_str());
+        
+        float durationtime = atof(CommonUtil::getPropById(eftypestr, "durationtime").c_str());
+        
+        float value = atof(CommonUtil::getPropById(eftypestr, "value").c_str());
+        //effect numtype
+        EffectNumType enumtype = (EffectNumType)atoi(CommonUtil::getPropById(eftypestr, "enumtype").c_str());
+        //
+        EffectInstantType  einstanttype = (EffectInstantType)atoi(CommonUtil::getPropById(eftypestr, "instantable").c_str());
+        //effect的type类型
+        EffectType type = (EffectType)atoi(CommonUtil::getPropById(eftypestr, "type").c_str());
+        
+        if (einstanttype == EffectInstantType::INSTANT && type == EffectType::BLOCKHITSTAMINA) {
+            value = this->mStamina;
+            effect = InstantEffect::create(priority, attributekey, starttime, durationtime, value, enumtype);
+        }
+        if (einstanttype == EffectInstantType::DURATION && type == EffectType::BLCOKDIZZY) {
+            durationtime = this->mTime;
+            effect = DurationEffect::create(priority, attributekey, starttime, durationtime, value, enumtype);
+        }
+        effect->retain();
+        pCollisionTarget->addEffect(effect);
+    }
+    
+}
+
+void BaseBlock::addAvoidEffect(IDisplayObject *pCollisionTarget)
+{
+    //发生碰撞，读表生成effect
+    for (int i = 0; i < mBlockEffectList.size(); i++) {
+        
+        BaseEffect * effect;
+        
+        int eftype = mBlockEffectList.at(i);
+        std::string eftypestr = CommonUtil::itos(eftype + EFFECTIDBASE);
+        
+        //
+        int priority = atoi(CommonUtil::getPropById(eftypestr, "priority").c_str());
+        
+        AttributeType attributekey = (AttributeType)atoi(CommonUtil::getPropById(eftypestr, "attributekey").c_str());
+        
+        float starttime = atof(CommonUtil::getPropById(eftypestr, "starttime").c_str());
+        
+        float durationtime = atof(CommonUtil::getPropById(eftypestr, "durationtime").c_str());
+        
+        float value = atof(CommonUtil::getPropById(eftypestr, "value").c_str());
+        //effect numtype
+        EffectNumType enumtype = (EffectNumType)atoi(CommonUtil::getPropById(eftypestr, "enumtype").c_str());
+        //
+        EffectInstantType  einstanttype = (EffectInstantType)atoi(CommonUtil::getPropById(eftypestr, "instantable").c_str());
+        //effect的type类型
+        EffectType type = (EffectType)atoi(CommonUtil::getPropById(eftypestr, "type").c_str());
+        
+        if (einstanttype == EffectInstantType::INSTANT && type == EffectType::BLOCKAVOIDSCORE) {
+            value = this->mScore;
+            effect = InstantEffect::create(priority, attributekey, starttime, durationtime, value, enumtype);
+        }
+        effect->retain();
+        pCollisionTarget->addEffect(effect);
+    }
+    
+}
+
 void BaseBlock::onCollision(IDisplayObject *pCollisionTarget)
 {
     if(mCollisionBox.intersectsRect(pCollisionTarget->getCollisionBox()))
     {
-        //发生碰撞，读表生成effect
-//        for (int i = 0; i < mBlockEffectList.size(); i++) {
-//            int eftype = mBlockEffectList.at(i);
-//            std::string eftypestr = CommonUtil::itos(eftype + EFFECTIDBASE);
-//            EffectType etype = (EffectType)atoi(CommonUtil::getPropById(eftypestr, "instantable").c_str());
-//            if (eftype == EffectType::INSTANT) {
-//                auto effect = new (std::nothrow) InstantEffect();
-//            }
-//            
-//        }
-//        
-//        
-        //pCollisionTarget->addEffect(<#IEffect *#>);
+        addCollisionEffect(pCollisionTarget);
+        this->mAlive = false;
+        this->setVisible(false);
     }
     
 }
+
+void BaseBlock::onAvoid(IDisplayObject *pCollisionTarget)
+{
+    if(this->mPosition.y < pCollisionTarget->getPosition().y) {
+        addAvoidEffect(pCollisionTarget);
+    }
+}
+
+
+
+

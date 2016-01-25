@@ -10,7 +10,7 @@
 #define GameLayer_hpp
 
 #include <stdio.h>
-
+#include "BlockManager.hpp"
 
 //#include "GameLayerVar.h"
 
@@ -19,8 +19,13 @@ class GameLayer : public cocos2d::Layer
     cocos2d::Size visibleSize;
     cocos2d::Vec2 origin;
 
+    cocos2d::Label * label1;
+    cocos2d::Label * label2;
+    cocos2d::Label * label3;
+    
     cocos2d::CCArray * bg;//背景层
-
+    BlockManager blockmanager;
+    
 public:
     static cocos2d::Scene* createScene();
     
@@ -35,6 +40,10 @@ public:
     CREATE_FUNC(GameLayer);
     
     void createGameScreen();
+    void bgUpdate(float dt);
+    void labelSetString(cocos2d::Label * label,float distance);
+    
+    
     void onEnter();
     void onExit();
     void update(float dt);

@@ -23,13 +23,17 @@
 #define BLOCKTIME 1000
 #define BLOCKREDUCE 50
 
-#define COURCESPEED 20
+#define COURCESPEED 50
 #define TRACKNUM 5
 #define TRACKWIDTH 80
 
 #define MAXSIZE 50
 #define BLOCKEFFECTLISTSIZE 10
 
+#define PLAYERID 4000
+
+#define ITEMDISTANCE 600
+#define ITEMBLOCKDISTANCE 200
 static float BlockDistance = 400;
 
 class GlobalVar

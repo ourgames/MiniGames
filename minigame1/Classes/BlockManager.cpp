@@ -19,8 +19,9 @@ BlockManager::BlockManager()
     if (mBaseBlockArray.empty()) {
         mBaseBlockArray.reserve(MAXSIZE);
     }
-    distimer = 0;
-    timtimer = 0;
+    mDisTimer = 0;
+    mTimTimer = 0;
+    setArray();
 }
 
 BlockManager::~BlockManager()
@@ -32,8 +33,10 @@ BlockManager::~BlockManager()
 
 void BlockManager::setArray()
 {
-    for (int i = 0; i < BLOCKTYPENUM; i++) {
-        std::string blockid = CommonUtil::itos(i + BLOCKIDBASE);
+    int num = BLOCKTYPENUM;
+    for (int i = 0; i < num; i++) {
+        int id = i + BLOCKIDBASE;
+        std::string blockid = CommonUtil::itos(id);
         float temp = atof(CommonUtil::getPropById(blockid, "chance").c_str());
         int tep = atoi(CommonUtil::getPropById(blockid, "num").c_str());
         mChanceArray.push_back(temp);
@@ -45,10 +48,11 @@ BlockType BlockManager::generateBlockType()
     BlockType res = BlockType::NormalBlock;
     int randNum = rand() % 100 + 1;
     int tempNum = 1;
-    for (int i = 0; i < BLOCKTYPENUM; i++) {
+    int i = 0;
+    for (; i < BLOCKTYPENUM; i++) {
         if (randNum >= tempNum && randNum < tempNum + mChanceArray.at(i)) {
             res = (BlockType)(i);
-            //return 0;
+            break;
         }
         else
             tempNum += mChanceArray.at(i);
@@ -56,7 +60,7 @@ BlockType BlockManager::generateBlockType()
     return res;
 }
 
-void BlockManager::generateBlock()
+void BlockManager::generateBlock(cocos2d::Node * render_node)
 {
     cocos2d::Size visibleSize = Director::getInstance()->getVisibleSize();
     cocos2d::Vec2 origin = Director::getInstance()->getVisibleOrigin();
@@ -77,8 +81,11 @@ void BlockManager::generateBlock()
                 //位置信息
                 position.x = origin.x + (i+1) * TRACKWIDTH;
                 position.y = origin.y + visibleSize.height;
+//                position.x = origin.x + visibleSize.width/2;
+//                position.y = origin.y + visibleSize.height/2;
                 
                 BaseBlock * blockobj = BaseBlock::create(type, position);
+                render_node->addChild(blockobj,1);
                 mBaseBlockArray.pushBack(blockobj);
             }
         }
@@ -98,36 +105,75 @@ void BlockManager::generateBlock()
         position.y = origin.y + visibleSize.height;
         
         BaseBlock * blockobj = BaseBlock::create(type, position);
+        render_node->addChild(blockobj,1);
         mBaseBlockArray.pushBack(blockobj);
+    }
+}
+
+void BlockManager::removeBlock(BaseBlock *pBaseBlock)
+{
+    if (pBaseBlock) {
+        if (!mBaseBlockArray.empty()) {
+            ssize_t index = mBaseBlockArray.getIndex(pBaseBlock);
+            mBaseBlockArray.erase(index);
+        }
     }
 }
 
 void BlockManager::updateBaseBlockPosition(float dt)
 {
+    cocos2d::Vector<BaseBlock *> toRemoveBaseBlockArray;
     if (!mBaseBlockArray.empty()) {
         for (int i = 0; i < mBaseBlockArray.size(); i++) {
             auto pBaseBlock = mBaseBlockArray.at(i);
             pBaseBlock->update(dt);
+            if (!pBaseBlock->getAlive()) {
+                toRemoveBaseBlockArray.pushBack(pBaseBlock);
+            }
+        }
+    }
+    for (int j = 0; j < toRemoveBaseBlockArray.size(); j++) {
+        auto pToRemoveBaseBlockArray = toRemoveBaseBlockArray.at(j);
+        removeBlock(pToRemoveBaseBlockArray);
+    }
+}
+
+void BlockManager::testCollision(IDisplayObject *pCollisionTarget)
+{
+    if (!mBaseBlockArray.empty()) {
+        for (int i = 0; i < mBaseBlockArray.size(); i++) {
+            auto pBaseBlock = mBaseBlockArray.at(i);
+            pBaseBlock->onCollision(pCollisionTarget);
         }
     }
 }
 
-void BlockManager::update(float dt)
+void BlockManager::testAvoid(IDisplayObject *pCollisionTarget)
 {
-    distimer += dt * COURCESPEED;
-    timtimer += dt;
+    if (!mBaseBlockArray.empty()) {
+        for (int i = 0; i < mBaseBlockArray.size(); i++) {
+            auto pBaseBlock = mBaseBlockArray.at(i);
+            pBaseBlock->onAvoid(pCollisionTarget);
+        }
+    }    
+}
+
+void BlockManager::update(float dt,cocos2d::Node * render_node)
+{
+    mDisTimer += dt * COURCESPEED;
+    mTimTimer += dt;
     
     updateBaseBlockPosition(dt);
     
-    if (distimer >= BlockDistance) {
-        distimer = distimer - BlockDistance;
+    if (mDisTimer >= BlockDistance) {
+        mDisTimer = mDisTimer - BlockDistance;
         //生成障碍
-        generateBlock();
+        generateBlock(render_node);
     }
     
     //障碍生成距离隔一段时间缩短一段距离，缩短到最小时不能再减
-    if (timtimer >= BLOCKTIME) {
-        timtimer = timtimer - BLOCKTIME;
+    if (mTimTimer >= BLOCKTIME) {
+        mTimTimer = mTimTimer - BLOCKTIME;
         if (BlockDistance - BLOCKREDUCE >= BLOCKCREATEDISTANCE) {
             BlockDistance = BlockDistance - BLOCKREDUCE;
         }
