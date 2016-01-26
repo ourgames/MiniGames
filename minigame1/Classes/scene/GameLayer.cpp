@@ -163,8 +163,9 @@ void GameLayer::update(float dt)
 {
     distance += dt * COURCESPEED;
     
+    
     bgUpdate(dt);
-    //blockmanager.update(dt,this,player);
+    blockmanager.update(dt,this,player);
     itemmanager.update(dt, this, player);
     player->update(dt);
  
