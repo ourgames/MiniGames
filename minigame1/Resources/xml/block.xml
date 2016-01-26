@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <tns:database xmlns:tns="http://www.iw.com/sns/platform/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <Group id="block">
-        <ItemSpec id="1000" name="NormalBlock" speed="(0,-100)" collision="65,65" score="50" stamina="-80" time="0" num="4" chance="30" filename="cloud.png" effectlist="1,2"/>
-        <ItemSpec id="1001" name="BigBlock" speed="(0,-100)" collision="130,130" score="100" stamina="-120" time="0" num="1" chance="15" filename="cloud.png" effectlist="1,2"/>
-        <ItemSpec id="1002" name="DizzyBlock" speed="(0,-100)" collision="65,65" score="100" stamina="-40" time="100" num="1" chance="15" filename="cloud.png" effectlist="1,2"/>
-        <ItemSpec id="1003" name="LeftBlock" speed="(-2,-100)" collision="65,65" score="150" stamina="-80" time="0" num="1" chance="10" filename="cloud.png" effectlist="1,2"/>
-        <ItemSpec id="1004" name="RightBlock" speed="(2,-100)" collision="65,65" score="150" stamina="-80" time="0" num="1" chance="10" filename="cloud.png" effectlist="1,2"/>
-        <ItemSpec id="1005" name="TrackBlock" speed="(2,-100)" collision="65,65" score="300" stamina="-80" time="0" num="1" chance="5" filename="cloud.png" effectlist="1,2"/>
-        <ItemSpec id="1006" name="HighSpeedBlock" speed="(0,-120)" collision="65,65" score="100" stamina="-120" time="0" num="1" chance="15" filename="cloud.png" effectlist="1,2"/>
+        <ItemSpec id="1000" name="NormalBlock" speed="(0,-50)" collision="85,85" score="50" stamina="-80" time="0" num="4" chance="30" filename="cloud.png" effectlist="0"/>
+        <ItemSpec id="1001" name="BigBlock" speed="(0,-50)" collision="130,130" score="100" stamina="-120" time="0" num="1" chance="15" filename="cloud.png" effectlist="0"/>
+        <ItemSpec id="1002" name="DizzyBlock" speed="(0,-50)" collision="85,85" score="100" stamina="-40" time="10" num="1" chance="15" filename="cloud.png" effectlist="0,2"/>
+        <ItemSpec id="1003" name="LeftBlock" speed="(-2,-50)" collision="85,85" score="150" stamina="-80" time="0" num="1" chance="10" filename="cloud.png" effectlist="0"/>
+        <ItemSpec id="1004" name="RightBlock" speed="(2,-50)" collision="85,85" score="150" stamina="-80" time="0" num="1" chance="10" filename="cloud.png" effectlist="0"/>
+        <ItemSpec id="1005" name="TrackBlock" speed="(2,-50)" collision="85,85" score="300" stamina="-80" time="0" num="1" chance="5" filename="cloud.png" effectlist="0"/>
+        <ItemSpec id="1006" name="HighSpeedBlock" speed="(0,-60)" collision="85,85" score="100" stamina="-120" time="0" num="1" chance="15" filename="cloud.png" effectlist="0"/>
     </Group>
 </tns:database>

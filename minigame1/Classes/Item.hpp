@@ -27,8 +27,7 @@ typedef enum
 class Item : public BaseDisplayObject
 {
 public:
-    Item();
-    
+    Item();    
     static Item * create(ItemType type,cocos2d::Vec2 position);
     virtual bool init(ItemType type,cocos2d::Vec2 position);
     

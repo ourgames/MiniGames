@@ -67,7 +67,7 @@ void Attribute::removeEffect(IEffect * pEffect)
         }
         pEffect->setTargetAttribute(NULL);
     }
-    pEffect->release();//
+    //pEffect->release();//
 }
 
 AttributeType Attribute::getKey()

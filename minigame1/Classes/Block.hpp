@@ -48,12 +48,21 @@ public:
     void update(float dt);
     void addCollisionEffect(IDisplayObject *pCollisionTarget);
     void addAvoidEffect(IDisplayObject *pCollisionTarget);
+    void setAvoid(bool var)
+    {
+        isAvoid = var;
+    }
+    bool getAvoid()
+    {
+        return isAvoid;
+    }
 protected:
     Node * actor;
     BlockType mBlockType;
     float mScore;
     float mStamina;
     float mTime;
+    bool isAvoid;
     std::vector<int> mBlockEffectList;
 };
 

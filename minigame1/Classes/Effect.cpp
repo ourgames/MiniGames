@@ -68,7 +68,7 @@ void DurationEffect::calcuAfterEffectValue()
     {
         //if(mDurationTime > 0.0) //持续类的effect
         {
-            if(mNumberType != EffectNumType::Lock) //数值更改类的effect
+            if(mNumberType != EffectNumType::LOCK) //数值更改类的effect
             {
                 float afterValue = 0.0;
                 float value = pAttribute->getAfterEffectValue();
@@ -84,16 +84,16 @@ void DurationEffect::calcuAfterEffectValue()
                 {
                     afterValue =  mNumber;
                 }
-                if(afterValue < 0)
-                {
-                    afterValue = 0;
-                    //to do
-                }
+//                if(afterValue < 0)
+//                {
+//                    afterValue = 0;
+//                    //to do
+//                }
                 //return afterValue;
                 pAttribute->setAfterEffectValue(afterValue);
             }
             
-            if(mNumberType == EffectNumType::Lock)
+            if(mNumberType == EffectNumType::LOCK)
             {
                 if(mNumber > 0)
                 {
@@ -193,11 +193,11 @@ void InstantEffect::onEffectStart()
         {
             afterValue =  mNumber;
         }
-        if(afterValue < 0)
-        {
-            afterValue = 0;
-            //to do
-        }
+//        if(afterValue < 0)
+//        {
+//            afterValue = 0;
+//            //to do
+//        }
         //return afterValue;
         pAttribute->setBaseValue(afterValue);
     }

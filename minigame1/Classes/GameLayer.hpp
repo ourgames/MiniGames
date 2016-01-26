@@ -11,8 +11,9 @@
 
 #include <stdio.h>
 #include "BlockManager.hpp"
-
+#include "Player.hpp"
 //#include "GameLayerVar.h"
+#include "ItemManager.hpp"
 
 class GameLayer : public cocos2d::Layer
 {
@@ -25,6 +26,10 @@ class GameLayer : public cocos2d::Layer
     
     cocos2d::CCArray * bg;//背景层
     BlockManager blockmanager;
+    ItemManager itemmanager;
+    
+    Player * player;
+    float distance;
     
 public:
     static cocos2d::Scene* createScene();

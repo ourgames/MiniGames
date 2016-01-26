@@ -19,6 +19,9 @@ BlockManager::BlockManager()
     if (mBaseBlockArray.empty()) {
         mBaseBlockArray.reserve(MAXSIZE);
     }
+    if (mTrackBlockArray.empty()) {
+        mTrackBlockArray.reserve(MAXSIZE);
+    }
     mDisTimer = 0;
     mTimTimer = 0;
     setArray();
@@ -29,6 +32,7 @@ BlockManager::~BlockManager()
     mChanceArray.clear();
     mGenerateNumArray.clear();
     mBaseBlockArray.clear();
+    mTrackBlockArray.clear();
 }
 
 void BlockManager::setArray()
@@ -57,8 +61,59 @@ BlockType BlockManager::generateBlockType()
         else
             tempNum += mChanceArray.at(i);
     }
+
     return res;
 }
+
+void BlockManager::addTouchEffect(TouchDirection dir)
+{
+    std::string id;
+    int idnum;
+    BaseEffect * effect;
+    
+    if (dir == TouchDirection::LEFT) {
+        idnum = (int)EffectType::LEFTTOUCH + EFFECTIDBASE;
+    }
+    if (dir == TouchDirection::RIGHT) {
+        idnum = (int)EffectType::RIGHTTOUCH + EFFECTIDBASE;
+    }
+    
+    id = CommonUtil::itos(idnum);
+    
+    int priority = atoi(CommonUtil::getPropById(id, "priority").c_str());
+    
+    AttributeType attributekey = (AttributeType)atoi(CommonUtil::getPropById(id, "attributekey").c_str());
+    
+    float starttime = atof(CommonUtil::getPropById(id, "starttime").c_str());
+    
+    float durationtime = atof(CommonUtil::getPropById(id, "durationtime").c_str());
+    
+    float value = atof(CommonUtil::getPropById(id, "value").c_str());
+    //effect numtype
+    EffectNumType enumtype = (EffectNumType)atoi(CommonUtil::getPropById(id, "enumtype").c_str());
+    //
+    EffectInstantType  einstanttype = (EffectInstantType)atoi(CommonUtil::getPropById(id, "instantable").c_str());
+    //effect的type类型
+    EffectType type = (EffectType)atoi(CommonUtil::getPropById(id, "type").c_str());
+    
+    if (einstanttype == EffectInstantType::INSTANT) {
+        effect = InstantEffect::create(priority, attributekey, starttime, durationtime, value, enumtype);
+    }
+    else
+        effect = DurationEffect::create(priority, attributekey, starttime, durationtime, value, enumtype);
+    
+    //effect->retain();
+
+    if (!mTrackBlockArray.empty()) {
+        for (int i = 0; i < mTrackBlockArray.size(); i++) {
+            auto pBaseBlock = mTrackBlockArray.at(i);
+            pBaseBlock->addEffect(effect);
+            
+        }
+    }
+    
+}
+
 
 void BlockManager::generateBlock(cocos2d::Node * render_node)
 {
@@ -67,7 +122,8 @@ void BlockManager::generateBlock(cocos2d::Node * render_node)
     
     BlockType type = generateBlockType();
     cocos2d::Vec2 position;
-    
+   
+    //type = BlockType::DizzyBlock;
     int num = mGenerateNumArray.at((int)type);
     
     if (type == BlockType::NormalBlock && num == TRACKNUM - 1) {
@@ -106,7 +162,11 @@ void BlockManager::generateBlock(cocos2d::Node * render_node)
         
         BaseBlock * blockobj = BaseBlock::create(type, position);
         render_node->addChild(blockobj,1);
-        mBaseBlockArray.pushBack(blockobj);
+        
+        if (type == BlockType::TrackBlock) {
+            mTrackBlockArray.pushBack(blockobj);
+        }
+        else mBaseBlockArray.pushBack(blockobj);
     }
 }
 
@@ -120,9 +180,21 @@ void BlockManager::removeBlock(BaseBlock *pBaseBlock)
     }
 }
 
+void BlockManager::removeTrackBlock(BaseBlock *pBaseBlock)
+{
+    if (pBaseBlock) {
+        if (!mBaseBlockArray.empty()) {
+            ssize_t index = mTrackBlockArray.getIndex(pBaseBlock);
+            mTrackBlockArray.erase(index);
+        }
+    }
+}
+
 void BlockManager::updateBaseBlockPosition(float dt)
 {
     cocos2d::Vector<BaseBlock *> toRemoveBaseBlockArray;
+    cocos2d::Vector<BaseBlock *> toRemoveTrackBlockArray;
+    
     if (!mBaseBlockArray.empty()) {
         for (int i = 0; i < mBaseBlockArray.size(); i++) {
             auto pBaseBlock = mBaseBlockArray.at(i);
@@ -132,10 +204,26 @@ void BlockManager::updateBaseBlockPosition(float dt)
             }
         }
     }
-    for (int j = 0; j < toRemoveBaseBlockArray.size(); j++) {
-        auto pToRemoveBaseBlockArray = toRemoveBaseBlockArray.at(j);
-        removeBlock(pToRemoveBaseBlockArray);
+    if (!mTrackBlockArray.empty()) {
+        for (int i = 0; i < mTrackBlockArray.size(); i++) {
+            auto pBaseBlock = mTrackBlockArray.at(i);
+            pBaseBlock->update(dt);
+            if (!pBaseBlock->getAlive()) {
+                toRemoveTrackBlockArray.pushBack(pBaseBlock);
+            }
+        }
     }
+    
+    for (int j = 0; j < toRemoveBaseBlockArray.size(); j++) {
+        auto pToRemoveBaseBlock = toRemoveBaseBlockArray.at(j);
+        removeBlock(pToRemoveBaseBlock);
+    }
+    
+    for (int j = 0; j < toRemoveTrackBlockArray.size(); j++) {
+        auto pToRemoveBaseBlock = toRemoveTrackBlockArray.at(j);
+        removeTrackBlock(pToRemoveBaseBlock);
+    }
+    
 }
 
 void BlockManager::testCollision(IDisplayObject *pCollisionTarget)
@@ -146,6 +234,13 @@ void BlockManager::testCollision(IDisplayObject *pCollisionTarget)
             pBaseBlock->onCollision(pCollisionTarget);
         }
     }
+    if (!mTrackBlockArray.empty()) {
+        for (int i = 0; i < mTrackBlockArray.size(); i++) {
+            auto pBaseBlock = mTrackBlockArray.at(i);
+            pBaseBlock->onCollision(pCollisionTarget);
+        }
+    }
+    
 }
 
 void BlockManager::testAvoid(IDisplayObject *pCollisionTarget)
@@ -155,15 +250,26 @@ void BlockManager::testAvoid(IDisplayObject *pCollisionTarget)
             auto pBaseBlock = mBaseBlockArray.at(i);
             pBaseBlock->onAvoid(pCollisionTarget);
         }
-    }    
+    }
+    if (!mTrackBlockArray.empty()) {
+        for (int i = 0; i < mTrackBlockArray.size(); i++) {
+            auto pBaseBlock = mTrackBlockArray.at(i);
+            pBaseBlock->onAvoid(pCollisionTarget);
+        }
+    }
+    
+    
 }
 
-void BlockManager::update(float dt,cocos2d::Node * render_node)
+void BlockManager::update(float dt,cocos2d::Node * render_node,IDisplayObject *pCollisionTarget)
 {
     mDisTimer += dt * COURCESPEED;
     mTimTimer += dt;
     
     updateBaseBlockPosition(dt);
+    
+    testCollision(pCollisionTarget);
+    testAvoid(pCollisionTarget);
     
     if (mDisTimer >= BlockDistance) {
         mDisTimer = mDisTimer - BlockDistance;

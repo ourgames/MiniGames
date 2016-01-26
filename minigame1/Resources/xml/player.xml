@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<tns:database xmlns:tns="http://www.iw.com/sns/platform/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <Group id="player">
+        <ItemSpec id="4000" speed="(0,0)" collision="90,90" magnetsize="165,165" score="0" stamina="600" staminaReduce="6" filename="xiaobai.jpg" effectlist="7,8"/>
+    </Group>
+</tns:database>

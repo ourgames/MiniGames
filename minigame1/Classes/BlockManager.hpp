@@ -21,7 +21,7 @@ public:
     BlockManager();
     ~BlockManager();
     
-    void update(float dt,cocos2d::Node * render_node);
+    void update(float dt,cocos2d::Node * render_node,IDisplayObject *pCollisionTarget);
     void updateBaseBlockPosition(float dt);
     void testCollision(IDisplayObject *pCollisionTarget);
     void testAvoid(IDisplayObject *pCollisionTarget);
@@ -31,14 +31,20 @@ public:
     void generateBlock(cocos2d::Node * render_node);
     
     void removeBlock(BaseBlock * pBaseBlock);
+    void removeTrackBlock(BaseBlock * pBaseBlock);
+    void addTouchEffect(TouchDirection dir);
+    
     float getDisTime()
     {
         return mDisTimer;
     }
+    cocos2d::Vector <BaseBlock *> mBaseBlockArray;
+    cocos2d::Vector<BaseBlock *> mTrackBlockArray;
 protected:
     std::vector<float> mChanceArray;
     std::vector<int> mGenerateNumArray;
-    cocos2d::Vector <BaseBlock *> mBaseBlockArray;
+//    cocos2d::Vector <BaseBlock *> mBaseBlockArray;
+//    cocos2d::Vector<BaseBlock *> mTrackBlockArray;
     float mDisTimer;
     float mTimTimer;
 };

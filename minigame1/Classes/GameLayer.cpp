@@ -39,7 +39,9 @@ bool GameLayer::init()
     
     visibleSize = Director::getInstance()->getVisibleSize();
     origin = Director::getInstance()->getVisibleOrigin();
-        
+    
+    distance = 0;
+    
     auto closeItem = MenuItemImage::create(
                                            "CloseNormal.png",
                                            "CloseSelected.png",
@@ -112,6 +114,9 @@ void GameLayer::createGameScreen()
     label3->setPosition(origin.x + visibleSize.width - label3->getContentSize().width, origin.y + visibleSize.height - label3->getContentSize().height * 3);
     this->addChild(label3,1);
 
+    
+    player = Player::create();
+    this->addChild(player,1);
 }
 
 void GameLayer::labelSetString(cocos2d::Label * label,float distance)
@@ -156,19 +161,61 @@ void GameLayer::bgUpdate(float dt)
 
 void GameLayer::update(float dt)
 {
+    distance += dt * COURCESPEED;
+    
     bgUpdate(dt);
-    blockmanager.update(dt,this);
-    labelSetString(label1, blockmanager.getDisTime());
+    //blockmanager.update(dt,this,player);
+    itemmanager.update(dt, this, player);
+    player->update(dt);
+ 
+    labelSetString(label1, distance);
+    labelSetString(label2, player->getAttributeValueByKey(AttributeType::SOCRE));
+    labelSetString(label3, player->getAttributeValueByKey(AttributeType::STAMINA));
+    
 }
 
 bool GameLayer::onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *event)
 {
+//    auto location = touch->getLocation();
+//    
+//    float left = origin.x;
+//    float right = visibleSize.width;
+//    float up = 200;
+//    float down = origin.y;
+//
+//    TouchDirection dir;
+//    
+//    if (location.x <= visibleSize.width/2) {
+//        dir = TouchDirection::LEFT;
+//    }
+//    else{
+//        dir = TouchDirection::RIGHT;
+//    }
+//    player->addTouchEffect(dir);
+//    
     return true;
+
 }
 
 void GameLayer::onTouchEnded(cocos2d::Touch *touch, cocos2d::Event *event)
 {
+    auto location = touch->getLocation();
     
+    float left = origin.x;
+    float right = visibleSize.width;
+    float up = 200;
+    float down = origin.y;
+    
+    TouchDirection dir;
+    
+    if (location.x <= visibleSize.width/2) {
+        dir = TouchDirection::LEFT;
+    }
+    else{
+        dir = TouchDirection::RIGHT;
+    }
+    player->addTouchEffect(dir);
+    blockmanager.addTouchEffect(dir);
 }
 
 void GameLayer::menuCloseCallback(Ref* pSender)

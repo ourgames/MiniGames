@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<tns:database xmlns:tns="http://www.iw.com/sns/platform/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <Group id="effect">
+        <ItemSpec id="3000" priority="0" attributekey="2" starttime="0" durationtime="0" value="0" enumtype="0" instantable="0" type="0"/>
+        <ItemSpec id="3001" priority="1" attributekey="3" starttime="0" durationtime="0" value="0" enumtype="0" instantable="0" type="1"/>
+        <ItemSpec id="3002" priority="2" attributekey="0" starttime="0" durationtime="0" value="0" enumtype="2" instantable="1" type="2"/>
+        <ItemSpec id="3003" priority="3" attributekey="1" starttime="0" durationtime="0" value="0" enumtype="2" instantable="1" type="3"/>
+        <ItemSpec id="3004" priority="4" attributekey="2" starttime="0" durationtime="0" value="-1" enumtype="3" instantable="1" type="4"/>
+        <ItemSpec id="3005" priority="5" attributekey="6" starttime="0" durationtime="0" value="0" enumtype="0" instantable="1" type="5"/>
+        <ItemSpec id="3006" priority="6" attributekey="7" starttime="0" durationtime="0" value="0" enumtype="0" instantable="1" type="6"/>
+        <ItemSpec id="3007" priority="0" attributekey="0" starttime="0" durationtime="3" value="-20" enumtype="0" instantable="0" type="7"/>
+        <ItemSpec id="3008" priority="0" attributekey="0" starttime="0" durationtime="3" value="20" enumtype="0" instantable="0" type="8"/>
+    </Group>
+</tns:database>

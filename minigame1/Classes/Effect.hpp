@@ -60,7 +60,7 @@ typedef enum
     ADD,
     MUL,
     EQUAL,
-    Lock,
+    LOCK,
 }EffectNumType;
 
 typedef enum
@@ -74,7 +74,19 @@ typedef enum
     BLOCKHITSTAMINA,
     BLOCKAVOIDSCORE,
     BLCOKDIZZY,
+    ITEMUPSPEED,
+    ITEMINVINCIBLE,
+    MAGNETX,
+    MAGNETY,
+    LEFTTOUCH,
+    RIGHTTOUCH,
 }EffectType;
+
+typedef enum
+{
+    LEFT,
+    RIGHT,
+}TouchDirection;
 
 class BaseEffect : public IEffect
 {

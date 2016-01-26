@@ -21,10 +21,11 @@ bool BaseDisplayObject::init(cocos2d::Vec2 position, cocos2d::Size collisionSize
     //this->setPosition(mPosition);
     this->setPositionX(position.x);
     this->setPositionY(position.y);
+    
     mCollisionBox.size.width = collisionSize.width;
     mCollisionBox.size.height = collisionSize.height;
-    mCollisionBox.origin.x = mPosition.x - mCollisionBox.size.width * 0.5;
-    mCollisionBox.origin.y = mPosition.y - mCollisionBox.size.height * 0.5;
+    mCollisionBox.origin.x = mPosition.x;
+    mCollisionBox.origin.y = mPosition.y;
     
     IAttribute * pXSpeedAttribute = Attribute::create(AttributeType::SPEED_X, speed.x);
     IAttribute * pYSpeedAttribute = Attribute::create(AttributeType::SPEED_Y, speed.y);

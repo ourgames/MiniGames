@@ -29,6 +29,8 @@ public:
     
     virtual cocos2d::Rect getCollisionBox() = 0;
     
+    virtual cocos2d::Rect getMagnetBox() = 0;
+    
     virtual void addAttribute(IAttribute * ) = 0;
     
     virtual void addEffect(IEffect * ) = 0;
@@ -51,8 +53,8 @@ public:
     {
         mCollisionBox.size.width = collisionSize.width;
         mCollisionBox.size.height = collisionSize.height;
-        mCollisionBox.origin.x = mPosition.x - mCollisionBox.size.width * 0.5;
-        mCollisionBox.origin.y = mPosition.y - mCollisionBox.size.height * 0.5;
+        mCollisionBox.origin.x = mPosition.x;
+        mCollisionBox.origin.y = mPosition.y;
         
         IAttribute * pXSpeedAttribute = Attribute::create(AttributeType::SPEED_X, speed.x);
         addAttribute(pXSpeedAttribute);
@@ -81,6 +83,8 @@ public:
     }
     
     virtual cocos2d::Rect getCollisionBox() {return mCollisionBox; }
+    
+    virtual cocos2d::Rect getMagnetBox() {return mCollisionBox; }
     
     virtual void addAttribute(IAttribute * );
     
@@ -152,8 +156,8 @@ public:
         
         float xSize = getAttributeValueByKey(AttributeType::COLLISION_SIZE_X);
         float ySize = getAttributeValueByKey(AttributeType::COLLISION_SIZE_Y);
-        mCollisionBox.origin.x = mPosition.x - xSize * 0.5;
-        mCollisionBox.origin.y = mPosition.y - ySize * 0.5;
+        mCollisionBox.origin.x = this->getPositionX();
+        mCollisionBox.origin.y = this->getPositionY();
     }
     virtual void updateAttribute(float dt)
     {
@@ -181,7 +185,6 @@ public:
     {
         return mPosition;
     }
-protected:
     float getAttributeValueByKey(AttributeType key)
     {
         IAttribute * pAttribute =  mAttributeList.at(key);
@@ -191,8 +194,19 @@ protected:
         }
         return -1;
     }
+protected:
+//    float getAttributeValueByKey(AttributeType key)
+//    {
+//        IAttribute * pAttribute =  mAttributeList.at(key);
+//        if(pAttribute)
+//        {
+//            return pAttribute->getAfterEffectValue();
+//        }
+//        return -1;
+//    }
     cocos2d::Vec2 mPosition;
     cocos2d::Rect mCollisionBox;
+    cocos2d::Rect mMagnetBox;
     //cocos2d::Size mCollisionSize;
     cocos2d::Map<int, IAttribute*> mAttributeList;
     std::vector<int> mAttributeKeyList;
