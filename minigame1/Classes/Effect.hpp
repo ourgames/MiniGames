@@ -26,6 +26,8 @@ typedef enum
     COLLISION_SIZE_Y,//Y方向碰撞距离
     MAGNET_SIZE_X,//X方向吸收距离
     MAGNET_SIZE_Y,//Y方向吸收距离
+    POSITION_X,
+    POSITION_Y,
     
 }AttributeType;
 
@@ -81,6 +83,8 @@ typedef enum
     LEFTTOUCH,
     RIGHTTOUCH,
     PLAYERSTAMINA,
+    POSITIONX,
+    POSITIONY,
 }EffectType;
 
 typedef enum

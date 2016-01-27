@@ -160,7 +160,7 @@ void Item::addCollisionEffect(IDisplayObject *pCollisionTarget)
         }
         if (einstanttype == EffectInstantType::DURATION && type == EffectType::ITEMINVINCIBLE) {
             durationtime = this->mTime;
-            value = this->mValue;
+            //value = this->mValue;
             effect = DurationEffect::create(priority, attributekey, starttime, durationtime, value, enumtype);
         }
 

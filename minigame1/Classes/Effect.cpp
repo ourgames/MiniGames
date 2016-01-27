@@ -99,8 +99,13 @@ void DurationEffect::calcuAfterEffectValue()
                 {
                     pAttribute->setLockIncrease(true);
                 }
-                else
+                if(mNumber < 0)
                 {
+                    pAttribute->setLockDecrease(true);
+                }
+                if(mNumber == 0)
+                {
+                    pAttribute->setLockIncrease(true);
                     pAttribute->setLockDecrease(true);
                 }
                 

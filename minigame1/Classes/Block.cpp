@@ -151,7 +151,11 @@ void BaseBlock::addCollisionEffect(IDisplayObject *pCollisionTarget)
             value = this->mStamina;
             effect = InstantEffect::create(priority, attributekey, starttime, durationtime, value, enumtype);
         }
-        if (einstanttype == EffectInstantType::DURATION && type == EffectType::BLCOKDIZZY) {
+        if (einstanttype == EffectInstantType::DURATION && type == EffectType::POSITIONX) {
+            durationtime = this->mTime;
+            effect = DurationEffect::create(priority, attributekey, starttime, durationtime, value, enumtype);
+        }
+        if (einstanttype == EffectInstantType::DURATION && type == EffectType::POSITIONY) {
             durationtime = this->mTime;
             effect = DurationEffect::create(priority, attributekey, starttime, durationtime, value, enumtype);
         }

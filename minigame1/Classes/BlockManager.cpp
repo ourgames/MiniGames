@@ -123,7 +123,8 @@ void BlockManager::generateBlock(cocos2d::Node * render_node)
     BlockType type = generateBlockType();
     cocos2d::Vec2 position;
    
-    //type = BlockType::DizzyBlock;
+    type = BlockType::DizzyBlock;
+    
     int num = mGenerateNumArray.at((int)type);
     
     if (type == BlockType::NormalBlock && num == TRACKNUM - 1) {

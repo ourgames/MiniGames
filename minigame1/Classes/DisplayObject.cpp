@@ -24,8 +24,8 @@ bool BaseDisplayObject::init(cocos2d::Vec2 position, cocos2d::Size collisionSize
     
     mCollisionBox.size.width = collisionSize.width;
     mCollisionBox.size.height = collisionSize.height;
-    mCollisionBox.origin.x = mPosition.x;
-    mCollisionBox.origin.y = mPosition.y;
+    mCollisionBox.origin.x = mPosition.x - collisionSize.width/2;
+    mCollisionBox.origin.y = mPosition.y - collisionSize.height/2;
     
     IAttribute * pXSpeedAttribute = Attribute::create(AttributeType::SPEED_X, speed.x);
     IAttribute * pYSpeedAttribute = Attribute::create(AttributeType::SPEED_Y, speed.y);

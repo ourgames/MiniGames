@@ -10,7 +10,8 @@
         <ItemSpec id="3006" priority="6" attributekey="7" starttime="0" durationtime="0" value="0" enumtype="0" instantable="1" type="6"/>
         <ItemSpec id="3007" priority="0" attributekey="0" starttime="0" durationtime="3" value="-20" enumtype="0" instantable="0" type="7"/>
         <ItemSpec id="3008" priority="0" attributekey="0" starttime="0" durationtime="3" value="20" enumtype="0" instantable="0" type="8"/>
-        <ItemSpec id="3009" priority="0" attributekey="2" starttime="0" durationtime="-1" value="6" enumtype="0" instantable="1" type="9"/>
-        
+        <ItemSpec id="3009" priority="0" attributekey="2" starttime="0" durationtime="-1" value="-6" enumtype="0" instantable="1" type="9"/>
+        <ItemSpec id="3010" priority="0" attributekey="8" starttime="0" durationtime="0" value="0" enumtype="3" instantable="1" type="10"/>
+        <ItemSpec id="3011" priority="0" attributekey="9" starttime="0" durationtime="0" value="0" enumtype="3" instantable="1" type="11"/>
     </Group>
 </tns:database>

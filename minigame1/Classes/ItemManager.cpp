@@ -109,7 +109,7 @@ void ItemManager::generateItem(cocos2d::Node *render_node)
     ItemType type = generateItemType();
     cocos2d::Vec2 position;
     
-    //type = ItemType::Invicible;
+    type = ItemType::Invicible;
     
     int ix = rand() % TRACKNUM;
     position.x = origin.x + (ix+1) * TRACKWIDTH;

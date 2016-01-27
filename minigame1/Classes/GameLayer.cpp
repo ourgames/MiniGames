@@ -82,6 +82,7 @@ bool GameLayer::init()
     auto listener = EventListenerTouchOneByOne::create();
     listener->onTouchBegan = CC_CALLBACK_2(GameLayer::onTouchBegan, this);
     listener->onTouchEnded = CC_CALLBACK_2(GameLayer::onTouchEnded, this);
+    listener->onTouchMoved = CC_CALLBACK_2(GameLayer::onTouchMoved, this);
     
     _eventDispatcher->addEventListenerWithSceneGraphPriority(listener, this);
     
@@ -199,34 +200,37 @@ bool GameLayer::onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *event)
 
 void GameLayer::onTouchEnded(cocos2d::Touch *touch, cocos2d::Event *event)
 {
-//    auto location = touch->getLocation();
-//    
-//    float left = origin.x;
-//    float right = visibleSize.width;
-//    float up = 200;
-//    float down = origin.y;
-//    
-//    TouchDirection dir;
-//    
-//    if (location.x <= visibleSize.width/2) {
-//        dir = TouchDirection::LEFT;
-//    }
-//    else{
-//        dir = TouchDirection::RIGHT;
-//    }
-//    player->addTouchEffect(dir);
-//    blockmanager.addTouchEffect(dir);
     auto location = touch->getLocation();
-    player->setPositionX(location.x);
-    player->setPositionY(location.y);
+    
+    float left = origin.x;
+    float right = visibleSize.width;
+    float up = 200;
+    float down = origin.y;
+    
+    TouchDirection dir;
+    
+    if (location.x <= visibleSize.width/2) {
+        dir = TouchDirection::LEFT;
+    }
+    else{
+        dir = TouchDirection::RIGHT;
+    }
+    //player->addTouchEffect(dir);
+    blockmanager.addTouchEffect(dir);
+    //auto location = touch->getLocation();
+//    player->setPositionX(location.x);
+//    player->setPositionY(location.y);
 
 }
 
 void GameLayer::onTouchMoved(cocos2d::Touch *touch, cocos2d::Event *event)
 {
+    //    auto location = touch->getLocation();
+    //    player->setPositionX(location.x);
+    //    player->setPositionY(location.y);
     auto location = touch->getLocation();
-    player->setPositionX(location.x);
-    player->setPositionY(location.y);
+    player->addPositionXEffect(location.x);
+    player->addPositionYEffect(location.y);
     //player->setPosition(location);
 }
 

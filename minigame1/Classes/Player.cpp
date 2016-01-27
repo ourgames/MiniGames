@@ -115,22 +115,27 @@ bool Player::init()
         actor = Sprite::create(filename);
         this->addChild(actor,1);
         this->setScale(0.3);
-        this->setAnchorPoint(ccp(0,0));
+        //this->setAnchorPoint(ccp(0,0));
         IAttribute * pStaminaAttribute = Attribute::create(AttributeType::STAMINA, stamina);
         IAttribute * pScoreAttribute = Attribute::create(AttributeType::SOCRE, score);
         IAttribute * pMagnetXAttribute = Attribute::create(AttributeType::MAGNET_SIZE_X, magnetSize.width);
         IAttribute * pMagnetYAttribute = Attribute::create(AttributeType::MAGNET_SIZE_Y, magnetSize.height);
         
-        if (pStaminaAttribute && pScoreAttribute && pMagnetXAttribute && pMagnetYAttribute ) {
+        IAttribute * pPositionXAttribute = Attribute::create(AttributeType::POSITION_X, position.x);
+        IAttribute * pPositionYAttribute = Attribute::create(AttributeType::POSITION_Y, position.y);
+        
+        if (pStaminaAttribute && pScoreAttribute && pMagnetXAttribute && pMagnetYAttribute && pPositionXAttribute && pPositionYAttribute) {
             addAttribute(pStaminaAttribute);
             addAttribute(pScoreAttribute);
             addAttribute(pMagnetXAttribute);
             addAttribute(pMagnetYAttribute);
+            addAttribute(pPositionXAttribute);
+            addAttribute(pPositionYAttribute);
             
             mMagnetBox.size.width = magnetSize.width;
             mMagnetBox.size.height = magnetSize.height;
-            mMagnetBox.origin.x = position.x;
-            mMagnetBox.origin.y = position.y;
+            mMagnetBox.origin.x = position.x - magnetSize.width/2;
+            mMagnetBox.origin.y = position.y - magnetSize.height/2;
             
             //addStaminaReduceEffect();
             result = true;
@@ -150,43 +155,119 @@ bool Player::init()
     
     return result;
 }
+
+void Player::addPositionXEffect(float value)
+{
+    BaseEffect * xeffect;
+    
+    int priority = 0;
+    
+    AttributeType attributekey = AttributeType::POSITION_X;
+    
+    float starttime = 0;
+    
+    float durationtime = 0;
+    
+    //float value = this->getPositionX();
+    //effect numtype
+    EffectNumType enumtype = EffectNumType::EQUAL;
+    //
+    EffectInstantType  einstanttype = EffectInstantType::INSTANT;
+    
+    xeffect = InstantEffect::create(priority, attributekey, starttime, durationtime, value, enumtype);
+    //yeffect = InstantEffect::create(priority, AttributeType::POSITION_Y, starttime, durationtime, this->getPositionY(), enumtype);
+    
+    this->addEffect(xeffect);
+    //this->setPositionX(value);
+    //this->addEffect(yeffect);
+}
+
+void Player::addPositionYEffect(float value)
+{
+    BaseEffect * yeffect;
+    
+    
+    int priority = 0;
+    
+    AttributeType attributekey = AttributeType::POSITION_Y;
+    
+    float starttime = 0;
+    
+    float durationtime = 0;
+    
+    //float value = this->getPositionX();
+    //effect numtype
+    EffectNumType enumtype = EffectNumType::EQUAL;
+    //
+    EffectInstantType  einstanttype = EffectInstantType::INSTANT;
+    
+    //xeffect = InstantEffect::create(priority, attributekey, starttime, durationtime, value, enumtype);
+    yeffect = InstantEffect::create(priority, attributekey, starttime, durationtime, value, enumtype);
+    
+    //this->addEffect(xeffect);
+    this->addEffect(yeffect);
+    //this->setPositionY(value);
+}
+
 void Player::updatePosition(float dt)
 {
     cocos2d::Size visibleSize = cocos2d::Director::getInstance()->getVisibleSize();
     cocos2d::Vec2 origin = cocos2d::Director::getInstance()->getVisibleOrigin();
     
-    float xSpeed = getAttributeValueByKey(AttributeType::SPEED_X);
-    float ySpeed = getAttributeValueByKey(AttributeType::SPEED_Y);
+//    float xSpeed = getAttributeValueByKey(AttributeType::SPEED_X);
+//    float ySpeed = getAttributeValueByKey(AttributeType::SPEED_Y);
+//    
+//    if (this->getPositionX() + dt * xSpeed < origin.x + mCollisionBox.size.width/2 ) {
+//        //this->setPositionX(origin.x + mCollisionBox.size.width/2);
+//        addPositionXEffect(origin.x + mCollisionBox.size.width/2);
+//    }
+//    else
+//    {
+//        if (this->getPositionX() + dt * xSpeed > visibleSize.width - mCollisionBox.size.width/2) {
+//           // this->setPositionX(visibleSize.width - mCollisionBox.size.width/2);
+//            //this->setPositionX(visibleSize.width);
+//            addPositionXEffect(visibleSize.width);
+//        }
+//        else
+//        {
+//            //mPosition.x = mPosition.x + dt * xSpeed;
+//            //this->setPositionX(this->getPositionX() + dt * xSpeed);
+//            addPositionXEffect(this->getPositionX() + dt * xSpeed);
+//        }
+//    }
+//    if (this->getPositionY() + dt * ySpeed < origin.y) {
+//        mAlive = false;
+//        this->setVisible(false);
+//    }
+//    else
+//        this->setPositionY(this->getPositionY() + dt * ySpeed);
+//    
+//    
+//    float xSize = getAttributeValueByKey(AttributeType::COLLISION_SIZE_X);
+//    float ySize = getAttributeValueByKey(AttributeType::COLLISION_SIZE_Y);
+//    mCollisionBox.origin.x = this->getPositionX() - mCollisionBox.size.width/2;
+//    mCollisionBox.origin.y = this->getPositionY() - mCollisionBox.size.height/2;
+//    
+//    mMagnetBox.origin.x = this->getPositionX() - mMagnetBox.size.width/2;
+//    mMagnetBox.origin.y = this->getPositionY() - mMagnetBox.size.height/2;
+
     
-    if (this->getPositionX() + dt * xSpeed < origin.x + mCollisionBox.size.width/2 ) {
-        this->setPositionX(origin.x + mCollisionBox.size.width/2);
-    }
-    else
-    {
-        if (this->getPositionX() + dt * xSpeed > visibleSize.width - mCollisionBox.size.width/2) {
-            this->setPositionX(visibleSize.width - mCollisionBox.size.width/2);
-        }
-        else
-        {
-            //mPosition.x = mPosition.x + dt * xSpeed;
-            this->setPositionX(this->getPositionX() + dt * xSpeed);
-        }
-    }
-    if (this->getPositionY() + dt * ySpeed < origin.y) {
-        mAlive = false;
-        this->setVisible(false);
-    }
-    else
-        this->setPositionY(this->getPositionY() + dt * ySpeed);
+    float xPosition = getAttributeValueByKey(AttributeType::POSITION_X);
+    float yPosition = getAttributeValueByKey(AttributeType::POSITION_Y);
     
+    this->setPositionX(xPosition);
+    this->setPositionY(yPosition);
     
-    float xSize = getAttributeValueByKey(AttributeType::COLLISION_SIZE_X);
-    float ySize = getAttributeValueByKey(AttributeType::COLLISION_SIZE_Y);
-    mCollisionBox.origin.x = this->getPositionX();
-    mCollisionBox.origin.y = this->getPositionY();
+        float xSize = getAttributeValueByKey(AttributeType::COLLISION_SIZE_X);
+        float ySize = getAttributeValueByKey(AttributeType::COLLISION_SIZE_Y);
     
-    mMagnetBox.origin.x = this->getPositionX();
-    mMagnetBox.origin.y = this->getPositionY();
+    mCollisionBox.origin.x = xPosition - mCollisionBox.size.width/2;
+    mCollisionBox.origin.y = yPosition - mCollisionBox.size.height/2;
+    
+    mMagnetBox.origin.x = xPosition - mMagnetBox.size.width/2;
+    mMagnetBox.origin.y = yPosition - mMagnetBox.size.height/2;
+    
+
     
 }
 Player::~Player()

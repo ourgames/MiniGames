@@ -3,7 +3,46 @@
    version = "1.0">
    <ContextStates>
       <ContextState
+         contextName = "BlockManager::generateBlockType():BlockManager.cpp">
+         <PersistentStrings>
+            <PersistentString
+               value = "i">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "Player::addTouchEffect(TouchDirection):Player.cpp">
+      </ContextState>
+      <ContextState
+         contextName = "BaseBlock::init(BlockType, cocos2d::Vec2):Block.cpp">
+      </ContextState>
+      <ContextState
+         contextName = "DurationEffect::calcuAfterEffectValue():Effect.cpp">
+      </ContextState>
+      <ContextState
+         contextName = "BlockManager::generateBlock(cocos2d::Node*):BlockManager.cpp">
+         <PersistentStrings>
+            <PersistentString
+               value = "res">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "BlockManager::generateBlock():BlockManager.cpp">
+      </ContextState>
+      <ContextState
+         contextName = "BaseBlock::addCollisionEffect(IDisplayObject*):Block.cpp">
+         <PersistentStrings>
+            <PersistentString
+               value = "i">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "Attribute::addEffect(IEffect*):Attribute.cpp">
+      </ContextState>
+      <ContextState
+         contextName = "InstantEffect::updateEffectStatus(float):Effect.cpp">
       </ContextState>
       <ContextState
          contextName = "BlockManager::setArray():BlockManager.cpp">
@@ -20,38 +59,6 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "BlockManager::testCollision(IDisplayObject*):BlockManager.cpp">
-      </ContextState>
-      <ContextState
-         contextName = "BaseBlock::update(float):Block.cpp">
-      </ContextState>
-      <ContextState
-         contextName = "Player::init():Player.cpp">
-      </ContextState>
-      <ContextState
-         contextName = "BlockManager::generateBlock(cocos2d::Node*):BlockManager.cpp">
-         <PersistentStrings>
-            <PersistentString
-               value = "res">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "Player::addTouchEffect(TouchDirection):Player.cpp">
-      </ContextState>
-      <ContextState
-         contextName = "BaseBlock::onCollision(IDisplayObject*):Block.cpp">
-      </ContextState>
-      <ContextState
-         contextName = "BaseDisplayObject::updatePosition(float):DisplayObject.hpp">
-      </ContextState>
-      <ContextState
-         contextName = "BaseBlock::init(BlockType, cocos2d::Vec2):Block.cpp">
-      </ContextState>
-      <ContextState
-         contextName = "BaseDisplayObject::init(cocos2d::Vec2, cocos2d::Size, cocos2d::Vec2):DisplayObject.cpp">
-      </ContextState>
-      <ContextState
          contextName = "gldClearDepthBuffer:(null)">
          <PersistentStrings>
             <PersistentString
@@ -60,12 +67,34 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "BlockManager::generateBlockType():BlockManager.cpp">
-         <PersistentStrings>
-            <PersistentString
-               value = "i">
-            </PersistentString>
-         </PersistentStrings>
+         contextName = "BaseDisplayObject::addEffect(IEffect*):DisplayObject.cpp">
+      </ContextState>
+      <ContextState
+         contextName = "BlockManager::testCollision(IDisplayObject*):BlockManager.cpp">
+      </ContextState>
+      <ContextState
+         contextName = "Player::init():Player.cpp">
+      </ContextState>
+      <ContextState
+         contextName = "BaseBlock::onCollision(IDisplayObject*):Block.cpp">
+      </ContextState>
+      <ContextState
+         contextName = "Player::addPositionXEffect(float):Player.cpp">
+      </ContextState>
+      <ContextState
+         contextName = "Attribute::update(float):Attribute.cpp">
+      </ContextState>
+      <ContextState
+         contextName = "BaseBlock::update(float):Block.cpp">
+      </ContextState>
+      <ContextState
+         contextName = "BaseDisplayObject::updatePosition(float):DisplayObject.hpp">
+      </ContextState>
+      <ContextState
+         contextName = "GameLayer::onTouchMoved(cocos2d::Touch*, cocos2d::Event*):GameLayer.cpp">
+      </ContextState>
+      <ContextState
+         contextName = "BaseDisplayObject::init(cocos2d::Vec2, cocos2d::Size, cocos2d::Vec2):DisplayObject.cpp">
       </ContextState>
    </ContextStates>
 </VariablesViewState>

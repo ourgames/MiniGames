@@ -53,8 +53,8 @@ public:
     {
         mCollisionBox.size.width = collisionSize.width;
         mCollisionBox.size.height = collisionSize.height;
-        mCollisionBox.origin.x = mPosition.x;
-        mCollisionBox.origin.y = mPosition.y;
+        mCollisionBox.origin.x = mPosition.x - collisionSize.width/2;
+        mCollisionBox.origin.y = mPosition.y - collisionSize.height/2;
         
         IAttribute * pXSpeedAttribute = Attribute::create(AttributeType::SPEED_X, speed.x);
         addAttribute(pXSpeedAttribute);
@@ -156,8 +156,8 @@ public:
         
         float xSize = getAttributeValueByKey(AttributeType::COLLISION_SIZE_X);
         float ySize = getAttributeValueByKey(AttributeType::COLLISION_SIZE_Y);
-        mCollisionBox.origin.x = this->getPositionX();
-        mCollisionBox.origin.y = this->getPositionY();
+        mCollisionBox.origin.x = this->getPositionX() - mCollisionBox.size.width/2;
+        mCollisionBox.origin.y = this->getPositionY() - mCollisionBox.size.height/2;
     }
     virtual void updateAttribute(float dt)
     {
