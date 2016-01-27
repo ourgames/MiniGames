@@ -30,6 +30,7 @@ public:
     void update(float dt);
     void onCollision(IDisplayObject *pCollisionTarget);
     void addTouchEffect(TouchDirection dir);
+    void addStaminaReduceEffect();
     virtual void updatePosition(float dt);
     cocos2d::Rect getMagnetBox()
     {

@@ -26,6 +26,39 @@ Player::Player()
     mStanimaReduce = 0;
 }
 
+void Player::addStaminaReduceEffect()
+{
+    std::string id;
+    int idnum;
+    BaseEffect * effect;
+    
+    idnum = (int)EffectType::PLAYERSTAMINA + EFFECTIDBASE;
+    
+    id = CommonUtil::itos(idnum);
+    
+    int priority = atoi(CommonUtil::getPropById(id, "priority").c_str());
+    
+    AttributeType attributekey = (AttributeType)atoi(CommonUtil::getPropById(id, "attributekey").c_str());
+    
+    float starttime = atof(CommonUtil::getPropById(id, "starttime").c_str());
+    
+    float durationtime = atof(CommonUtil::getPropById(id, "durationtime").c_str());
+    
+    float value = atof(CommonUtil::getPropById(id, "value").c_str());
+    //effect numtype
+    EffectNumType enumtype = (EffectNumType)atoi(CommonUtil::getPropById(id, "enumtype").c_str());
+    //
+    EffectInstantType  einstanttype = (EffectInstantType)atoi(CommonUtil::getPropById(id, "instantable").c_str());
+    //effect的type类型
+    EffectType type = (EffectType)atoi(CommonUtil::getPropById(id, "type").c_str());
+    
+    effect = InstantEffect::create(priority, attributekey, starttime, durationtime, value, enumtype);
+    
+    //effect->retain();
+    
+    this->addEffect(effect);
+}
+
 bool Player::init()
 {
     cocos2d::Vec2 position;
@@ -99,6 +132,7 @@ bool Player::init()
             mMagnetBox.origin.x = position.x;
             mMagnetBox.origin.y = position.y;
             
+            //addStaminaReduceEffect();
             result = true;
         }
         else
@@ -164,6 +198,7 @@ void Player::update(float dt)
 {
     updatePosition(dt);
     updateAttribute(dt);
+    addStaminaReduceEffect();
 }
 
 void Player::onCollision(IDisplayObject *pCollisionTarget)

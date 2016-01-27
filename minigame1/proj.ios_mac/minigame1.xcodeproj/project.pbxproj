@@ -372,37 +372,12 @@
 		46880B8319C43A87006E1F66 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				6E7F31E71C58565100318487 /* Scene */,
+				6E7F31E61C58564900318487 /* Effect */,
+				6E7F31E51C58563F00318487 /* Unit */,
 				6E7AC15D1C508DE60035BEA0 /* Ext */,
-				6E7AC14F1C508D520035BEA0 /* GameLayer.cpp */,
-				6E7AC1501C508D520035BEA0 /* GameLayer.hpp */,
-				6E7AC1511C508D520035BEA0 /* GlobalVar.cpp */,
-				6E7AC1521C508D520035BEA0 /* GlobalVar.hpp */,
 				6E7AC1531C508D520035BEA0 /* HelloWorldScene.cpp */,
 				6E7AC1541C508D520035BEA0 /* HelloWorldScene.h */,
-				6E7AC1551C508D520035BEA0 /* LocalController.cpp */,
-				6E7AC1561C508D520035BEA0 /* LocalController.h */,
-				6E7AC13A1C508D440035BEA0 /* AppDelegate.cpp */,
-				6E7AC13B1C508D440035BEA0 /* AppDelegate.h */,
-				6E7AC13C1C508D440035BEA0 /* Attribute.cpp */,
-				6E7AC13D1C508D440035BEA0 /* Attribute.hpp */,
-				6E7AC13E1C508D440035BEA0 /* Block.cpp */,
-				6E7AC13F1C508D440035BEA0 /* Block.hpp */,
-				6E7AC1401C508D440035BEA0 /* BlockManager.cpp */,
-				6E7AC1411C508D440035BEA0 /* BlockManager.hpp */,
-				6E7AC1421C508D440035BEA0 /* CommonUtil.cpp */,
-				6E7AC1431C508D440035BEA0 /* CommonUtil.hpp */,
-				6E7AC1441C508D440035BEA0 /* DisplayObject.cpp */,
-				6E7AC1451C508D440035BEA0 /* DisplayObject.hpp */,
-				6E7AC1461C508D440035BEA0 /* Effect.cpp */,
-				6E7AC1471C508D440035BEA0 /* Effect.hpp */,
-				6E7AC16D1C5100FF0035BEA0 /* EffectManager.cpp */,
-				6E7AC16E1C5100FF0035BEA0 /* EffectManager.hpp */,
-				6E7F31A01C563BC600318487 /* Player.cpp */,
-				6E7F31A11C563BC600318487 /* Player.hpp */,
-				6E7F31A41C563C9600318487 /* Item.cpp */,
-				6E7F31A51C563C9600318487 /* Item.hpp */,
-				6E7F31A81C56529900318487 /* ItemManager.cpp */,
-				6E7F31A91C56529900318487 /* ItemManager.hpp */,
 			);
 			name = Classes;
 			path = ../Classes;
@@ -458,6 +433,12 @@
 		6E7AC15D1C508DE60035BEA0 /* Ext */ = {
 			isa = PBXGroup;
 			children = (
+				6E7AC1551C508D520035BEA0 /* LocalController.cpp */,
+				6E7AC1561C508D520035BEA0 /* LocalController.h */,
+				6E7AC1421C508D440035BEA0 /* CommonUtil.cpp */,
+				6E7AC1431C508D440035BEA0 /* CommonUtil.hpp */,
+				6E7AC1511C508D520035BEA0 /* GlobalVar.cpp */,
+				6E7AC1521C508D520035BEA0 /* GlobalVar.hpp */,
 				6E7AC15E1C508DF90035BEA0 /* CCINIParser.cpp */,
 				6E7AC15F1C508DF90035BEA0 /* CCINIParser.h */,
 				6E7AC1601C508DF90035BEA0 /* CCRapidXMLParser.cpp */,
@@ -471,6 +452,49 @@
 				6E7AC1681C508DF90035BEA0 /* rapidxml.hpp */,
 			);
 			name = Ext;
+			sourceTree = "<group>";
+		};
+		6E7F31E51C58563F00318487 /* Unit */ = {
+			isa = PBXGroup;
+			children = (
+				6E7AC1441C508D440035BEA0 /* DisplayObject.cpp */,
+				6E7AC1451C508D440035BEA0 /* DisplayObject.hpp */,
+				6E7F31A01C563BC600318487 /* Player.cpp */,
+				6E7F31A11C563BC600318487 /* Player.hpp */,
+				6E7F31A41C563C9600318487 /* Item.cpp */,
+				6E7F31A51C563C9600318487 /* Item.hpp */,
+				6E7F31A81C56529900318487 /* ItemManager.cpp */,
+				6E7F31A91C56529900318487 /* ItemManager.hpp */,
+				6E7AC13E1C508D440035BEA0 /* Block.cpp */,
+				6E7AC13F1C508D440035BEA0 /* Block.hpp */,
+				6E7AC1401C508D440035BEA0 /* BlockManager.cpp */,
+				6E7AC1411C508D440035BEA0 /* BlockManager.hpp */,
+			);
+			name = Unit;
+			sourceTree = "<group>";
+		};
+		6E7F31E61C58564900318487 /* Effect */ = {
+			isa = PBXGroup;
+			children = (
+				6E7AC1461C508D440035BEA0 /* Effect.cpp */,
+				6E7AC1471C508D440035BEA0 /* Effect.hpp */,
+				6E7AC16D1C5100FF0035BEA0 /* EffectManager.cpp */,
+				6E7AC16E1C5100FF0035BEA0 /* EffectManager.hpp */,
+				6E7AC13C1C508D440035BEA0 /* Attribute.cpp */,
+				6E7AC13D1C508D440035BEA0 /* Attribute.hpp */,
+			);
+			name = Effect;
+			sourceTree = "<group>";
+		};
+		6E7F31E71C58565100318487 /* Scene */ = {
+			isa = PBXGroup;
+			children = (
+				6E7AC14F1C508D520035BEA0 /* GameLayer.cpp */,
+				6E7AC1501C508D520035BEA0 /* GameLayer.hpp */,
+				6E7AC13A1C508D440035BEA0 /* AppDelegate.cpp */,
+				6E7AC13B1C508D440035BEA0 /* AppDelegate.h */,
+			);
+			name = Scene;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

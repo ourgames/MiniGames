@@ -80,6 +80,7 @@ typedef enum
     MAGNETY,
     LEFTTOUCH,
     RIGHTTOUCH,
+    PLAYERSTAMINA,
 }EffectType;
 
 typedef enum
