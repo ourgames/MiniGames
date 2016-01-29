@@ -14,12 +14,16 @@
 #include "Player.hpp"
 //#include "GameLayerVar.h"
 #include "ItemManager.hpp"
+#include "Track.hpp"
 
 class GameLayer : public cocos2d::Layer
 {
     cocos2d::Size visibleSize;
     cocos2d::Vec2 origin;
-
+    //记录上一个触摸位置的position
+    cocos2d::Vec2 touchPosition;
+    
+    //分值显示的label
     cocos2d::Label * label1;
     cocos2d::Label * label2;
     cocos2d::Label * label3;
@@ -30,6 +34,9 @@ class GameLayer : public cocos2d::Layer
     
     Player * player;
     float distance;
+    
+    Track * track;
+    //cocos2d::Layer * globleVector;
     
 public:
     static cocos2d::Scene* createScene();

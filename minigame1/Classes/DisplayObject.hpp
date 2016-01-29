@@ -205,8 +205,8 @@ protected:
 //        return -1;
 //    }
     cocos2d::Vec2 mPosition;
-    cocos2d::Rect mCollisionBox;
-    cocos2d::Rect mMagnetBox;
+    cocos2d::Rect mCollisionBox;//碰撞盒子
+    cocos2d::Rect mMagnetBox;//道具吸引盒子
     //cocos2d::Size mCollisionSize;
     cocos2d::Map<int, IAttribute*> mAttributeList;
     std::vector<int> mAttributeKeyList;

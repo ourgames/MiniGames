@@ -26,8 +26,8 @@ typedef enum
     COLLISION_SIZE_Y,//Y方向碰撞距离
     MAGNET_SIZE_X,//X方向吸收距离
     MAGNET_SIZE_Y,//Y方向吸收距离
-    POSITION_X,
-    POSITION_Y,
+    POSITION_X,//X方向位置信息
+    POSITION_Y,//Y方向位置信息
     
 }AttributeType;
 
@@ -67,31 +67,31 @@ typedef enum
 
 typedef enum
 {
-    INSTANT,
-    DURATION,
+    INSTANT,//立即生效的effect
+    DURATION,//持续生效的effect
 }EffectInstantType;
 
 typedef enum
 {
-    BLOCKHITSTAMINA,
-    BLOCKAVOIDSCORE,
-    BLCOKDIZZY,
-    ITEMUPSPEED,
-    ITEMINVINCIBLE,
-    MAGNETX,
-    MAGNETY,
-    LEFTTOUCH,
-    RIGHTTOUCH,
-    PLAYERSTAMINA,
-    POSITIONX,
-    POSITIONY,
+    BLOCKHITSTAMINA,//碰撞时体力影响的effect
+    BLOCKAVOIDSCORE,//未碰撞，躲过得分的effect
+    BLCOKDIZZY,//眩晕障碍
+    ITEMUPSPEED,//加速
+    ITEMINVINCIBLE,//无敌
+    MAGNETX,//X方向吸引距离
+    MAGNETY,//Y方向吸引距离
+    LEFTTOUCH,//左侧触摸，追踪障碍添加左侧toucheffect
+    RIGHTTOUCH,//右侧触摸，追踪障碍添加右侧toucheffect
+    PLAYERSTAMINA,//玩家体力值每帧减少值的effect
+    POSITIONX,//X方向位置信息
+    POSITIONY,//Y方向位置信息
 }EffectType;
 
 typedef enum
 {
     LEFT,
     RIGHT,
-}TouchDirection;
+}TouchDirection;//触摸方向
 
 class BaseEffect : public IEffect
 {

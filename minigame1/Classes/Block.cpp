@@ -119,7 +119,7 @@ BaseBlock::~BaseBlock()
 {
     mBlockEffectList.clear();
 }
-
+//碰撞发生时，对角色增加effect
 void BaseBlock::addCollisionEffect(IDisplayObject *pCollisionTarget)
 {
     //发生碰撞，读表生成effect
@@ -164,7 +164,7 @@ void BaseBlock::addCollisionEffect(IDisplayObject *pCollisionTarget)
     }
     
 }
-
+//角色成功躲过道具时，对角色添加得分
 void BaseBlock::addAvoidEffect(IDisplayObject *pCollisionTarget)
 {
         BaseEffect * effect;
@@ -194,10 +194,19 @@ void BaseBlock::addAvoidEffect(IDisplayObject *pCollisionTarget)
         pCollisionTarget->addEffect(effect);
     
 }
-
+//检测是否发生碰撞
 void BaseBlock::onCollision(IDisplayObject *pCollisionTarget)
 {
+    
     cocos2d::Rect collisionBox = pCollisionTarget->getCollisionBox();
+//    cocos2d::Vec2 positionNode = collisionBox.origin;
+//    cocos2d::Vec2 positionWorld = pCollisionTarget->convertToWorldSpace(positionNode);
+//    collisionBox.origin = positionWorld;
+//   
+//    cocos2d::Rect thisCollisionBox = mCollisionBox;
+//    cocos2d::Vec2 thispositionNode = mCollisionBox.origin;
+//    thisCollisionBox.origin = this->convertToWorldSpace(thispositionNode);
+    
     if(mCollisionBox.intersectsRect(collisionBox))
     {
         addCollisionEffect(pCollisionTarget);
@@ -206,7 +215,7 @@ void BaseBlock::onCollision(IDisplayObject *pCollisionTarget)
     }
     
 }
-
+//检测是否成功躲过道具
 void BaseBlock::onAvoid(IDisplayObject *pCollisionTarget)
 {
     if((this->getPositionY() + this->mCollisionBox.size.height < pCollisionTarget->getPositionY()) && isAvoid == false) {

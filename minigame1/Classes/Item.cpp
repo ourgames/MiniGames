@@ -111,7 +111,8 @@ void Item::update(float dt)
     updateAttribute(dt);
 }
 
-void Item::addCollisionEffect(IDisplayObject *pCollisionTarget)
+//道具发生碰撞时添加effect，功能实现不够简练合理，有待重构
+void Item::addCollisionEffect(cocos2d::Node *render_node,IDisplayObject *pCollisionTarget)
 {
     //发生碰撞，读表生成effect
     for (int i = 0; i < mItemEffectList.size(); i++) {
@@ -165,18 +166,22 @@ void Item::addCollisionEffect(IDisplayObject *pCollisionTarget)
         }
 
         
-        //effect->retain();
-        pCollisionTarget->addEffect(effect);
+//        //effect->retain();
+//        if (type == EffectType::ITEMUPSPEED) {
+//            render_node->addEffect(effect);
+//        }
+//        else
+            pCollisionTarget->addEffect(effect);
     }
 
 }
-
-void Item::onCollision(IDisplayObject *pCollisionTarget)
+//检测是否发生碰撞，当碰撞发生时添加碰撞效果
+void Item::onCollision(cocos2d::Node * render_node,IDisplayObject *pCollisionTarget)
 {
     cocos2d::Rect collisionBox = pCollisionTarget->getMagnetBox();
     if(mCollisionBox.intersectsRect(collisionBox))
     {
-        addCollisionEffect(pCollisionTarget);
+        addCollisionEffect(render_node,pCollisionTarget);
         auto action = MoveTo::create(5.0f, pCollisionTarget->getPosition());
         this->runAction(action);
         this->mAlive = false;

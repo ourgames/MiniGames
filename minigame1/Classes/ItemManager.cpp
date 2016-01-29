@@ -30,6 +30,7 @@ ItemManager::~ItemManager()
     mItemArray.clear();
 }
 
+//读表设置相关数组值
 void ItemManager::setArray()
 {
     int num = ITEMTYPENUM;
@@ -42,6 +43,7 @@ void ItemManager::setArray()
         mGenerateNumArray.push_back(tep);
     }
 }
+//根据概率数组随机生成一次什么样类型的道具
 ItemType ItemManager::generateItemType()
 {
     ItemType res = ItemType::Coin;
@@ -59,7 +61,7 @@ ItemType ItemManager::generateItemType()
     
     return res;
 }
-
+//删除已经失效的道具
 void ItemManager::removeItem(Item *pItem)
 {
     if (pItem) {
@@ -69,6 +71,7 @@ void ItemManager::removeItem(Item *pItem)
         }
     }
 }
+//更新道具位置，对于已经失效的道具从道具管理列表中移除
 void ItemManager::updateItemPosition(float dt)
 {
     cocos2d::Vector<Item *> toRemoveItemArray;
@@ -100,7 +103,7 @@ void ItemManager::updateItemPosition(float dt)
 //        }
 //    }
 //}
-
+//随机生成一次道具
 void ItemManager::generateItem(cocos2d::Node *render_node)
 {
     cocos2d::Size visibleSize = Director::getInstance()->getVisibleSize();
@@ -108,35 +111,40 @@ void ItemManager::generateItem(cocos2d::Node *render_node)
 
     ItemType type = generateItemType();
     cocos2d::Vec2 position;
+    cocos2d::Vec2 positionWorld;
     
-    type = ItemType::Invicible;
+    //type = ItemType::Invicible;
     
     int ix = rand() % TRACKNUM;
     position.x = origin.x + (ix+1) * TRACKWIDTH;
-    position.y = origin.y + visibleSize.height;
+    // position.y = origin.y + visibleSize.height;
+    position.y = origin.y + visibleSize.height - render_node->getPositionY();
+    
+    
     
     Item * itemobj = Item::create(type, position);
     render_node->addChild(itemobj,1);
+    //render_node->addChild(itemobj);
     mItemArray.pushBack(itemobj);
 }
-
-void ItemManager::testCollision(IDisplayObject *pCollisionTarget)
+//判断是否发生碰撞
+void ItemManager::testCollision(cocos2d::Node * render_node,IDisplayObject *pCollisionTarget)
 {
     if (!mItemArray.empty()) {
         for (int i = 0; i < mItemArray.size(); i++) {
             auto pItem = mItemArray.at(i);
-            pItem->onCollision(pCollisionTarget);
+            pItem->onCollision(render_node,pCollisionTarget);
         }
     }
 }
-
+//对生成的道具列表进行更新管理
 void ItemManager::update(float dt, cocos2d::Node *render_node, IDisplayObject *pCollisionTarget)
 {
     mDistanceVar += dt * COURCESPEED;
     
     updateItemPosition(dt);
     
-    testCollision(pCollisionTarget);
+    testCollision(render_node,pCollisionTarget);
     
     if (mDistanceVar >= ITEMDISTANCE) {
         mDistanceVar = mDistanceVar - ITEMDISTANCE;

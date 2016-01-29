@@ -2,7 +2,7 @@
 <tns:database xmlns:tns="http://www.iw.com/sns/platform/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <Group id="item">
         <ItemSpec id="2000" name="Coin" speed="(0,-50)" magnetsize="60,60" value="100" time="0" num="1" chance="75" filename="roof_1.png" effectlist="1"/>
-        <ItemSpec id="2001" name="Invincible" speed="(0,-50)" magnetsize="60,60" value="5" time="1500" num="1" chance="10" filename="player_float.png" effectlist="3,4"/>
+        <ItemSpec id="2001" name="Invincible" speed="(0,-50)" magnetsize="60,60" value="-100" time="1500" num="1" chance="10" filename="player_float.png" effectlist="3,4"/>
         <ItemSpec id="2002" name="Stamina" speed="(0,-50)" magnetsize="60,60" value="100" time="0" num="1" chance="5" filename="roof_2.png" effectlist="0"/>
         <ItemSpec id="2003" name="Magnet" speed="(0,-50)" magnetsize="60,60" value="100" time="3000" num="1" chance="10" filename="player_1.png" effectlist="5,6"/>
     </Group>

@@ -59,10 +59,10 @@ public:
 protected:
     Node * actor;
     BlockType mBlockType;
-    float mScore;
-    float mStamina;
-    float mTime;
-    bool isAvoid;
+    float mScore;//躲过获得的分数值
+    float mStamina;//碰撞减少的体力值
+    float mTime;//碰撞后效果的持续时间
+    bool isAvoid;//标记角色是否已经躲过了障碍
     std::vector<int> mBlockEffectList;
 };
 

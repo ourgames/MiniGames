@@ -24,7 +24,7 @@ public:
     
     void update(float dt,cocos2d::Node * render_node,IDisplayObject *pCollisionTarget);
     void updateItemPosition(float dt);
-    void testCollision(IDisplayObject *pCollisionTarget);
+    void testCollision(cocos2d::Node * render_node,IDisplayObject *pCollisionTarget);
     void testAvoid(IDisplayObject *pCollisionTarget);
     void setArray();
     
@@ -34,9 +34,9 @@ public:
     void removeItem(Item * pItem);
 
 protected:
-    std::vector<float> mChanceArray;
-    std::vector<int> mGenerateNumArray;
-    cocos2d::Vector <Item *> mItemArray;
+    std::vector<float> mChanceArray;//生成各种道具的概率数组
+    std::vector<int> mGenerateNumArray;//每次生成道具的数量值数组
+    cocos2d::Vector <Item *> mItemArray;//生成道具的存放数组
     float mDistanceVar;
 };
 #endif /* ItemManager_hpp */

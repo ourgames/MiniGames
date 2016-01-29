@@ -22,6 +22,7 @@ public:
     ~BlockManager();
     
     void update(float dt,cocos2d::Node * render_node,IDisplayObject *pCollisionTarget);
+    //void update(float dt,IDisplayObject * render_node,IDisplayObject *pCollisionTarget);
     void updateBaseBlockPosition(float dt);
     void testCollision(IDisplayObject *pCollisionTarget);
     void testAvoid(IDisplayObject *pCollisionTarget);
@@ -38,14 +39,14 @@ public:
     {
         return mDisTimer;
     }
-    cocos2d::Vector <BaseBlock *> mBaseBlockArray;
-    cocos2d::Vector<BaseBlock *> mTrackBlockArray;
+    cocos2d::Vector <BaseBlock *> mBaseBlockArray;//生成的常规道具的管理list
+    cocos2d::Vector<BaseBlock *> mTrackBlockArray;//生成的追踪道具的管理list
 protected:
-    std::vector<float> mChanceArray;
-    std::vector<int> mGenerateNumArray;
+    std::vector<float> mChanceArray;//生成各种障碍的概率数组
+    std::vector<int> mGenerateNumArray;//一次生成各种道具个数的数组
 //    cocos2d::Vector <BaseBlock *> mBaseBlockArray;
 //    cocos2d::Vector<BaseBlock *> mTrackBlockArray;
-    float mDisTimer;
-    float mTimTimer;
+    float mDisTimer;//记录移动距离的自变量
+    float mTimTimer;//记录经过时间的自变量
 };
 #endif /* BlockManager_hpp */

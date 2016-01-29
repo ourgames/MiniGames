@@ -21,11 +21,10 @@ Player * Player::create()
 
 Player::Player()
 {
-//    mScore = 0;
-//    mStamina = 0;
     mStanimaReduce = 0;
 }
 
+//玩家增加每帧体力减少的effect
 void Player::addStaminaReduceEffect()
 {
     std::string id;
@@ -53,8 +52,6 @@ void Player::addStaminaReduceEffect()
     EffectType type = (EffectType)atoi(CommonUtil::getPropById(id, "type").c_str());
     
     effect = InstantEffect::create(priority, attributekey, starttime, durationtime, value, enumtype);
-    
-    //effect->retain();
     
     this->addEffect(effect);
 }
@@ -156,101 +153,45 @@ bool Player::init()
     return result;
 }
 
+//改变X方向位置的effect
 void Player::addPositionXEffect(float value)
 {
     BaseEffect * xeffect;
-    
     int priority = 0;
-    
     AttributeType attributekey = AttributeType::POSITION_X;
-    
     float starttime = 0;
-    
     float durationtime = 0;
-    
-    //float value = this->getPositionX();
-    //effect numtype
-    EffectNumType enumtype = EffectNumType::EQUAL;
+    EffectNumType enumtype = EffectNumType::ADD;
     //
     EffectInstantType  einstanttype = EffectInstantType::INSTANT;
     
     xeffect = InstantEffect::create(priority, attributekey, starttime, durationtime, value, enumtype);
-    //yeffect = InstantEffect::create(priority, AttributeType::POSITION_Y, starttime, durationtime, this->getPositionY(), enumtype);
-    
     this->addEffect(xeffect);
-    //this->setPositionX(value);
-    //this->addEffect(yeffect);
-}
 
+}
+//改变Y方向位置的effect
 void Player::addPositionYEffect(float value)
 {
     BaseEffect * yeffect;
-    
-    
     int priority = 0;
-    
     AttributeType attributekey = AttributeType::POSITION_Y;
-    
     float starttime = 0;
-    
     float durationtime = 0;
-    
-    //float value = this->getPositionX();
-    //effect numtype
-    EffectNumType enumtype = EffectNumType::EQUAL;
+    EffectNumType enumtype = EffectNumType::ADD;
     //
     EffectInstantType  einstanttype = EffectInstantType::INSTANT;
     
-    //xeffect = InstantEffect::create(priority, attributekey, starttime, durationtime, value, enumtype);
+
     yeffect = InstantEffect::create(priority, attributekey, starttime, durationtime, value, enumtype);
-    
-    //this->addEffect(xeffect);
     this->addEffect(yeffect);
-    //this->setPositionY(value);
 }
 
+//更新角色位置信息
 void Player::updatePosition(float dt)
 {
     cocos2d::Size visibleSize = cocos2d::Director::getInstance()->getVisibleSize();
     cocos2d::Vec2 origin = cocos2d::Director::getInstance()->getVisibleOrigin();
     
-//    float xSpeed = getAttributeValueByKey(AttributeType::SPEED_X);
-//    float ySpeed = getAttributeValueByKey(AttributeType::SPEED_Y);
-//    
-//    if (this->getPositionX() + dt * xSpeed < origin.x + mCollisionBox.size.width/2 ) {
-//        //this->setPositionX(origin.x + mCollisionBox.size.width/2);
-//        addPositionXEffect(origin.x + mCollisionBox.size.width/2);
-//    }
-//    else
-//    {
-//        if (this->getPositionX() + dt * xSpeed > visibleSize.width - mCollisionBox.size.width/2) {
-//           // this->setPositionX(visibleSize.width - mCollisionBox.size.width/2);
-//            //this->setPositionX(visibleSize.width);
-//            addPositionXEffect(visibleSize.width);
-//        }
-//        else
-//        {
-//            //mPosition.x = mPosition.x + dt * xSpeed;
-//            //this->setPositionX(this->getPositionX() + dt * xSpeed);
-//            addPositionXEffect(this->getPositionX() + dt * xSpeed);
-//        }
-//    }
-//    if (this->getPositionY() + dt * ySpeed < origin.y) {
-//        mAlive = false;
-//        this->setVisible(false);
-//    }
-//    else
-//        this->setPositionY(this->getPositionY() + dt * ySpeed);
-//    
-//    
-//    float xSize = getAttributeValueByKey(AttributeType::COLLISION_SIZE_X);
-//    float ySize = getAttributeValueByKey(AttributeType::COLLISION_SIZE_Y);
-//    mCollisionBox.origin.x = this->getPositionX() - mCollisionBox.size.width/2;
-//    mCollisionBox.origin.y = this->getPositionY() - mCollisionBox.size.height/2;
-//    
-//    mMagnetBox.origin.x = this->getPositionX() - mMagnetBox.size.width/2;
-//    mMagnetBox.origin.y = this->getPositionY() - mMagnetBox.size.height/2;
-
     
     float xPosition = getAttributeValueByKey(AttributeType::POSITION_X);
     float yPosition = getAttributeValueByKey(AttributeType::POSITION_Y);
@@ -258,8 +199,8 @@ void Player::updatePosition(float dt)
     this->setPositionX(xPosition);
     this->setPositionY(yPosition);
     
-        float xSize = getAttributeValueByKey(AttributeType::COLLISION_SIZE_X);
-        float ySize = getAttributeValueByKey(AttributeType::COLLISION_SIZE_Y);
+    float xSize = getAttributeValueByKey(AttributeType::COLLISION_SIZE_X);
+    float ySize = getAttributeValueByKey(AttributeType::COLLISION_SIZE_Y);
     
     mCollisionBox.origin.x = xPosition - mCollisionBox.size.width/2;
     mCollisionBox.origin.y = yPosition - mCollisionBox.size.height/2;
@@ -286,7 +227,7 @@ void Player::onCollision(IDisplayObject *pCollisionTarget)
 {
     
 }
-
+//初始设计，玩家角色只有x方向速度，触摸时根据触摸位置改变玩家x方向的速度
 void Player::addTouchEffect(TouchDirection dir)
 {
     std::string id;

@@ -39,9 +39,9 @@ bool GameLayer::init()
     
     visibleSize = Director::getInstance()->getVisibleSize();
     origin = Director::getInstance()->getVisibleOrigin();
-    
+    //总里程数
     distance = 0;
-    
+    //创建暂停 恢复 停止按钮
     auto closeItem = MenuItemImage::create(
                                            "CloseNormal.png",
                                            "CloseSelected.png",
@@ -71,19 +71,21 @@ bool GameLayer::init()
     this->addChild(menu, 1);
     
     
-    
+    //创建初始游戏场景
     createGameScreen();
     
-
+    track = Track::create();
+    //globleVector = cocos2d::Layer::create();
+    //this->addChild(track);
+    
     this->scheduleUpdate();
     
+    //添加事件监听
     this->setTouchEnabled(true);
-    
     auto listener = EventListenerTouchOneByOne::create();
     listener->onTouchBegan = CC_CALLBACK_2(GameLayer::onTouchBegan, this);
     listener->onTouchEnded = CC_CALLBACK_2(GameLayer::onTouchEnded, this);
     listener->onTouchMoved = CC_CALLBACK_2(GameLayer::onTouchMoved, this);
-    
     _eventDispatcher->addEventListenerWithSceneGraphPriority(listener, this);
     
     return true;
@@ -91,6 +93,7 @@ bool GameLayer::init()
 
 void GameLayer::createGameScreen()
 {
+    //创建背景图片
     bg = CCArray::createWithCapacity(3);
     bg->retain();
     Sprite * _bg;
@@ -102,7 +105,7 @@ void GameLayer::createGameScreen()
         bg->addObject(_bg);
     }
     
-    
+    //创建显示总里程数 得分值 体力值的显示Label
     label1 = Label::createWithTTF("Hello World", "fonts/Marker Felt.ttf", 24);
     label1->setPosition(origin.x + visibleSize.width - label1->getContentSize().width, origin.y + visibleSize.height - label1->getContentSize().height);
     this->addChild(label1,1);
@@ -115,11 +118,11 @@ void GameLayer::createGameScreen()
     label3->setPosition(origin.x + visibleSize.width - label3->getContentSize().width, origin.y + visibleSize.height - label3->getContentSize().height * 3);
     this->addChild(label3,1);
 
-    
+    //创建玩家角色
     player = Player::create();
     this->addChild(player,1);
 }
-
+ //在label上显示数据的函数
 void GameLayer::labelSetString(cocos2d::Label * label,float distance)
 {
     std::stringstream buffer;
@@ -162,13 +165,19 @@ void GameLayer::bgUpdate(float dt)
 
 void GameLayer::update(float dt)
 {
+    //里程数增加
     distance += dt * COURCESPEED;
-    
+    //背景移动
     bgUpdate(dt);
+    //障碍管理更新
     blockmanager.update(dt,this,player);
+    //道具管理更新
     itemmanager.update(dt, this, player);
+    //角色管理更新
     player->update(dt);
- 
+    
+//    track->update(dt);
+    //显示里程数 得分 体力
     labelSetString(label1, distance);
     labelSetString(label2, player->getAttributeValueByKey(AttributeType::SOCRE));
     labelSetString(label3, player->getAttributeValueByKey(AttributeType::STAMINA));
@@ -177,7 +186,7 @@ void GameLayer::update(float dt)
 
 bool GameLayer::onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *event)
 {
-//    auto location = touch->getLocation();
+    touchPosition = touch->getLocation();
 //    
 //    float left = origin.x;
 //    float right = visibleSize.width;
@@ -200,6 +209,7 @@ bool GameLayer::onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *event)
 
 void GameLayer::onTouchEnded(cocos2d::Touch *touch, cocos2d::Event *event)
 {
+    //获取触摸点位置
     auto location = touch->getLocation();
     
     float left = origin.x;
@@ -216,6 +226,7 @@ void GameLayer::onTouchEnded(cocos2d::Touch *touch, cocos2d::Event *event)
         dir = TouchDirection::RIGHT;
     }
     //player->addTouchEffect(dir);
+    //追踪障碍添加响应
     blockmanager.addTouchEffect(dir);
     //auto location = touch->getLocation();
 //    player->setPositionX(location.x);
@@ -228,9 +239,14 @@ void GameLayer::onTouchMoved(cocos2d::Touch *touch, cocos2d::Event *event)
     //    auto location = touch->getLocation();
     //    player->setPositionX(location.x);
     //    player->setPositionY(location.y);
+    //触摸move时，对角色位置属性添加立即生效的equal effect
     auto location = touch->getLocation();
-    player->addPositionXEffect(location.x);
-    player->addPositionYEffect(location.y);
+    
+    
+    player->addPositionXEffect(location.x - touchPosition.x);
+    player->addPositionYEffect(location.y - touchPosition.y);
+    
+    touchPosition = location;
     //player->setPosition(location);
 }
 

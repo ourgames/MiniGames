@@ -34,10 +34,12 @@ public:
     virtual ~Item();
     ItemType getType();
     
-    void onCollision(IDisplayObject *pCollisionTarget);
+    void onCollision(IDisplayObject *pCollisionTarget){}
+    
+    void onCollision(cocos2d::Node * render_node,IDisplayObject *pCollisionTarget);
     void onAvoid(IDisplayObject *pCollisionTarget);
     void update(float dt);
-    void addCollisionEffect(IDisplayObject *pCollisionTarget);
+    void addCollisionEffect(cocos2d::Node * render_node,IDisplayObject *pCollisionTarget);
     void addAvoidEffect(IDisplayObject *pCollisionTarget);
 protected:
     Node * actor;

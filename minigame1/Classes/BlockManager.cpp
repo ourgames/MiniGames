@@ -34,7 +34,7 @@ BlockManager::~BlockManager()
     mBaseBlockArray.clear();
     mTrackBlockArray.clear();
 }
-
+//读表生成概率数组
 void BlockManager::setArray()
 {
     int num = BLOCKTYPENUM;
@@ -47,6 +47,7 @@ void BlockManager::setArray()
         mGenerateNumArray.push_back(tep);
     }
 }
+//根据概率数组生成一种道具
 BlockType BlockManager::generateBlockType()
 {
     BlockType res = BlockType::NormalBlock;
@@ -114,7 +115,7 @@ void BlockManager::addTouchEffect(TouchDirection dir)
     
 }
 
-
+//一次生成道具
 void BlockManager::generateBlock(cocos2d::Node * render_node)
 {
     cocos2d::Size visibleSize = Director::getInstance()->getVisibleSize();
@@ -123,10 +124,11 @@ void BlockManager::generateBlock(cocos2d::Node * render_node)
     BlockType type = generateBlockType();
     cocos2d::Vec2 position;
    
-    type = BlockType::DizzyBlock;
+    //type = BlockType::DizzyBlock;
     
     int num = mGenerateNumArray.at((int)type);
     
+    //普通障碍一次生成一排四个
     if (type == BlockType::NormalBlock && num == TRACKNUM - 1) {
         int ix = rand() % TRACKNUM;
         for (int i = 0; i < TRACKNUM; i++) {
@@ -137,7 +139,7 @@ void BlockManager::generateBlock(cocos2d::Node * render_node)
             {
                 //位置信息
                 position.x = origin.x + (i+1) * TRACKWIDTH;
-                position.y = origin.y + visibleSize.height;
+                position.y = origin.y + visibleSize.height - render_node->getPositionY();
 //                position.x = origin.x + visibleSize.width/2;
 //                position.y = origin.y + visibleSize.height/2;
                 
@@ -159,7 +161,7 @@ void BlockManager::generateBlock(cocos2d::Node * render_node)
             ix = rand() % TRACKNUM;
         }
         position.x = origin.x + (ix+1) * TRACKWIDTH;
-        position.y = origin.y + visibleSize.height;
+        position.y = origin.y + visibleSize.height - render_node->getPositionY();
         
         BaseBlock * blockobj = BaseBlock::create(type, position);
         render_node->addChild(blockobj,1);
@@ -170,7 +172,7 @@ void BlockManager::generateBlock(cocos2d::Node * render_node)
         else mBaseBlockArray.pushBack(blockobj);
     }
 }
-
+//删除已经失效的常规障碍
 void BlockManager::removeBlock(BaseBlock *pBaseBlock)
 {
     if (pBaseBlock) {
@@ -180,7 +182,7 @@ void BlockManager::removeBlock(BaseBlock *pBaseBlock)
         }
     }
 }
-
+//删除已经失效的追踪障碍
 void BlockManager::removeTrackBlock(BaseBlock *pBaseBlock)
 {
     if (pBaseBlock) {
@@ -190,7 +192,7 @@ void BlockManager::removeTrackBlock(BaseBlock *pBaseBlock)
         }
     }
 }
-
+//更新障碍的位置，并移除已经失效的障碍
 void BlockManager::updateBaseBlockPosition(float dt)
 {
     cocos2d::Vector<BaseBlock *> toRemoveBaseBlockArray;
@@ -226,7 +228,7 @@ void BlockManager::updateBaseBlockPosition(float dt)
     }
     
 }
-
+//判断是否发生碰撞
 void BlockManager::testCollision(IDisplayObject *pCollisionTarget)
 {
     if (!mBaseBlockArray.empty()) {
@@ -243,7 +245,7 @@ void BlockManager::testCollision(IDisplayObject *pCollisionTarget)
     }
     
 }
-
+//判断是否成功躲过障碍
 void BlockManager::testAvoid(IDisplayObject *pCollisionTarget)
 {
     if (!mBaseBlockArray.empty()) {
